@@ -1,50 +1,3 @@
-;;;;;;;;;;;;;;;;;;;;
-;; Global Options ;;
-;;;;;;;;;;;;;;;;;;;;
-
-;; get rid of splash screen and set tab width
-(setq inhibit-splash-screen t)
-(setq tab-width 4)
-
-;; use whitespace indent
-(setq indent-tabs-mode nil)
-
-;; Put autosave files (ie #foo#) in one place, *not*
-;; scattered all over the file system!
-(defvar autosave-dir "~/.emacs.d/auto-save-dir/")
-
-(make-directory autosave-dir t)
-
-(defun auto-save-file-name-p (filename)
-  (string-match "^#.*#$" (file-name-nondirectory filename)))
-
-(defun make-auto-save-file-name ()
-  (concat autosave-dir
-   (if buffer-file-name
-      (concat "#" (file-name-nondirectory buffer-file-name) "#")
-    (expand-file-name
-     (concat "#%" (buffer-name) "#")))))
-
-;; Put backup files (ie foo~) in one place too. (The backup-directory-alist
-;; list contains regexp=>directory mappings; filenames matching a regexp are
-;; backed up in the corresponding directory. Emacs will mkdir it if necessary.)
-(setq backup-directory-alist `(("." . "~/.emacs.d/backup-dir")))
-(setq backup-by-copying-when-linked t)
-(setq delete-old-versions t
-  kept-new-versions 6
-  kept-old-versions 2
-  version-control t)
-
-;; Delete trailing whitespace before saving
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; PuTTY fix. Ugly. Bad. But it works. (Good)
-(define-key global-map "\M-[1~" 'beginning-of-line)
-(define-key global-map [select] 'end-of-line)
-
-;; allow narrow to region
-(put 'narrow-to-region 'disabled nil)
-
 ;;;;;;;;;;;;
 ;; el-get ;;
 ;;;;;;;;;;;;
@@ -91,6 +44,8 @@
 	  :type http
 	  :url "http://coderepos.org/share/export/39113/lang/elisp/systemtap-mode/systemtap-mode.el"
 	  :localname "systemtap-mode.el"
+	  :autoloads nil
+	  :features systemtap-mode
 	  :after (lambda ()
 		   (add-to-list 'auto-mode-alist '("\\.stp$" . systemtap-mode))))
 
@@ -99,20 +54,78 @@
 		   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))))))
 
 (setq my-packages
-      (append '(el-get         ; el-get is self-hosting
-		escreen        ; screen for emacs, C-\ C-h
-		switch-window  ; takes over C-x o
-		vkill          ; Process view and killing
-		auto-complete  ; complete as you type with overlays
-		buffer-move
-		smex
-		magit
-		goto-last-change
+      (append '(el-get           ; el-get is self-hosting
+		switch-window    ; takes over C-x o
+		vkill            ; Process view and killing
+		auto-complete    ; complete as you type with overlays
+		buffer-move      ; move buffers through frames
+		smex             ; smart M-x
+		magit            ; git integration
+		goto-last-change ; what do you think?!
+		yasnippet
 		google-c-style
 		systemtap-mode
 		lua-mode
 		)))
 (el-get 'sync my-packages)
+
+;;;;;;;;;;;;;;;;;;;;
+;; Global Options ;;
+;;;;;;;;;;;;;;;;;;;;
+;; Add .emacs.d to load-path
+(add-to-list 'load-path "~/.emacs.d/local-elisp")
+
+;; get rid of splash screen and set tab width
+(setq inhibit-splash-screen t)
+(setq tab-width 4)
+
+;; use whitespace indent
+(setq indent-tabs-mode nil)
+
+;; Put autosave files (ie #foo#) in one place, *not*
+;; scattered all over the file system!
+(defvar autosave-dir "~/.emacs.d/auto-save-dir/")
+
+(make-directory autosave-dir t)
+
+(defun auto-save-file-name-p (filename)
+  (string-match "^#.*#$" (file-name-nondirectory filename)))
+
+(defun make-auto-save-file-name ()
+  (concat autosave-dir
+   (if buffer-file-name
+      (concat "#" (file-name-nondirectory buffer-file-name) "#")
+    (expand-file-name
+     (concat "#%" (buffer-name) "#")))))
+
+;; Put backup files (ie foo~) in one place too. (The backup-directory-alist
+;; list contains regexp=>directory mappings; filenames matching a regexp are
+;; backed up in the corresponding directory. Emacs will mkdir it if necessary.)
+(setq backup-directory-alist `(("." . "~/.emacs.d/backup-dir")))
+(setq backup-by-copying-when-linked t)
+(setq delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  version-control t)
+
+;; Delete trailing whitespace before saving
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; PuTTY fix. Ugly. Bad. But it works. (Good)
+(define-key global-map "\M-[1~" 'beginning-of-line)
+(define-key global-map [select] 'end-of-line)
+
+;; allow narrow to region
+(put 'narrow-to-region 'disabled nil)
+
+;; set yasnippet a global minor mode
+(yas/global-mode)
+
+;; get yasnippet and auto-complete working
+(require 'ac-yas)
+(define-key ac-complete-mode-map "\t" 'ac-complete)
+(define-key ac-complete-mode-map "\r" nil)
+(setq yas/trigger-key "TAB")
 
 ;;;;;;;;;;;;;;;;;;;
 ;; Mode-Specific ;;
