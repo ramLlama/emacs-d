@@ -1,4 +1,4 @@
-;;;;;;;;;;;;
+7;;;;;;;;;;;;
 ;; el-get ;;
 ;;;;;;;;;;;;
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -50,11 +50,18 @@
 		   (add-to-list 'auto-mode-alist '("\\.stp$" . systemtap-mode))))
 
    (:name lua-mode
-	  :after (lambda()
-		   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))))))
+	  :after (lambda ()
+		   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))))
+
+   (:name org-mode
+	  :after (lambda ()
+		   (add-hook 'org-mode-hook
+			     (lambda ()
+			       (define-key org-mode-map (kbd "C-c i") 'org-insert-heading)))))))
 
 (setq my-packages
-      (append '(el-get           ; el-get is self-hosting
+      (append '(
+		el-get           ; el-get is self-hosting
 		switch-window    ; takes over C-x o
 		vkill            ; Process view and killing
 		auto-complete    ; complete as you type with overlays
@@ -66,7 +73,9 @@
 		google-c-style
 		systemtap-mode
 		lua-mode
+		org-mode
 		)))
+
 (el-get 'sync my-packages)
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -127,6 +136,19 @@
 (define-key ac-complete-mode-map "\r" nil)
 (setq yas/trigger-key "TAB")
 
+;;
+;; Keybindings
+;;
+
+;; Alt/Meta to C-x C-m
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+
+;; Faster word deletion.
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+
 ;;;;;;;;;;;;;;;;;;;
 ;; Mode-Specific ;;
 ;;;;;;;;;;;;;;;;;;;
@@ -159,3 +181,9 @@
   (define-key eshell-mode-map [down] 'next-line)
 )
 (add-hook 'eshell-mode-hook 'm-eshell-hook)
+
+;;;;;;;;;;;;;;;;
+;; Work (TRC) ;;
+;;;;;;;;;;;;;;;;
+;; header files in repo_root are c++ files, not c files!
+(add-to-list 'auto-mode-alist '(".*/repo_root/.*\\.h$" . c++-mode))
