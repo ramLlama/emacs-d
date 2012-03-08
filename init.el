@@ -181,9 +181,3 @@
   (define-key eshell-mode-map [down] 'next-line)
 )
 (add-hook 'eshell-mode-hook 'm-eshell-hook)
-
-;;;;;;;;;;;;;;;;
-;; Work (TRC) ;;
-;;;;;;;;;;;;;;;;
-;; header files in repo_root are c++ files, not c files!
-(add-to-list 'auto-mode-alist '(".*/repo_root/.*\\.h$" . c++-mode))
