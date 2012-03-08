@@ -69,7 +69,7 @@
 		smex             ; smart M-x
 		magit            ; git integration
 		goto-last-change ; what do you think?!
-		yasnippet
+		yasnippet        ; snippets
 		google-c-style
 		systemtap-mode
 		lua-mode
