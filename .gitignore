@@ -1,5 +1,16 @@
+# Gitignore whitelist
+# Ignore everything
 *
+
+# except init.el
 !init.el
+
+# except local-elisp /folder/
 !local-elisp/
+
+# except .el files in root, or in local-elisp
+!*.el
+
+# and .gitignore, obviously
 !.gitignore
 
