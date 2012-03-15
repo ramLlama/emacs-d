@@ -170,3 +170,9 @@
   (define-key eshell-mode-map [down] 'next-line)
 )
 (add-hook 'eshell-mode-hook 'm-eshell-hook)
+
+;;
+;; Org-mode
+;;
+;; timestamp on completion
+(setq org-log-done 'time)
