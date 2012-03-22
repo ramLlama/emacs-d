@@ -180,6 +180,9 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)" "MISSED(m)")))
 
+(setq org-agenda-files (list "~/org/trc.org"
+                             "~/org/personal.org"))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
