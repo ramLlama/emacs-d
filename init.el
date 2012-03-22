@@ -177,6 +177,5 @@
 ;; timestamp on completion
 (setq org-log-done 'time)
 
-;; org states
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)")))
+      '((sequence "TODO(t)" "WIP(p!)" "TESTING(e!)" "WAITING(w!)" "|" "DONE(d)")))
