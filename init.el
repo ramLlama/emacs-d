@@ -180,14 +180,11 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)" "MISSED(m)")))
 
-(setq org-agenda-files (list "~/org/trc.org"
-                             "~/org/personal.org"))
-
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(org-column ((t
 		(:background "white"
 			     :foreground "black"
@@ -197,7 +194,20 @@
 			     :weight normal
 			     :height 1
 			     :family "default"))))
+
  '(org-column-title ((((class color)
 		       (min-colors 8))
 		      (:underline t
 				  :weight bold)))))
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("/apps/infrafs1/rraghunathan/org/events.org"
+			    "/apps/infrafs1/rraghunathan/org/ii.org"
+			    "/apps/infrafs1/rraghunathan/org/personal.org"
+			    "/apps/infrafs1/rraghunathan/org/reading.org"
+			    "/apps/infrafs1/rraghunathan/org/shopping.org"
+			    "/apps/infrafs1/rraghunathan/org/trc.org"))))
