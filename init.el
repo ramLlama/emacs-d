@@ -178,7 +178,7 @@
 (setq org-log-done 'time)
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WIP(p!)" "TESTING(e!)" "WAITING(w!)" "|" "DONE(d)")))
+      '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)" "MISSED(m)")))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
