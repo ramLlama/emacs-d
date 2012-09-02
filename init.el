@@ -1,4 +1,4 @@
-7;;;;;;;;;;;;
+;;;;;;;;;;;;
 ;; el-get ;;
 ;;;;;;;;;;;;
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -14,30 +14,30 @@
  el-get-sources
  '(;; Useful tools and things
    (:name buffer-move ; have to add your own keys
-	  :after (lambda ()
+	  :after (progn
 		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
 
    (:name smex ; a better (ido like) M-x
-	  :after (lambda ()
+	  :after (progn
 		   (setq smex-save-file "~/.emacs.d/.smex-items")
 		   (global-set-key (kbd "M-x") 'smex)
 		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
 
    (:name magit ; git meet emacs, and a binding
-	  :after (lambda ()
+	  :after (progn
 		   (global-set-key (kbd "C-x C-z") 'magit-status)))
 
    (:name goto-last-change ; move pointer back to last change
-	  :after (lambda ()
+	  :after (progn
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x /") 'goto-last-change)))
 
    ;; Modes and Styles
    (:name google-c-style
-          :after (lambda ()
+          :after (progn
 		   (add-hook 'c-mode-common-hook 'google-set-c-style)))
 
    (:name systemtap-mode
@@ -46,15 +46,15 @@
 	  :localname "systemtap-mode.el"
 	  :autoloads nil
 	  :features systemtap-mode
-	  :after (lambda ()
+	  :after (progn
 		   (add-to-list 'auto-mode-alist '("\\.stp$" . systemtap-mode))))
 
    (:name lua-mode
-	  :after (lambda ()
+	  :after (progn
 		   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))))
 
    (:name org-mode
-	  :after (lambda ()
+	  :after (progn
 		   (add-hook 'org-mode-hook
 			     (lambda ()
 			       (define-key org-mode-map (kbd "C-c i") 'org-insert-heading)))))))
@@ -131,10 +131,10 @@
 (yas/global-mode)
 
 ;; get yasnippet and auto-complete working
-(require 'ac-yas)
-(define-key ac-complete-mode-map "\t" 'ac-complete)
-(define-key ac-complete-mode-map "\r" nil)
-(setq yas/trigger-key "TAB")
+;; (require 'ac-yas)
+;; (define-key ac-complete-mode-map "\t" 'ac-complete)
+;; (define-key ac-complete-mode-map "\r" nil)
+;; (setq yas/trigger-key "TAB")
 
 ;;
 ;; Keybindings
