@@ -185,33 +185,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-column ((t
-		(:background "white"
-			     :foreground "black"
-			     :strike-through nil
-			     :underline nil
-			     :slant normal
-			     :weight normal
-			     :height 1
-			     :family "default"))))
- '(org-column-title ((((class color)
-		       (min-colors 8))
-		      (:underline t
-				  :weight bold)))))
-
-;; ram-laptop mobileorg settings
-(setq org-directory "~/Documents/org/")
-(setq org-mobile-directory "~/Documents/org-mobile/")
-(setq org-mobile-inbox-for-pull "~/Documents/org/from-mobile.org")
-(setq org-mobile-files '("~/Documents/org/"))
-
-;; ram-laptop org-agenda files
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Documents/org/shopping.org"
-			    "~/Documents/org/trc.org"
-			    "~/Documents/org/personal.org"
-			    "~/Documents/org/events.org"))))
+ '(highlight ((t (:background "black" :foreground "white")))))
