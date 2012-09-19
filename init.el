@@ -102,10 +102,10 @@
 
 (defun make-auto-save-file-name ()
   (concat autosave-dir
-   (if buffer-file-name
-      (concat "#" (file-name-nondirectory buffer-file-name) "#")
-    (expand-file-name
-     (concat "#%" (buffer-name) "#")))))
+	  (if buffer-file-name
+	      (concat "#" (file-name-nondirectory buffer-file-name) "#")
+	    (expand-file-name
+	     (concat "#%" (buffer-name) "#")))))
 
 ;; Put backup files (ie foo~) in one place too. (The backup-directory-alist
 ;; list contains regexp=>directory mappings; filenames matching a regexp are
@@ -113,9 +113,9 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d/backup-dir")))
 (setq backup-by-copying-when-linked t)
 (setq delete-old-versions t
-  kept-new-versions 6
-  kept-old-versions 2
-  version-control t)
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
 
 ;; Delete trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -163,12 +163,12 @@
 ;; Eshell
 ;;
 (defun m-eshell-hook ()
-  (define-key eshell-mode-map [(control p)] 'eshell-previous-matching-input-from-input)
-  (define-key eshell-mode-map [(control n)] 'eshell-next-matching-input-from-input)
+  (define-key eshell-mode-map "\C-p" 'eshell-previous-matching-input-from-input)
+  (define-key eshell-mode-map "\C-n" 'eshell-next-matching-input-from-input)
 
   (define-key eshell-mode-map [up] 'previous-line)
   (define-key eshell-mode-map [down] 'next-line)
-)
+  )
 (add-hook 'eshell-mode-hook 'm-eshell-hook)
 
 ;;
