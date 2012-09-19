@@ -11,6 +11,9 @@ backup-dir/
 # el-get directory
 el-get/
 
+# tramp history
+tramp
+
 # All hidden files
 .*
 
