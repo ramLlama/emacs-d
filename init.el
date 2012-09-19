@@ -1,4 +1,4 @@
-7;;;;;;;;;;;;
+;;;;;;;;;;;;
 ;; el-get ;;
 ;;;;;;;;;;;;
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -135,6 +135,29 @@
 (define-key ac-complete-mode-map "\t" 'ac-complete)
 (define-key ac-complete-mode-map "\r" nil)
 (setq yas/trigger-key "TAB")
+
+;; Clear Buffer List every so often
+;; midnight mode
+(require 'midnight)
+;;kill buffers if they were last disabled more than this seconds ago
+(setq clean-buffer-list-delay-special (* 15 60))
+(defvar clean-buffer-list-timer nil
+  "Stores clean-buffer-list timer if there is one. You can disable clean-buffer-list by (cancel-timer clean-buffer-list-timer).")
+;; run clean-buffer-list every 2 hours
+(setq clean-buffer-list-timer (run-at-time t (* 2 3600) 'clean-buffer-list))
+;; kill everything, clean-buffer-list is very intelligent at not killing
+;; unsaved buffer.
+(setq clean-buffer-list-kill-regexps
+      '("^.*$"))
+;; keep these buffer untouched
+;; prevent append multiple times
+(defvar clean-buffer-list-kill-never-buffer-names-init
+  clean-buffer-list-kill-never-buffer-names
+  "Init value for clean-buffer-list-kill-never-buffer-names")
+(setq clean-buffer-list-kill-never-buffer-names
+      (append
+       '("*Messages*" "*scratch*")
+       clean-buffer-list-kill-never-buffer-names-init))
 
 ;;
 ;; Keybindings
