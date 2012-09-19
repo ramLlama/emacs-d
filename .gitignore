@@ -1,16 +1,18 @@
-# Gitignore whitelist
-# Ignore everything
-*
+# Various clutter created by extensions
+ac-comphist.dat
 
-# except init.el
-!init.el
+# Auto-Save stuff
+auto-save-dir/
+auto-save-list/
 
-# except local-elisp /folder/
-!local-elisp/
+# Backup Stuff
+backup-dir/
 
-# except .el files in root, or in local-elisp
-!*.el
+# el-get directory
+el-get/
 
-# and .gitignore, obviously
+# All hidden files
+.*
+
+# Except gitignore
 !.gitignore
-

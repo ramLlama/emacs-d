@@ -57,7 +57,14 @@
 	  :after (progn
 		   (add-hook 'org-mode-hook
 			     (lambda ()
-			       (define-key org-mode-map (kbd "C-c i") 'org-insert-heading)))))))
+			       (define-key org-mode-map (kbd "C-c i") 'org-insert-heading)))))
+   (:name emacs-color-theme-solarized
+	  :type github
+	  :username "sellout"
+	  :after (progn
+		   (add-to-list 'custom-theme-load-path (el-get-package-directory "emacs-color-theme-solarized"))))))
+
+
 
 (setq my-packages
       (append '(
@@ -74,6 +81,7 @@
 		systemtap-mode
 		lua-mode
 		org-mode
+		emacs-color-theme-solarized
 		)))
 
 (el-get 'sync my-packages)
@@ -81,7 +89,7 @@
 ;;;;;;;;;;;;;;;;;;;;
 ;; Global Options ;;
 ;;;;;;;;;;;;;;;;;;;;
-;; Add .emacs.d to load-path
+;; Add .emacs.d/local-elisp to load-path
 (add-to-list 'load-path "~/.emacs.d/local-elisp")
 
 ;; get rid of splash screen and set tab width
@@ -102,10 +110,10 @@
 
 (defun make-auto-save-file-name ()
   (concat autosave-dir
-   (if buffer-file-name
-      (concat "#" (file-name-nondirectory buffer-file-name) "#")
-    (expand-file-name
-     (concat "#%" (buffer-name) "#")))))
+	  (if buffer-file-name
+	      (concat "#" (file-name-nondirectory buffer-file-name) "#")
+	    (expand-file-name
+	     (concat "#%" (buffer-name) "#")))))
 
 ;; Put backup files (ie foo~) in one place too. (The backup-directory-alist
 ;; list contains regexp=>directory mappings; filenames matching a regexp are
@@ -113,9 +121,9 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d/backup-dir")))
 (setq backup-by-copying-when-linked t)
 (setq delete-old-versions t
-  kept-new-versions 6
-  kept-old-versions 2
-  version-control t)
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
 
 ;; Delete trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -129,12 +137,6 @@
 
 ;; set yasnippet a global minor mode
 (yas/global-mode)
-
-;; get yasnippet and auto-complete working
-;; (require 'ac-yas)
-;; (define-key ac-complete-mode-map "\t" 'ac-complete)
-;; (define-key ac-complete-mode-map "\r" nil)
-;; (setq yas/trigger-key "TAB")
 
 ;;
 ;; Keybindings
@@ -163,12 +165,12 @@
 ;; Eshell
 ;;
 (defun m-eshell-hook ()
-  (define-key eshell-mode-map [(control p)] 'eshell-previous-matching-input-from-input)
-  (define-key eshell-mode-map [(control n)] 'eshell-next-matching-input-from-input)
+  (define-key eshell-mode-map "\C-p" 'eshell-previous-matching-input-from-input)
+  (define-key eshell-mode-map "\C-n" 'eshell-next-matching-input-from-input)
 
   (define-key eshell-mode-map [up] 'previous-line)
   (define-key eshell-mode-map [down] 'next-line)
-)
+  )
 (add-hook 'eshell-mode-hook 'm-eshell-hook)
 
 ;;
@@ -179,22 +181,18 @@
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)" "MISSED(m)")))
-
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-column ((t
-		(:background "white"
-			     :foreground "black"
-			     :strike-through nil
-			     :underline nil
-			     :slant normal
-			     :weight normal
-			     :height 1
-			     :family "default"))))
- '(org-column-title ((((class color)
-		       (min-colors 8))
-		      (:underline t
-				  :weight bold)))))
+ '(highlight ((t (:background "black" :foreground "white")))))
+
+;; Set Solarized Dark Theme
+(load-theme 'solarized-dark t)
