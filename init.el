@@ -99,7 +99,7 @@
 
 ;; Set default directory to home (useful for servers that I start at
 ;; random cwd's)
-(setq default-directory (getenv "HOME"))
+(setq default-directory (concat (getenv "HOME") "/"))
 
 ;; Put autosave files (ie #foo#) in one place, *not*
 ;; scattered all over the file system!
