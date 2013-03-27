@@ -64,8 +64,6 @@
 	  :after (progn
 		   (add-to-list 'custom-theme-load-path (el-get-package-directory "emacs-color-theme-solarized"))))))
 
-
-
 (setq my-packages
       (append '(
 		el-get           ; el-get is self-hosting
@@ -98,6 +96,10 @@
 
 ;; use whitespace indent
 (setq indent-tabs-mode nil)
+
+;; Set default directory to home (useful for servers that I start at
+;; random cwd's)
+(setq default-directory (getenv "HOME"))
 
 ;; Put autosave files (ie #foo#) in one place, *not*
 ;; scattered all over the file system!
@@ -184,6 +186,21 @@
 ;; linux c mode with tabs
 (require 'linux-c-tabs-mode)
 
+;; Set:
+;; 1) auto-fill-mode (at 80 chars)
+;; 2) flyspell-prog-mode
+;; 3) auto-complete-mode
+;; 4) column-number-mode
+;; upon c or c++ mode
+(require 'auto-complete)
+(add-hook 'c-mode-common-hook
+	  (lambda ()
+	    (setq fill-column 80)
+	    (auto-fill-mode)
+	    (flyspell-prog-mode)
+	    (auto-complete-mode)
+	    (column-number-mode)))
+
 ;;
 ;; Eshell
 ;;
@@ -209,14 +226,23 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highlight ((t (:background "black" :foreground "white")))))
+ )
 
 ;; Load Solarized themes without enabling
-(load-theme 'solarized-dark t t)
 (load-theme 'solarized-light t t)
+(load-theme 'solarized-dark t t)
+
+;;
+;; Mutt configuration
+;;
+(add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+(add-hook 'mail-mode-hook (lambda ()
+			    (auto-fill-mode 1)
+			    (flyspell-mode 1)
+			    (local-set-key "\C-Xk" 'server-edit)))
