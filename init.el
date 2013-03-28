@@ -220,7 +220,7 @@
 (setq org-log-done 'time)
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)" "MISSED(m)")))
+      '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)" "MISSED(m)" "PASSED-ON(a)" "DISCARDED(i)")))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
