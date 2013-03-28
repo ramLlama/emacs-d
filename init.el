@@ -80,6 +80,7 @@
 		lua-mode
 		org-mode
 		emacs-color-theme-solarized
+		protobuf-mode
 		)))
 
 (el-get 'sync my-packages)
