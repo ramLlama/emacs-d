@@ -242,7 +242,7 @@
 ;;
 ;; Mutt configuration
 ;;
-(add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+(add-to-list 'auto-mode-alist '("mutt[^/]*\\'" . mail-mode))
 (add-hook 'mail-mode-hook (lambda ()
 			    (auto-fill-mode 1)
 			    (flyspell-mode 1)
