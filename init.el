@@ -3,10 +3,13 @@
 ;;;;;;;;;;;;
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(unless (require 'el-get nil t) (with-current-buffer
-                                    (url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-                                  (end-of-buffer)
-                                  (eval-print-last-sexp)))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
 
 ;; now either el-get is `require'd already, or have been `load'ed by the
 ;; el-get installer.
@@ -57,10 +60,12 @@
 	  :after (progn
 		   (add-hook 'org-mode-hook
 			     (lambda ()
-			       (define-key org-mode-map (kbd "C-c i") 'org-insert-heading)))))
+			       (define-key org-mode-map (kbd "C-c i") 'org-insert-heading)
+			       (define-key org-mode-map (kbd "C-c a") 'org-agenda)))))
+
    (:name emacs-color-theme-solarized
 	  :type github
-	  :username "sellout"
+	  :pkgname "sellout/emacs-color-theme-solarized"
 	  :after (progn
 		   (add-to-list 'custom-theme-load-path (el-get-package-directory "emacs-color-theme-solarized"))))))
 
@@ -227,7 +232,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default))))
+ '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
+ '(org-agenda-files (quote ("~/org/trc.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
