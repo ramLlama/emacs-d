@@ -44,11 +44,8 @@
 		   (add-hook 'c-mode-common-hook 'google-set-c-style)))
 
    (:name systemtap-mode
-	  :type http
-	  :url "http://coderepos.org/share/export/39113/lang/elisp/systemtap-mode/systemtap-mode.el"
-	  :localname "systemtap-mode.el"
-	  :autoloads nil
-	  :features systemtap-mode
+	  :type github
+	  :pkgname "ramraghunathan/systemtap-mode":localname
 	  :after (progn
 		   (add-to-list 'auto-mode-alist '("\\.stp$" . systemtap-mode))))
 
@@ -65,7 +62,7 @@
 
    (:name emacs-color-theme-solarized
 	  :type github
-	  :pkgname "sellout/emacs-color-theme-solarized"
+	  :pkgname "ramraghunathan/emacs-color-theme-solarized"
 	  :after (progn
 		   (add-to-list 'custom-theme-load-path (el-get-package-directory "emacs-color-theme-solarized"))))))
 
@@ -86,6 +83,9 @@
 		org-mode
 		emacs-color-theme-solarized
 		protobuf-mode
+		haskell-mode
+		auctex
+		predictive
 		)))
 
 (el-get 'sync my-packages)
@@ -232,7 +232,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
+ '(custom-safe-themes
+   (quote
+    ("f208be98a1816ec7b061ec70b80bfa3d5dde886bfb44d60832ca8d209bde5f5a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
  '(org-agenda-files (quote ("~/org/trc.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -253,3 +255,20 @@
 			    (auto-fill-mode 1)
 			    (flyspell-mode 1)
 			    (local-set-key "\C-Xk" 'server-edit)))
+
+;;
+;; AUCTeX settings
+;;
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
+(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'predictive-mode)
+
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+
+(setq TeX-PDF-mode t)

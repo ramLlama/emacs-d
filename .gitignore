@@ -14,6 +14,12 @@ el-get/
 # tramp history
 tramp
 
+# Eshell stuff
+eshell/
+
+# Places File
+places
+
 # All hidden files
 .*
 
