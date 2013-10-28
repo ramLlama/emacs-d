@@ -272,3 +272,6 @@
 (setq reftex-plug-into-AUCTeX t)
 
 (setq TeX-PDF-mode t)
+
+; Use 'auctex' as the automatic style save dir
+(setq TeX-auto-local "auctex")
