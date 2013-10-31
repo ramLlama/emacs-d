@@ -45,7 +45,7 @@
 
    (:name systemtap-mode
 	  :type github
-	  :pkgname "ramraghunathan/systemtap-mode":localname
+	  :pkgname "ramLlama/systemtap-mode":localname
 	  :after (progn
 		   (add-to-list 'auto-mode-alist '("\\.stp$" . systemtap-mode))))
 
@@ -62,7 +62,7 @@
 
    (:name emacs-color-theme-solarized
 	  :type github
-	  :pkgname "ramraghunathan/emacs-color-theme-solarized"
+	  :pkgname "ramLlama/emacs-color-theme-solarized"
 	  :after (progn
 		   (add-to-list 'custom-theme-load-path (el-get-package-directory "emacs-color-theme-solarized"))))))
 
