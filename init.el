@@ -262,6 +262,14 @@
 			    (local-set-key "\C-Xk" 'server-edit)))
 
 ;;
+;; Predictive Mode Settings
+;; ATTENTION! Make sure this section comes before any reference to
+;; Predictive mode.
+;;
+(add-to-list 'load-path "~/.emacs.d/el-get/predictive/")
+(add-to-list 'load-path "~/.emacs.d/el-get/predictive/latex/")
+
+;;
 ;; AUCTeX settings
 ;;
 (setq TeX-auto-save t)
