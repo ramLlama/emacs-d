@@ -64,7 +64,11 @@
 	  :type github
 	  :pkgname "ramLlama/emacs-color-theme-solarized"
 	  :after (progn
-		   (add-to-list 'custom-theme-load-path (el-get-package-directory "emacs-color-theme-solarized"))))))
+		   (add-to-list 'custom-theme-load-path (el-get-package-directory "emacs-color-theme-solarized"))))
+
+   (:name ag
+	  :type github
+	  :pkgname "Wilfred/ag.el")))
 
 (setq my-packages
       (append '(
@@ -86,6 +90,7 @@
 		haskell-mode
 		auctex
 		predictive
+		ag
 		)))
 
 (el-get 'sync my-packages)
