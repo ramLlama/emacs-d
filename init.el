@@ -174,6 +174,8 @@
        '("*Messages*" "*scratch*")
        clean-buffer-list-kill-never-buffer-names-init))
 
+(setq shell-file-name "bash")
+
 ;;
 ;; Keybindings
 ;;
