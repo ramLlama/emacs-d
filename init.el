@@ -15,7 +15,10 @@
 ;; el-get installer.
 (setq
  el-get-sources
- '(;; Useful tools and things
+ '(;; Useful tools and configurations
+   (:name switch-window
+	  :after (global-set-key (kbd "C-x o") 'switch-window))
+
    (:name buffer-move ; have to add your own keys
 	  :after (progn
 		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
