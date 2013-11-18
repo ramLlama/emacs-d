@@ -91,6 +91,7 @@
 		auctex
 		predictive
 		ag
+		lorem-ipsum
 		)))
 
 (el-get 'sync my-packages)
