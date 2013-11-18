@@ -294,3 +294,8 @@
 
 ; Use 'auctex' as the automatic style save dir
 (setq TeX-auto-local "auctex")
+
+;;
+;; SCSS-mode settings
+;;
+(setq scss-compile-at-save nil)
