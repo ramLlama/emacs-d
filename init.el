@@ -15,7 +15,10 @@
 ;; el-get installer.
 (setq
  el-get-sources
- '(;; Useful tools and things
+ '(;; Useful tools and configurations
+   (:name switch-window
+	  :after (global-set-key (kbd "C-x o") 'switch-window))
+
    (:name buffer-move ; have to add your own keys
 	  :after (progn
 		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
@@ -91,6 +94,7 @@
 		auctex
 		predictive
 		ag
+		lorem-ipsum
 		)))
 
 (el-get 'sync my-packages)
@@ -305,3 +309,8 @@
 ; Use completion-backward-kill-word in Latex-mode to make sure that
 ; predictive mode doesn't bork the buffer
 (add-hook 'LaTeX-mode-hook '(lambda () (local-set-key "\C-w" 'completion-backward-kill-word)))
+
+;;
+;; SCSS-mode settings
+;;
+(setq scss-compile-at-save nil)
