@@ -174,6 +174,10 @@
        '("*Messages*" "*scratch*")
        clean-buffer-list-kill-never-buffer-names-init))
 
+;; Override shell to use to bash. This is to fix any incompatibilities
+;; with using fish
+(setq shell-file-name "bash")
+
 ;;
 ;; Keybindings
 ;;
@@ -237,9 +241,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("f208be98a1816ec7b061ec70b80bfa3d5dde886bfb44d60832ca8d209bde5f5a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
+ '(custom-safe-themes (quote ("f208be98a1816ec7b061ec70b80bfa3d5dde886bfb44d60832ca8d209bde5f5a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
  '(org-agenda-files (quote ("~/org/trc.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -268,13 +270,24 @@
 ;;
 (add-to-list 'load-path "~/.emacs.d/el-get/predictive/")
 (add-to-list 'load-path "~/.emacs.d/el-get/predictive/latex/")
+(set-default 'predictive-auto-add-to-dict t)
+(setq predictive-auto-learn t
+      predictive-add-to-dict-ask nil
+      predictive-use-auto-learn-cache nil
+      predictive-which-dict t
+      completion-accept-or-reject-by-default (quote ((t . reject)))
+      completion-how-to-resolve-old-completions 'reject
+      predictive-local-auxiliary-file-directory "predictive/"
+      ; Doesn't work =(
+      ; predictive-use-buffer-local-dict t
+      predictive-dict-autosave t)
 
 ;;
 ;; AUCTeX settings
 ;;
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
+(setq TeX-auto-save t
+      TeX-parse-self t
+      TeX-master nil)
 
 (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
@@ -288,3 +301,7 @@
 
 ; Use 'auctex' as the automatic style save dir
 (setq TeX-auto-local "auctex")
+
+; Use completion-backward-kill-word in Latex-mode to make sure that
+; predictive mode doesn't bork the buffer
+(add-hook 'LaTeX-mode-hook '(lambda () (local-set-key "\C-w" 'completion-backward-kill-word)))
