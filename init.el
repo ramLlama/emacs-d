@@ -182,6 +182,9 @@
 ;; with using fish
 (setq shell-file-name "bash")
 
+;; Use ssh-agent.el for emacs-specific ssh-agent
+(require 'ssh-agent)
+
 ;;
 ;; Keybindings
 ;;
