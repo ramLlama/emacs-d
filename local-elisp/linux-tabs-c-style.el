@@ -11,7 +11,7 @@
           (lambda ()
             ;; Add kernel style
             (c-add-style
-             "linux-c-tabs-mode"
+             "linux-tabs-c-style"
              '("linux"
 	       (indent-tabs-mode . t)
 	       (c-offsets-alist
@@ -19,4 +19,4 @@
 		 c-lineup-gcc-asm-reg
 		 c-lineup-arglist-tabs-only))))))
 
-(provide 'linux-c-tabs-mode)
+(provide 'linux-tabs-c-style)

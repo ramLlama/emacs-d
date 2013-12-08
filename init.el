@@ -201,7 +201,10 @@
 ;; C, C++
 ;;
 ;; linux c mode with tabs
-(require 'linux-c-tabs-mode)
+(require 'linux-tabs-c-style)
+
+;; MLton code style
+(require 'mlton-c-style)
 
 ;; Set:
 ;; 1) auto-fill-mode (at 80 chars)
@@ -217,6 +220,14 @@
 	    (flyspell-prog-mode)
 	    (auto-complete-mode)
 	    (column-number-mode)))
+
+;; Use project-specific modes
+(defun maybe-mlton-c-style ()
+  (when (and buffer-file-name
+	     (string-match "mlton" buffer-file-name))
+    (c-set-style "mlton-c-style")))
+
+(add-hook 'c-mode-hook 'maybe-mlton-c-style)
 
 ;;
 ;; Eshell
