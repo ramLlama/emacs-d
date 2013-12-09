@@ -182,6 +182,11 @@
 ;; with using fish
 (setq shell-file-name "bash")
 
+;; Saner unique buffer names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward
+      uniquify-separator ": ")
+
 ;;
 ;; Keybindings
 ;;
