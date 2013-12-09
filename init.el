@@ -92,7 +92,6 @@
 		protobuf-mode
 		haskell-mode
 		auctex
-		predictive
 		ag
 		lorem-ipsum
 		)))
@@ -288,19 +287,19 @@
 ;; ATTENTION! Make sure this section comes before any reference to
 ;; Predictive mode.
 ;;
-(add-to-list 'load-path "~/.emacs.d/el-get/predictive/")
-(add-to-list 'load-path "~/.emacs.d/el-get/predictive/latex/")
-(set-default 'predictive-auto-add-to-dict t)
-(setq predictive-auto-learn t
-      predictive-add-to-dict-ask nil
-      predictive-use-auto-learn-cache nil
-      predictive-which-dict t
-      completion-accept-or-reject-by-default (quote ((t . reject)))
-      completion-how-to-resolve-old-completions 'reject
-      predictive-local-auxiliary-file-directory "predictive/"
-      ; Doesn't work =(
-      ; predictive-use-buffer-local-dict t
-      predictive-dict-autosave t)
+;; (add-to-list 'load-path "~/.emacs.d/el-get/predictive/")
+;; (add-to-list 'load-path "~/.emacs.d/el-get/predictive/latex/")
+;; (set-default 'predictive-auto-add-to-dict t)
+;; (setq predictive-auto-learn t
+;;       predictive-add-to-dict-ask nil
+;;       predictive-use-auto-learn-cache nil
+;;       predictive-which-dict t
+;;       completion-accept-or-reject-by-default (quote ((t . reject)))
+;;       completion-how-to-resolve-old-completions 'reject
+;;       predictive-local-auxiliary-file-directory "predictive/"
+;;       ; Doesn't work =(
+;;       ; predictive-use-buffer-local-dict t
+;;       predictive-dict-autosave t)
 
 ;;
 ;; AUCTeX settings
@@ -312,7 +311,7 @@
 (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-(add-hook 'LaTeX-mode-hook 'predictive-mode)
+;; (add-hook 'LaTeX-mode-hook 'predictive-mode)
 (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
 
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
@@ -325,7 +324,7 @@
 
 ; Use completion-backward-kill-word in Latex-mode to make sure that
 ; predictive mode doesn't bork the buffer
-(add-hook 'LaTeX-mode-hook '(lambda () (local-set-key "\C-w" 'completion-backward-kill-word)))
+; (add-hook 'LaTeX-mode-hook '(lambda () (local-set-key "\C-w" 'completion-backward-kill-word)))
 
 ;;
 ;; SCSS-mode settings
