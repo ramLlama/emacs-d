@@ -231,7 +231,7 @@
 (defun maybe-mlton-c-style ()
   (when (and buffer-file-name
 	     (string-match "mlton" buffer-file-name))
-    (c-set-style "mlton-c-style")))
+    (c-set-style "MLton")))
 
 (add-hook 'c-mode-hook 'maybe-mlton-c-style)
 

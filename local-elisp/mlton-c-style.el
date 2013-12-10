@@ -2,8 +2,8 @@
           (lambda ()
             ;; Add MLton C style (equivalent to linux style)
             (c-add-style
-             "mlton-c-style"
-             '("google-c-style"
+             "MLton"
+             '("Google"
 	       (c-basic-offset . 2)
 	       (indent-tabs-mode . nil)))))
 
