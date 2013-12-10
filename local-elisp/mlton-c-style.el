@@ -3,7 +3,8 @@
             ;; Add MLton C style (equivalent to linux style)
             (c-add-style
              "mlton-c-style"
-             '("linux"
+             '("google-c-style"
+	       (c-basic-offset . 2)
 	       (indent-tabs-mode . nil)))))
 
 (provide 'mlton-c-style)
