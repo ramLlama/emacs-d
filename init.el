@@ -94,6 +94,7 @@
 		auctex
 		ag
 		lorem-ipsum
+		scss-mode
 		)))
 
 (el-get 'sync my-packages)
