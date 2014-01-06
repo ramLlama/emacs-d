@@ -251,6 +251,10 @@
 ;;
 ;; Org-mode
 ;;
+;; As I use org-mode for lists, use org-indent-mode and visual-line-mode
+(add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
+
 ;; timestamp on completion
 (setq org-log-done 'time)
 
