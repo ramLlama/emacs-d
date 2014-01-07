@@ -261,14 +261,17 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)" "MISSED(m)" "PASSED-ON(a)" "DISCARDED(i)")))
 
-;; Set evince as pdf reader
+;; Set org-mode file associations
 (eval-after-load "org"
   '(progn
      ;; .txt files aren't in the list initially, but in case that changes
      ;; in a future version of org, use if to avoid errors
      (if (assoc "\\.pdf\\'" org-file-apps)
          (setcdr (assoc "\\.pdf\\'" org-file-apps) "evince %s")
-       (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s") t))))
+       (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s") t))
+     (if (assoc "\\.png\\'" org-file-apps)
+	 (setcdr (assoc "\\.png\\'" org-file-apps) "firefox %s")
+       (add-to-list 'org-file-apps '("\\.png\\'" . "firefox %s") t))))
 
 ;; Load Solarized themes without enabling
 (load-theme 'solarized-light t t)
