@@ -255,6 +255,9 @@
 (add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
 
+;; Spell-check!
+(add-hook 'org-mode-hook 'flyspell-mode)
+
 ;; timestamp on completion
 (setq org-log-done 'time)
 
