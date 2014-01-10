@@ -94,6 +94,7 @@
 		auctex
 		ag
 		lorem-ipsum
+		scss-mode
 		)))
 
 (el-get 'sync my-packages)
@@ -250,24 +251,30 @@
 ;;
 ;; Org-mode
 ;;
+;; As I use org-mode for lists, use org-indent-mode and visual-line-mode
+(add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
+
+;; Spell-check!
+(add-hook 'org-mode-hook 'flyspell-mode)
+
 ;; timestamp on completion
 (setq org-log-done 'time)
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)" "MISSED(m)" "PASSED-ON(a)" "DISCARDED(i)")))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("f208be98a1816ec7b061ec70b80bfa3d5dde886bfb44d60832ca8d209bde5f5a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
- '(org-agenda-files (quote ("~/org/trc.org"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+;; Set org-mode file associations
+(eval-after-load "org"
+  '(progn
+     ;; .txt files aren't in the list initially, but in case that changes
+     ;; in a future version of org, use if to avoid errors
+     (if (assoc "\\.pdf\\'" org-file-apps)
+         (setcdr (assoc "\\.pdf\\'" org-file-apps) "evince %s")
+       (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s") t))
+     (if (assoc "\\.png\\'" org-file-apps)
+	 (setcdr (assoc "\\.png\\'" org-file-apps) "firefox %s")
+       (add-to-list 'org-file-apps '("\\.png\\'" . "firefox %s") t))))
 
 ;; Load Solarized themes without enabling
 (load-theme 'solarized-light t t)
@@ -322,6 +329,9 @@
 ; Use 'auctex' as the automatic style save dir
 (setq TeX-auto-local "auctex")
 
+; Better error parsing
+(setq LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
+
 ; Use completion-backward-kill-word in Latex-mode to make sure that
 ; predictive mode doesn't bork the buffer
 ; (add-hook 'LaTeX-mode-hook '(lambda () (local-set-key "\C-w" 'completion-backward-kill-word)))
@@ -335,3 +345,19 @@
 ;; sml-mode settings
 ;;
 (add-hook 'sml-mode-hook '(lambda () (setq indent-tabs-mode nil)))
+
+;; Emacs-generated custom-set-variables
+;;
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("f208be98a1816ec7b061ec70b80bfa3d5dde886bfb44d60832ca8d209bde5f5a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
+ '(org-agenda-files (quote ("~/org/trc.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
