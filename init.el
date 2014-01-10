@@ -330,3 +330,8 @@
 ;; SCSS-mode settings
 ;;
 (setq scss-compile-at-save nil)
+
+;;
+;; sml-mode settings
+;;
+(add-hook 'sml-mode-hook '(lambda () (setq indent-tabs-mode nil)))
