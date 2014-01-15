@@ -187,6 +187,10 @@
 (setq uniquify-buffer-name-style 'post-forward
       uniquify-separator ": ")
 
+;; X clipboard interaction
+(require 'x-clipboard-interaction)
+(global-set-key "\M-y" 'yank-to-x-clipboard)
+
 ;;
 ;; Keybindings
 ;;
