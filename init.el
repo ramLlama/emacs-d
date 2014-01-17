@@ -78,7 +78,6 @@
 		el-get           ; el-get is self-hosting
 		switch-window    ; takes over C-x o
 		vkill            ; Process view and killing
-		auto-complete    ; complete as you type with overlays
 		buffer-move      ; move buffers through frames
 		smex             ; smart M-x
 		magit            ; git integration
