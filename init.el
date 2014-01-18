@@ -228,7 +228,6 @@
 	    (setq fill-column 80)
 	    (auto-fill-mode)
 	    (flyspell-prog-mode)
-	    (auto-complete-mode)
 	    (column-number-mode)))
 
 ;; Use project-specific modes
