@@ -219,10 +219,8 @@
 ;; Set:
 ;; 1) auto-fill-mode (at 80 chars)
 ;; 2) flyspell-prog-mode
-;; 3) auto-complete-mode
 ;; 4) column-number-mode
 ;; upon c or c++ mode
-(require 'auto-complete)
 (add-hook 'c-mode-common-hook
 	  (lambda ()
 	    (setq fill-column 80)
