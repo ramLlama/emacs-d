@@ -94,6 +94,8 @@
 		ag
 		lorem-ipsum
 		scss-mode
+		scala-mode2
+		ensime
 		)))
 
 (el-get 'sync my-packages)
