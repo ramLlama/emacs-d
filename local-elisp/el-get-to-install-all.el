@@ -2,7 +2,7 @@
 ;; List of all packages that I have. Use as skeleton for machine-local packages
 ;;
 
-(setq el-get-to-install 
+(setq el-get-to-install
       '(el-get           ; el-get is self-hosting
 	switch-window    ; takes over C-x o
 	vkill            ; Process view and killing
@@ -24,4 +24,5 @@
 	scss-mode
 	scala-mode2
 	ensime
-	emacs-dirtree))
+	emacs-dirtree
+	web-mode))
