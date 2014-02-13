@@ -20,6 +20,9 @@ eshell/
 # Places File
 places
 
+# machine-specific el-get-to-install
+local-elisp/el-get-to-install-machine-specific.el
+
 # All hidden files
 .*
 

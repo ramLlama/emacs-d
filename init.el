@@ -1,3 +1,8 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Add .emacs.d/local-elisp to load-path ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'load-path "~/.emacs.d/local-elisp")
+
 ;;;;;;;;;;;;
 ;; el-get ;;
 ;;;;;;;;;;;;
@@ -7,106 +12,22 @@
   (with-current-buffer
       (url-retrieve-synchronously
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
-      (goto-char (point-max))
-      (eval-print-last-sexp))))
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
 
-;; now either el-get is `require'd already, or have been `load'ed by the
-;; el-get installer.
-(setq
- el-get-sources
- '(;; Useful tools and configurations
-   (:name switch-window
-	  :after (global-set-key (kbd "C-x o") 'switch-window))
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-recipes/")
 
-   (:name buffer-move ; have to add your own keys
-	  :after (progn
-		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
-		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
-		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
-		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
+;; First load all packages to install
+(load "el-get-to-install-all")
 
-   (:name smex ; a better (ido like) M-x
-	  :after (progn
-		   (setq smex-save-file "~/.emacs.d/.smex-items")
-		   (global-set-key (kbd "M-x") 'smex)
-		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+;; Then load the machine-specific one if it exists.
+(load "el-get-to-install-machine-specific")
 
-   (:name magit ; git meet emacs, and a binding
-	  :after (progn
-		   (global-set-key (kbd "C-x C-z") 'magit-status)))
-
-   (:name goto-last-change ; move pointer back to last change
-	  :after (progn
-		   ;; when using AZERTY keyboard, consider C-x C-_
-		   (global-set-key (kbd "C-x /") 'goto-last-change)))
-
-   ;; Modes and Styles
-   (:name google-c-style
-          :after (progn
-		   (add-hook 'c-mode-common-hook 'google-set-c-style)))
-
-   (:name systemtap-mode
-	  :type github
-	  :pkgname "ramLlama/systemtap-mode":localname
-	  :after (progn
-		   (add-to-list 'auto-mode-alist '("\\.stp$" . systemtap-mode))))
-
-   (:name lua-mode
-	  :after (progn
-		   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))))
-
-   (:name org-mode
-	  :after (progn
-		   (add-hook 'org-mode-hook
-			     (lambda ()
-			       (define-key org-mode-map (kbd "C-c i") 'org-insert-heading)
-			       (define-key org-mode-map (kbd "C-c a") 'org-agenda)))))
-
-   (:name emacs-color-theme-solarized
-	  :type github
-	  :pkgname "ramLlama/emacs-color-theme-solarized"
-	  :after (progn
-		   (add-to-list 'custom-theme-load-path (el-get-package-directory "emacs-color-theme-solarized"))))
-
-   (:name ag
-	  :type github
-	  :pkgname "Wilfred/ag.el")))
-
-(setq my-packages
-      (append '(
-		el-get           ; el-get is self-hosting
-		switch-window    ; takes over C-x o
-		vkill            ; Process view and killing
-		buffer-move      ; move buffers through frames
-		smex             ; smart M-x
-		magit            ; git integration
-		goto-last-change ; what do you think?!
-		yasnippet        ; snippets
-		google-c-style
-		systemtap-mode
-		lua-mode
-		org-mode
-		emacs-color-theme-solarized
-		protobuf-mode
-		haskell-mode
-		auctex
-		ag
-		lorem-ipsum
-		scss-mode
-		scala-mode2
-		ensime
-		emacs-dirtree
-		)))
-
-(el-get 'sync my-packages)
+(el-get 'sync el-get-to-install)
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; Global Options ;;
 ;;;;;;;;;;;;;;;;;;;;
-;; Add .emacs.d/local-elisp to load-path
-(add-to-list 'load-path "~/.emacs.d/local-elisp")
-
 ;; get rid of splash screen and set tab width
 (setq inhibit-splash-screen t)
 (setq tab-width 4)
@@ -193,10 +114,6 @@
 (require 'x-clipboard-interaction)
 (global-set-key "\M-y" 'yank-to-x-clipboard)
 
-;;
-;; Keybindings
-;;
-
 ;; Alt/Meta to C-x C-m
 (global-set-key "\C-x\C-m" 'smex)
 (global-set-key "\C-c\C-m" 'smex)
@@ -205,6 +122,26 @@
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
+
+;; switch-window
+(global-set-key (kbd "C-x o") 'switch-window)
+
+;; buffer-move
+(global-set-key (kbd "<C-S-up>") 'buf-move-up)
+(global-set-key (kbd "<C-S-down>") 'buf-move-down)
+(global-set-key (kbd "<C-S-left>") 'buf-move-left)
+(global-set-key (kbd "<C-S-right>") 'buf-move-right)
+
+;; smex
+(setq smex-save-file "~/.emacs.d/.smex-items")
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+;; magit
+(global-set-key (kbd "C-x C-z") 'magit-status)
+
+;; goto-last-change
+(global-set-key (kbd "C-x /") 'goto-last-change)
 
 ;;
 ;; Themes
@@ -221,6 +158,9 @@
 ;;
 ;; C, C++
 ;;
+;; Default is google-c-style
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+
 ;; linux c mode with tabs
 (require 'linux-tabs-c-style)
 
@@ -289,6 +229,12 @@
 
 ;; Enable speed keys
 (setq org-use-speed-commands t)
+
+;; keybindings
+(eval-after-load "org"
+  '(progn
+     (org-defkey org-mode-map (kbd "C-c i") 'org-insert-heading)
+     (org-defkey org-mode-map (kbd "C-c a") 'org-agenda)))
 
 ;;
 ;; Mutt configuration
@@ -360,6 +306,16 @@
 ;; scala-mode2 settings
 ;;
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+;;
+;; systemtap-mode
+;;
+(add-to-list 'auto-mode-alist '("\\.stp$" . systemtap-mode))
+
+;;
+;; lua-mode
+;;
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 
 ;; Emacs-generated custom-set-variables
 ;;
