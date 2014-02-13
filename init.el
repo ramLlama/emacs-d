@@ -96,6 +96,7 @@
 		scss-mode
 		scala-mode2
 		ensime
+		emacs-dirtree
 		)))
 
 (el-get 'sync my-packages)
@@ -347,6 +348,11 @@
 ;; sml-mode settings
 ;;
 (add-hook 'sml-mode-hook '(lambda () (setq indent-tabs-mode nil)))
+
+;;
+;; scala-mode2 settings
+;;
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 ;; Emacs-generated custom-set-variables
 ;;
