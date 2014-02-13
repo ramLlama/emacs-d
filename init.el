@@ -225,7 +225,13 @@
        (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s") t))
      (if (assoc "\\.png\\'" org-file-apps)
 	 (setcdr (assoc "\\.png\\'" org-file-apps) "firefox %s")
-       (add-to-list 'org-file-apps '("\\.png\\'" . "firefox %s") t))))
+       (add-to-list 'org-file-apps '("\\.png\\'" . "firefox %s") t))
+     (if (assoc "\\.jpg\\'" org-file-apps)
+	 (setcdr (assoc "\\.jpg\\'" org-file-apps) "firefox %s")
+       (add-to-list 'org-file-apps '("\\.jpg\\'" . "firefox %s") t))
+     (if (assoc "\\.jpeg\\'" org-file-apps)
+	 (setcdr (assoc "\\.jpeg\\'" org-file-apps) "firefox %s")
+       (add-to-list 'org-file-apps '("\\.jpeg\\'" . "firefox %s") t))))
 
 ;; Enable speed keys
 (setq org-use-speed-commands t)
