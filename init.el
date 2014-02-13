@@ -21,7 +21,7 @@
 (load "el-get-to-install-all")
 
 ;; Then load the machine-specific one if it exists.
-(load "el-get-to-install-machine-specific")
+(ignore-errors (load "el-get-to-install-machine-specific"))
 
 (el-get 'sync el-get-to-install)
 
