@@ -26,4 +26,5 @@
 	ensime
 	emacs-dirtree
 	web-mode
-	cperl-mode))
+	cperl-mode
+	adoc-mode))

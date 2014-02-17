@@ -345,6 +345,11 @@
        (setcdr pair 'cperl-mode)))
  (append auto-mode-alist interpreter-mode-alist))
 
+;;
+;; adoc-mode
+;;
+(add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
+
 ;; Emacs-generated custom-set-variables
 ;;
 (custom-set-variables
