@@ -335,6 +335,16 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+;;
+;; cperl-mode
+;;
+;; Replace use of perl-mode with cperl-mode everywhere
+(mapc
+ (lambda (pair)
+   (if (eq (cdr pair) 'perl-mode)
+       (setcdr pair 'cperl-mode)))
+ (append auto-mode-alist interpreter-mode-alist))
+
 ;; Emacs-generated custom-set-variables
 ;;
 (custom-set-variables

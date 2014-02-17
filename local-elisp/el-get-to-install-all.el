@@ -25,4 +25,5 @@
 	scala-mode2
 	ensime
 	emacs-dirtree
-	web-mode))
+	web-mode
+	cperl-mode))
