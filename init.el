@@ -350,6 +350,18 @@
 ;;
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
 
+;;
+;; org-journal
+;;
+(eval-after-load "org-journal"
+  '(progn
+     (setq org-journal-dir "~/bitbucket/mine/journal/"
+	   org-journal-date-prefix "#+TITLE: "
+	   org-journal-time-prefix "* "
+	   org-journal-file-format "%Y%m%d.org"
+	   org-journal-file-pattern "[0-9]\\{8\\}\\.org\'")))
+(add-hook 'org-journal-mode-hook (lambda () (org-indent-mode 0))) ;; turn off org-indent-mode for journal
+
 ;; Emacs-generated custom-set-variables
 ;;
 (custom-set-variables
