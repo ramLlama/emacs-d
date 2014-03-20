@@ -1,0 +1,4 @@
+(:name org-journal
+       :type github
+       :pkgname "bastibe/org-journal"
+       :depends org-mode)

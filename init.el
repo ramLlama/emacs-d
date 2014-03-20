@@ -202,17 +202,22 @@
 ;; Org-mode
 ;;
 ;; As I use org-mode for lists, use org-indent-mode and visual-line-mode
-(add-hook 'org-mode-hook 'org-indent-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
 
 ;; Spell-check!
 (add-hook 'org-mode-hook 'flyspell-mode)
 
-;; timestamp on completion
-(setq org-log-done 'time)
-
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "WIP(p!)" "WAITING(w!)" "|" "DONE(d)" "MISSED(m)" "PASSED-ON(a)" "DISCARDED(i)")))
+(setq org-log-done 'time  ;; timestamp on completion
+      org-todo-keywords '((sequence
+			   "TODO(t)"
+			   "WIP(p!)"
+			   "WAITING(w!)"
+			   "|"
+			   "DONE(d)"
+			   "MISSED(m)"
+			   "PASSED-ON(a)"
+			   "DISCARDED(i)")) ;; list of todo states
+      org-startup-indented t) ;; turn on org-indent-mode as I think in trees
 
 ;; Set org-mode file associations
 (eval-after-load "org"
@@ -348,6 +353,18 @@
 ;; adoc-mode
 ;;
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
+
+;;
+;; org-journal
+;;
+(eval-after-load "org-journal"
+  '(progn
+     (setq org-journal-dir "~/bitbucket/mine/journal/"
+	   org-journal-date-prefix "#+TITLE: "
+	   org-journal-time-prefix "* "
+	   org-journal-file-format "%Y%m%d.org"
+	   org-journal-file-pattern "[0-9]\\{8\\}\\.org\'")))
+(add-hook 'org-journal-mode-hook (lambda () (org-indent-mode 0))) ;; turn off org-indent-mode for journal
 
 ;; Emacs-generated custom-set-variables
 ;;

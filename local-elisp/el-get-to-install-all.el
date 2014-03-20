@@ -27,4 +27,5 @@
 	emacs-dirtree
 	web-mode
 	cperl-mode
-	adoc-mode))
+	adoc-mode
+	org-journal))
