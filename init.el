@@ -111,8 +111,7 @@
       uniquify-separator ": ")
 
 ;; X clipboard interaction
-(require 'x-clipboard-interaction)
-(global-set-key "\M-y" 'yank-to-x-clipboard)
+(require 'x-selection-interaction)
 
 ;; Alt/Meta to C-x C-m
 (global-set-key "\C-x\C-m" 'smex)
