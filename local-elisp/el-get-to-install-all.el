@@ -22,8 +22,6 @@
 	ag
 	lorem-ipsum
 	scss-mode
-	scala-mode2
-	ensime
 	emacs-dirtree
 	web-mode
 	cperl-mode
