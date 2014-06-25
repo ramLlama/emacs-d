@@ -304,6 +304,11 @@
 ; Better error parsing
 (setq LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
 
+; Add "make" to command list
+(eval-after-load "tex"
+  '(progn (add-to-list 'TeX-command-list '("Make-TeX-Output" "make AUCTEX=1" TeX-run-TeX nil))
+	  (auctex-latexmk-setup)))
+
 ; Use completion-backward-kill-word in Latex-mode to make sure that
 ; predictive mode doesn't bork the buffer
 ; (add-hook 'LaTeX-mode-hook '(lambda () (local-set-key "\C-w" 'completion-backward-kill-word)))

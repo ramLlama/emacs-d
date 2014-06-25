@@ -19,6 +19,7 @@
 	protobuf-mode
 	haskell-mode
 	auctex
+	auctex-latexmk
 	ag
 	lorem-ipsum
 	scss-mode
