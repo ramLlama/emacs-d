@@ -142,6 +142,12 @@
 ;; goto-last-change
 (global-set-key (kbd "C-x /") 'goto-last-change)
 
+;; MLton error regex
+(add-to-list
+ 'compilation-error-regexp-alist
+ '("^\\(Warning\\|Error\\): \\(.+\\) \\([0-9]+\\)\\.\\([0-9]+\\)\\.$"
+   2 3 4))
+
 ;;
 ;; Themes
 ;;
@@ -310,7 +316,8 @@
 ;;
 ;; sml-mode settings
 ;;
-(add-hook 'sml-mode-hook '(lambda () (setq indent-tabs-mode nil)))
+(add-hook 'sml-mode-hook (progn (setq indent-tabs-mode nil)
+				(setq sml-indent-level 2)))
 
 ;;
 ;; scala-mode2 settings
