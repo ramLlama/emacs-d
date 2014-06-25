@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: pseudocode
+# key: pseudo
+# --
+\begin{figure}
+  \begin{pseudocode}
+    \begin{lstlisting}[gobble=6]
+      $0
+    \end{lstlisting}
+  \end{pseudocode}
+
+  \caption{$1}
+  \label{$2}
+\end{figure}
