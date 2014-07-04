@@ -76,7 +76,7 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;; set yasnippet a global minor mode
-(yas/global-mode)
+(yas-global-mode)
 
 ;; Clear Buffer List every so often
 ;; midnight mode
