@@ -180,9 +180,9 @@
 (add-hook 'c-mode-common-hook
 	  (lambda ()
 	    (setq fill-column 80)
-	    (auto-fill-mode)
-	    (flyspell-prog-mode)
-	    (column-number-mode)))
+	    (auto-fill-mode 1)
+	    (flyspell-prog-mode 1)
+	    (column-number-mode 1)))
 
 ;; Use project-specific modes
 (defun maybe-mlton-c-style ()
@@ -287,15 +287,14 @@
       TeX-parse-self t
       TeX-master nil)
 
-(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-;; (add-hook 'LaTeX-mode-hook 'predictive-mode)
-(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+(add-hook 'LaTeX-mode-hook (lambda ()
+			     (auto-fill-mode 1)
+			     (flyspell-prog-mode)
+			     (LaTeX-math-mode 1)
+			     (TeX-source-correlate-mode 1)
+			     (turn-on-reftex)))
 
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
-
 (setq TeX-PDF-mode t)
 
 ; Use 'auctex' as the automatic style save dir
@@ -324,7 +323,8 @@
 ;;
 (add-hook 'sml-mode-hook (lambda ()
 			   (setq indent-tabs-mode nil)
-			   (setq sml-indent-level 2)))
+			   (setq sml-indent-level 2)
+			   (auto-fill-mode 1)))
 
 ;;
 ;; scala-mode2 settings
