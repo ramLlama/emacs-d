@@ -28,8 +28,14 @@
 ;;;;;;;;;;;;;;;;;;;;
 ;; Global Options ;;
 ;;;;;;;;;;;;;;;;;;;;
-;; get rid of splash screen and set tab width
+;; get rid of graphical features
 (setq inhibit-splash-screen t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(horizontal-scroll-bar-mode -1)
+
+;; set tab width
 (setq tab-width 4)
 
 ;; use whitespace indent
@@ -152,9 +158,9 @@
 ;; Themes
 ;;
 
-;; Load Solarized themes without enabling
+;; Load Solarized themes, and enable solarized-dark
 (load-theme 'solarized-light t t)
-(load-theme 'solarized-dark t t)
+(load-theme 'solarized-dark t nil)
 
 ;;;;;;;;;;;;;;;;;;;
 ;; Mode-Specific ;;
