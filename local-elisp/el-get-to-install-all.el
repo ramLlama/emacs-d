@@ -27,4 +27,5 @@
 	web-mode
 	cperl-mode
 	adoc-mode
-	org-journal))
+	org-journal
+	sml-mode-61))
