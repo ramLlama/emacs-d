@@ -186,9 +186,9 @@
 (add-hook 'c-mode-common-hook
 	  (lambda ()
 	    (setq fill-column 80)
-	    (auto-fill-mode)
-	    (flyspell-prog-mode)
-	    (column-number-mode)))
+	    (auto-fill-mode 1)
+	    (flyspell-prog-mode 1)
+	    (column-number-mode 1)))
 
 ;; Use project-specific modes
 (defun maybe-mlton-c-style ()
@@ -233,30 +233,30 @@
 
 ;; Set org-mode file associations
 (eval-after-load "org"
-  '(progn
-     ;; .txt files aren't in the list initially, but in case that changes
-     ;; in a future version of org, use if to avoid errors
-     (if (assoc "\\.pdf\\'" org-file-apps)
-         (setcdr (assoc "\\.pdf\\'" org-file-apps) "evince %s")
-       (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s") t))
-     (if (assoc "\\.png\\'" org-file-apps)
-	 (setcdr (assoc "\\.png\\'" org-file-apps) "firefox %s")
-       (add-to-list 'org-file-apps '("\\.png\\'" . "firefox %s") t))
-     (if (assoc "\\.jpg\\'" org-file-apps)
-	 (setcdr (assoc "\\.jpg\\'" org-file-apps) "firefox %s")
-       (add-to-list 'org-file-apps '("\\.jpg\\'" . "firefox %s") t))
-     (if (assoc "\\.jpeg\\'" org-file-apps)
-	 (setcdr (assoc "\\.jpeg\\'" org-file-apps) "firefox %s")
-       (add-to-list 'org-file-apps '("\\.jpeg\\'" . "firefox %s") t))))
+  (lambda ()
+    ;; .txt files aren't in the list initially, but in case that changes
+    ;; in a future version of org, use if to avoid errors
+    (if (assoc "\\.pdf\\'" org-file-apps)
+	(setcdr (assoc "\\.pdf\\'" org-file-apps) "evince %s")
+      (add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s") t))
+    (if (assoc "\\.png\\'" org-file-apps)
+	(setcdr (assoc "\\.png\\'" org-file-apps) "firefox %s")
+      (add-to-list 'org-file-apps '("\\.png\\'" . "firefox %s") t))
+    (if (assoc "\\.jpg\\'" org-file-apps)
+	(setcdr (assoc "\\.jpg\\'" org-file-apps) "firefox %s")
+      (add-to-list 'org-file-apps '("\\.jpg\\'" . "firefox %s") t))
+    (if (assoc "\\.jpeg\\'" org-file-apps)
+	(setcdr (assoc "\\.jpeg\\'" org-file-apps) "firefox %s")
+      (add-to-list 'org-file-apps '("\\.jpeg\\'" . "firefox %s") t))))
 
 ;; Enable speed keys
 (setq org-use-speed-commands t)
 
 ;; keybindings
 (eval-after-load "org"
-  '(progn
-     (org-defkey org-mode-map (kbd "C-c i") 'org-insert-heading)
-     (org-defkey org-mode-map (kbd "C-c a") 'org-agenda)))
+  (lambda ()
+    (org-defkey org-mode-map (kbd "C-c i") 'org-insert-heading)
+    (org-defkey org-mode-map (kbd "C-c a") 'org-agenda)))
 
 ;;
 ;; Mutt configuration
@@ -293,15 +293,14 @@
       TeX-parse-self t
       TeX-master nil)
 
-(add-hook 'LaTeX-mode-hook 'auto-fill-mode)
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-;; (add-hook 'LaTeX-mode-hook 'predictive-mode)
-(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+(add-hook 'LaTeX-mode-hook (lambda ()
+			     (auto-fill-mode 1)
+			     (flyspell-prog-mode)
+			     (LaTeX-math-mode 1)
+			     (TeX-source-correlate-mode 1)
+			     (turn-on-reftex)))
 
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
-
 (setq TeX-PDF-mode t)
 
 ; Use 'auctex' as the automatic style save dir
@@ -312,8 +311,9 @@
 
 ; Add "make" to command list
 (eval-after-load "tex"
-  '(progn (add-to-list 'TeX-command-list '("Make-TeX-Output" "make AUCTEX=1" TeX-run-TeX nil))
-	  (auctex-latexmk-setup)))
+  (lambda ()
+    (add-to-list 'TeX-command-list '("Make-TeX-Output" "make AUCTEX=1" TeX-run-TeX nil))
+    (auctex-latexmk-setup)))
 
 ; Use completion-backward-kill-word in Latex-mode to make sure that
 ; predictive mode doesn't bork the buffer
@@ -327,8 +327,10 @@
 ;;
 ;; sml-mode settings
 ;;
-(add-hook 'sml-mode-hook (progn (setq indent-tabs-mode nil)
-				(setq sml-indent-level 2)))
+(add-hook 'sml-mode-hook (lambda ()
+			   (setq indent-tabs-mode nil)
+			   (setq sml-indent-level 2)
+			   (auto-fill-mode 1)))
 
 ;;
 ;; scala-mode2 settings
@@ -376,12 +378,12 @@
 ;; org-journal
 ;;
 (eval-after-load "org-journal"
-  '(progn
-     (setq org-journal-dir "~/bitbucket/mine/journal/"
-	   org-journal-date-prefix "#+TITLE: "
-	   org-journal-time-prefix "* "
-	   org-journal-file-format "%Y%m%d.org"
-	   org-journal-file-pattern "[0-9]\\{8\\}\\.org\'")))
+  (lambda ()
+    (setq org-journal-dir "~/bitbucket/mine/journal/"
+	  org-journal-date-prefix "#+TITLE: "
+	  org-journal-time-prefix "* "
+	  org-journal-file-format "%Y%m%d.org"
+	  org-journal-file-pattern "[0-9]\\{8\\}\\.org\'")))
 (add-hook 'org-journal-mode-hook (lambda () (org-indent-mode 0))) ;; turn off org-indent-mode for journal
 
 ;; Emacs-generated custom-set-variables
