@@ -28,4 +28,5 @@
 	cperl-mode
 	adoc-mode
 	org-journal
-	sml-mode-61))
+	sml-mode-61
+	esml-mlb-mode))

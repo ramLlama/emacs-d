@@ -175,7 +175,7 @@
 ;; linux c mode with tabs
 (require 'linux-tabs-c-style)
 
-;; MLton code style
+;; MLton C code style
 (require 'mlton-c-style)
 
 ;; Set:
@@ -325,12 +325,16 @@
 (setq scss-compile-at-save nil)
 
 ;;
-;; sml-mode settings
+;; SML
 ;;
+;; sml-mode
 (add-hook 'sml-mode-hook (lambda ()
 			   (setq indent-tabs-mode nil)
 			   (setq sml-indent-level 2)
 			   (auto-fill-mode 1)))
+
+;; esml-mlb-mode
+(add-to-list 'auto-mode-alist '("\\.mlb\\'" . esml-mlb-mode))
 
 ;;
 ;; scala-mode2 settings

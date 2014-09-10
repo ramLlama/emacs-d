@@ -1,0 +1,6 @@
+(:name esml-mlb-mode
+       :description "Major mode to edit MLton ML Basis files"
+       :type http
+       :url "https://raw.githubusercontent.com/MLton/mlton/master/ide/emacs/esml-mlb-mode.el"
+       :features esml-mlb-mode
+       :depends esml-util)
