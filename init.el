@@ -390,6 +390,15 @@
 	  org-journal-file-pattern "[0-9]\\{8\\}\\.org\'")))
 (add-hook 'org-journal-mode-hook (lambda () (org-indent-mode 0))) ;; turn off org-indent-mode for journal
 
+;;
+;; company-mode
+;;
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'company-mode-hook
+  (lambda ()
+    (define-key company-active-map "\C-o" 'company-show-location)
+    (define-key company-active-map "\C-w" nil)))
+
 ;; Emacs-generated custom-set-variables
 ;;
 (custom-set-variables

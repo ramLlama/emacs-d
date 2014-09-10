@@ -29,4 +29,5 @@
 	adoc-mode
 	org-journal
 	sml-mode-61
-	esml-mlb-mode))
+	esml-mlb-mode
+	company-mode))
