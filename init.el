@@ -399,6 +399,12 @@
     (define-key company-active-map "\C-o" 'company-show-location)
     (define-key company-active-map "\C-w" nil)))
 
+;;
+;; doc-view mode
+;;
+
+(setq doc-view-resolution 200)
+
 ;; Emacs-generated custom-set-variables
 ;;
 (custom-set-variables
