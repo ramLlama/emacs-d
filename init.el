@@ -167,6 +167,15 @@
 ;;;;;;;;;;;;;;;;;;;
 
 ;;
+;; Flyspell
+;;
+
+;; Set flyspell predicate matcher for LaTeX-mode
+(eval-after-load "flyspell"
+  (lambda ()
+    (put 'latex-mode 'flyspell-mode-predicate 'tex-mode-flyspell-verify)))
+
+;;
 ;; C, C++
 ;;
 ;; Default is google-c-style
@@ -295,7 +304,8 @@
 
 (add-hook 'LaTeX-mode-hook (lambda ()
 			     (auto-fill-mode 1)
-			     (flyspell-prog-mode)
+			     (setq ispell-parser 'tex)
+			     (flyspell-mode)
 			     (LaTeX-math-mode 1)
 			     (TeX-source-correlate-mode 1)
 			     (turn-on-reftex)))
