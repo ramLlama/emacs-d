@@ -47,19 +47,11 @@
 
 ;; Put autosave files (ie #foo#) in one place, *not*
 ;; scattered all over the file system!
-(defvar autosave-dir "~/.emacs.d/auto-save-dir/")
+(defconst auto-save-dir "~/.emacs.d/auto-save-dir/")
+(make-directory auto-save-dir t)
+(setq auto-save-file-name-transforms
+      `((".*" ,auto-save-dir t)))
 
-(make-directory autosave-dir t)
-
-(defun auto-save-file-name-p (filename)
-  (string-match "^#.*#$" (file-name-nondirectory filename)))
-
-(defun make-auto-save-file-name ()
-  (concat autosave-dir
-	  (if buffer-file-name
-	      (concat "#" (file-name-nondirectory buffer-file-name) "#")
-	    (expand-file-name
-	     (concat "#%" (buffer-name) "#")))))
 
 ;; Put backup files (ie foo~) in one place too. (The backup-directory-alist
 ;; list contains regexp=>directory mappings; filenames matching a regexp are
@@ -165,6 +157,15 @@
 ;;;;;;;;;;;;;;;;;;;
 ;; Mode-Specific ;;
 ;;;;;;;;;;;;;;;;;;;
+
+;;
+;; Flyspell
+;;
+
+;; Set flyspell predicate matcher for LaTeX-mode
+(eval-after-load "flyspell"
+  (lambda ()
+    (put 'latex-mode 'flyspell-mode-predicate 'tex-mode-flyspell-verify)))
 
 ;;
 ;; C, C++
@@ -295,7 +296,8 @@
 
 (add-hook 'LaTeX-mode-hook (lambda ()
 			     (auto-fill-mode 1)
-			     (flyspell-prog-mode)
+			     (setq ispell-parser 'tex)
+			     (flyspell-mode)
 			     (LaTeX-math-mode 1)
 			     (TeX-source-correlate-mode 1)
 			     (turn-on-reftex)))
@@ -398,6 +400,12 @@
   (lambda ()
     (define-key company-active-map "\C-o" 'company-show-location)
     (define-key company-active-map "\C-w" nil)))
+
+;;
+;; doc-view mode
+;;
+
+(setq doc-view-resolution 200)
 
 ;; Emacs-generated custom-set-variables
 ;;

@@ -1,3 +1,4 @@
 (:name ag
        :type github
-       :pkgname "Wilfred/ag.el")
+       :pkgname "Wilfred/ag.el"
+       :depends (dash s))

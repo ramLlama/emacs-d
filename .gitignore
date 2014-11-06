@@ -1,4 +1,7 @@
-# Various clutter created by extensions
+#########################################
+# Various clutter created by extensions #
+#########################################
+# auto-complete
 ac-comphist.dat
 
 # Auto-Save stuff
@@ -8,6 +11,9 @@ auto-save-list/
 # Backup Stuff
 backup-dir/
 %backup%~
+
+# eww
+url/
 
 # el-get directory
 el-get/
@@ -21,11 +27,12 @@ eshell/
 # Places File
 places
 
+#################
+# Special Files #
+#################
 # machine-specific el-get-to-install
 local-elisp/el-get-to-install-machine-specific.el
 
-# All hidden files
+# All hidden files except .gitignore
 .*
-
-# Except gitignore
 !.gitignore
