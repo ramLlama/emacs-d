@@ -48,7 +48,7 @@
 ;; Put autosave files (ie #foo#) in one place, *not*
 ;; scattered all over the file system!
 (defconst auto-save-dir "~/.emacs.d/auto-save-dir/")
-(make-directory autosave-dir t)
+(make-directory auto-save-dir t)
 (setq auto-save-file-name-transforms
       `((".*" ,auto-save-dir t)))
 
