@@ -188,8 +188,9 @@
 	  (lambda ()
 	    (setq fill-column 80)
 	    (auto-fill-mode 1)
-	    (flyspell-prog-mode 1)
-	    (column-number-mode 1)))
+	    (flyspell-prog-mode)
+	    (column-number-mode 1)
+	    (fci-mode 1)))
 
 ;; Use project-specific modes
 (defun maybe-mlton-c-style ()

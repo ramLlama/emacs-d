@@ -30,4 +30,5 @@
 	org-journal
 	sml-mode-61
 	esml-mlb-mode
+	fill-column-indicator
 	company-mode))
