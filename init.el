@@ -333,8 +333,11 @@
 ;; sml-mode
 (add-hook 'sml-mode-hook (lambda ()
 			   (setq indent-tabs-mode nil)
-			   (setq sml-indent-level 2)
-			   (auto-fill-mode 1)))
+               (setq fill-column 80)
+               (auto-fill-mode 1)
+               (flyspell-prog-mode)
+               (column-number-mode 1)
+               (fci-mode 1)))
 
 ;; esml-mlb-mode
 (add-to-list 'auto-mode-alist '("\\.mlb\\'" . esml-mlb-mode))
