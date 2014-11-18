@@ -28,7 +28,7 @@
 	cperl-mode
 	adoc-mode
 	org-journal
-	sml-mode-61
+	sml-mode
 	esml-mlb-mode
 	fill-column-indicator
 	company-mode))

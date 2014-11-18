@@ -1,0 +1,4 @@
+(:name sml-mode
+       :description "SML-mode is a major Emacs mode for editing Standard ML source code. (Personal Fork)"
+       :type github
+       :pkgname "ramLlama/sml-mode")
