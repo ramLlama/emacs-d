@@ -1,4 +1,0 @@
-(:name sml-mode-61
-       :description "SML-mode is a major Emacs mode for editing Standard ML source code."
-       :type http
-       :url "http://elpa.gnu.org/packages/sml-mode-6.1.el")

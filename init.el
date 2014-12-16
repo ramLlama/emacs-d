@@ -188,8 +188,9 @@
 	  (lambda ()
 	    (setq fill-column 80)
 	    (auto-fill-mode 1)
-	    (flyspell-prog-mode 1)
-	    (column-number-mode 1)))
+	    (flyspell-prog-mode)
+	    (column-number-mode 1)
+	    (fci-mode 1)))
 
 ;; Use project-specific modes
 (defun maybe-mlton-c-style ()
@@ -332,10 +333,17 @@
 ;; sml-mode
 (add-hook 'sml-mode-hook (lambda ()
 			   (setq indent-tabs-mode nil)
-			   (setq sml-indent-level 2)
-			   (auto-fill-mode 1)))
+               (setq fill-column 80)
+               (auto-fill-mode 1)
+               (flyspell-prog-mode)
+               (column-number-mode 1)
+               (fci-mode 1)))
 
+(add-to-list 'auto-mode-alist '("\\.fun\\'" . sml-mode))
+
+;;
 ;; esml-mlb-mode
+;;
 (add-to-list 'auto-mode-alist '("\\.mlb\\'" . esml-mlb-mode))
 
 ;;
@@ -427,3 +435,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:height 110 :family "Source Code Pro")))))
+(put 'upcase-region 'disabled nil)
