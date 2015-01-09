@@ -339,6 +339,8 @@
                (column-number-mode 1)
                (fci-mode 1)))
 
+(add-to-list 'auto-mode-alist '("\\.fun\\'" . sml-mode))
+
 ;; esml-mlb-mode
 (add-to-list 'auto-mode-alist '("\\.mlb\\'" . esml-mlb-mode))
 
