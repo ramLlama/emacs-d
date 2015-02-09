@@ -146,6 +146,9 @@
  '("^\\(Warning\\|Error\\): \\(.+\\) \\([0-9]+\\)\\.\\([0-9]+\\)\\.$"
    2 3 4))
 
+;; show-paren mode
+(show-paren-mode 1)
+
 ;;
 ;; Themes
 ;;
