@@ -149,6 +149,10 @@
 ;; show-paren mode
 (show-paren-mode 1)
 
+;; enable functions
+(mapc (lambda (function) (put 'function 'disabled nil))
+      '('upcase-region 'downcase-region))
+
 ;;
 ;; Common for all programming modes
 ;;
@@ -159,7 +163,6 @@
   (column-number-mode 1)
   (fci-mode 1))
 (add-hook 'prog-mode-hook 'prog-mode-setup)
-
 
 ;; Load Solarized themes
 (load-theme 'solarized t)
