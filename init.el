@@ -153,9 +153,9 @@
 ;; Themes
 ;;
 
-;; Load Solarized themes, and enable solarized-dark
-(load-theme 'solarized-light t t)
-(load-theme 'solarized-dark t nil)
+
+;; Load Solarized themes
+(load-theme 'solarized t)
 
 ;;;;;;;;;;;;;;;;;;;
 ;; Mode-Specific ;;
@@ -425,7 +425,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("f208be98a1816ec7b061ec70b80bfa3d5dde886bfb44d60832ca8d209bde5f5a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
+    ("31a01668c84d03862a970c471edbd377b2430868eccf5e8a9aec6831f1a0908d" "1297a022df4228b81bc0436230f211bad168a117282c20ddcba2db8c6a200743" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "f208be98a1816ec7b061ec70b80bfa3d5dde886bfb44d60832ca8d209bde5f5a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
  '(org-agenda-files
    (quote
     ("~/org/personal.org" "~/org/phd/dblab.org" "~/org/phd/parmem.org" "~/org/phd/parinc.org" "~/org/phd/biginc.org")))
