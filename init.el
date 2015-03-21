@@ -1,3 +1,11 @@
+;;;;;;;;;;;;;;;;;;;;
+;; Early Settings ;;
+;;;;;;;;;;;;;;;;;;;;
+
+;; Override shell to use to bash. This is to fix any incompatibilities
+;; with using fish
+(setq shell-file-name "bash")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Add .emacs.d/local-elisp to load-path ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -98,10 +106,6 @@
       (append
        '("*Messages*" "*scratch*")
        clean-buffer-list-kill-never-buffer-names-init))
-
-;; Override shell to use to bash. This is to fix any incompatibilities
-;; with using fish
-(setq shell-file-name "bash")
 
 ;; Saner unique buffer names
 (require 'uniquify)
