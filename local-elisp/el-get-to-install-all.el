@@ -33,4 +33,5 @@
 	fill-column-indicator
 	company-mode
 	tuareg-mode
-	ProofGeneral))
+	ProofGeneral
+	rust-mode))
