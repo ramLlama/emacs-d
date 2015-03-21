@@ -31,4 +31,6 @@
 	sml-mode
 	esml-mlb-mode
 	fill-column-indicator
-	company-mode))
+	company-mode
+	tuareg-mode
+	ProofGeneral))
