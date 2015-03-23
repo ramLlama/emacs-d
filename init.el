@@ -409,6 +409,8 @@
     (define-key company-active-map "\C-o" 'company-show-location)
     (define-key company-active-map "\C-w" nil)))
 
+(add-to-list 'company-dabbrev-code-modes 'cperl-mode)
+
 ;;
 ;; doc-view mode
 ;;
