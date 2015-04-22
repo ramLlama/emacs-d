@@ -411,6 +411,8 @@
     (define-key company-active-map "\C-o" 'company-show-location)
     (define-key company-active-map "\C-w" nil)))
 
+(add-to-list 'company-dabbrev-code-modes 'cperl-mode)
+
 ;;
 ;; doc-view mode
 ;;
@@ -436,5 +438,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:height 110 :family "Source Code Pro")))))
-(put 'upcase-region 'disabled nil)
+ '(default ((t (:height 100 :family "Source Code Pro")))))
