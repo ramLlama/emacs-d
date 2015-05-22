@@ -377,7 +377,12 @@
 			     (flyspell-mode)
 			     (LaTeX-math-mode 1)
 			     (TeX-source-correlate-mode 1)
-			     (turn-on-reftex)))
+			     (turn-on-reftex)
+			     (LaTeX-add-environments
+			      '("lemma" LaTeX-env-label)
+			      '("lem" LaTeX-env-label)
+			      '("theorem" LaTeX-env-label)
+			      '("thm" LaTeX-env-label))))
 
 (setq reftex-plug-into-AUCTeX t)
 (setq TeX-PDF-mode t)
@@ -395,6 +400,16 @@
     (auctex-latexmk-setup)))
 
 (setq reftex-ref-style-default-list (quote ("Varioref" "Hyperref" "Cleveref")))
+
+;;
+;; RefTeX
+;;
+(setq reftex-ref-style-default-list (quote ("Varioref" "Hyperref" "Cleveref")))
+(setq reftex-label-alist
+      '(("lemma"   ?l "lem:"  "~\\ref{%s}" nil ("lemma" "lem.") -3)
+	("lem"   ?l "lem:"  "~\\ref{%s}" nil ("lemma" "lem.") -3)
+	("theorem" ?t "thm:" "~\\ref{%s}" t   ("theorem" "thm.") -3)
+	("thm" ?t "thm:" "~\\ref{%s}" t   ("theorem" "thm.") -3)))
 
 ;;
 ;; SCSS-mode settings
