@@ -518,6 +518,16 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;;
+;; ProofGeneral
+;;
+;; general options
+(setq proof-splash-enable nil
+      proof-electric-terminator-enable t)
+
+;; coq-mode options
+(setq coq-one-command-per-line nil)
+
 ;; Emacs-generated custom-set-variables
 ;;
 (custom-set-variables
