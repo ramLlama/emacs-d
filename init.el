@@ -528,7 +528,8 @@
       proof-electric-terminator-enable t)
 
 ;; coq-mode options
-(setq coq-one-command-per-line nil)
+(setq coq-one-command-per-line nil
+      coq-compile-before-require t)
 
 ;; Emacs-generated custom-set-variables
 ;;
