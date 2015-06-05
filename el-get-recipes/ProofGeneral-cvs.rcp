@@ -1,0 +1,14 @@
+(:name ProofGeneral-cvs
+       :website "http://proofgeneral.inf.ed.ac.uk/"
+       :description "Proof General is a generic front-end for proof assistants (also known as interactive theorem provers)"
+       :type cvs
+       :options "login"
+       :url ":pserver:anon@cvs.inf.ed.ac.uk:/disk/cvs/proofgen"
+       :module "ProofGeneral"
+       :build ("make clean"
+	       "sed -i 's/setq byte-compile-error-on-warn t//' Makefile && make compile")
+       :build/darwin `(("make" "-C" "clean")
+                       ("sed" "-i" "s/setq byte-compile-error-on-warn t//" "Makefile")
+                       ("make" "compile" ,(concat "EMACS=" el-get-emacs)))
+       :load  ("generic/proof-site.el")
+       :info "./doc/")
