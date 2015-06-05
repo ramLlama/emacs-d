@@ -535,11 +535,19 @@
 ;;
 ;; general options
 (setq proof-splash-enable nil
-      proof-electric-terminator-enable t)
+      proof-electric-terminator-enable t
+      proof-script-fly-past-comments t)
 
 ;; coq-mode options
 (setq coq-one-command-per-line nil
       coq-compile-before-require t)
+
+(with-eval-after-load 'coq
+  ;; The most common command by far. Having a 3(!)
+  ;; keys long sequence for this command is just a
+  ;; crime.
+  (define-key coq-mode-map "\M-n"
+    #'proof-assert-next-command-interactive))
 
 ;; Emacs-generated custom-set-variables
 ;;
