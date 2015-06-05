@@ -530,7 +530,8 @@
 
 ;; coq-mode options
 (setq coq-one-command-per-line nil
-      coq-compile-before-require t)
+      coq-compile-before-require t
+      coq-compile-parallel-in-background t)
 
 (with-eval-after-load 'coq
   ;; The most common command by far. Having a 3(!)
