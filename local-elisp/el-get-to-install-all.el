@@ -34,4 +34,5 @@
 	company-mode
 	tuareg-mode
 	ProofGeneral-cvs
-	rust-mode))
+	rust-mode
+	psvn))
