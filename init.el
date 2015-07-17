@@ -154,6 +154,7 @@
 (global-set-key (kbd "C-x /") 'goto-last-change)
 
 ;; MLton error regex
+(require 'compile)
 (add-to-list
  'compilation-error-regexp-alist
  '("^\\(Warning\\|Error\\): \\(.+\\) \\([0-9]+\\)\\.\\([0-9]+\\)\\.$"
