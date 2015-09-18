@@ -35,4 +35,5 @@
 	tuareg-mode
 	ProofGeneral-cvs
 	rust-mode
-	psvn))
+	psvn
+	nxhtml))
