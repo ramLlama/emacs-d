@@ -153,6 +153,12 @@
 ;; goto-last-change
 (global-set-key (kbd "C-x /") 'goto-last-change)
 
+;; multiple-cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 ;; MLton error regex
 (require 'compile)
 (add-to-list
