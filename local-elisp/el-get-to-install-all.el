@@ -35,6 +35,6 @@
 	tuareg-mode
 	ProofGeneral-cvs
 	rust-mode
-	psvn
+	dsvn
 	nxhtml
 	multiple-cursors))
