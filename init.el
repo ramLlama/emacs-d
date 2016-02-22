@@ -159,6 +159,12 @@
 ;; goto-last-change
 (global-set-key (kbd "C-x /") 'goto-last-change)
 
+;; multiple-cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 ;; MLton error regex
 (require 'compile)
 (add-to-list
@@ -300,27 +306,33 @@
 ;;
 ;; Org-mode
 ;;
+
+;; Org-Mode options
+(setq org-log-done 'time  ;; timestamp on completion
+      org-todo-keywords '((sequence
+                           "TODO(t)"
+                           "WIP(p!)"
+                           "WAITING(w!)"
+                           "|"
+                           "DONE(d)"
+                           "MISSED(m)"
+                           "PASSED-ON(a)"
+                           "DISCARDED(i)")) ;; list of todo states
+      org-startup-indented t ;; turn on org-indent-mode as I think in trees
+      org-use-speed-commands t ;; speed-keys are awesome!
+      org-enforce-todo-dependencies t ;; dependency management
+      org-agenda-dim-blocked-tasks t)
+
 ;; As I use org-mode for lists, use org-indent-mode and visual-line-mode
 (add-hook 'org-mode-hook
 	  (lambda ()
 	    (visual-line-mode 1)
 	    (flyspell-mode 1)))
 
-(setq org-log-done 'time  ;; timestamp on completion
-      org-todo-keywords '((sequence
-			   "TODO(t)"
-			   "WIP(p!)"
-			   "WAITING(w!)"
-			   "|"
-			   "DONE(d)"
-			   "MISSED(m)"
-			   "PASSED-ON(a)"
-			   "DISCARDED(i)")) ;; list of todo states
-      org-startup-indented t) ;; turn on org-indent-mode as I think in trees
-
-;; Set org-mode file associations
+;; keybindings
 (eval-after-load "org"
   (lambda ()
+    ;; File Associations
     ;; .txt files aren't in the list initially, but in case that changes
     ;; in a future version of org, use if to avoid errors
     (if (assoc "\\.pdf\\'" org-file-apps)
@@ -334,14 +346,9 @@
       (add-to-list 'org-file-apps '("\\.jpg\\'" . "firefox %s") t))
     (if (assoc "\\.jpeg\\'" org-file-apps)
 	(setcdr (assoc "\\.jpeg\\'" org-file-apps) "firefox %s")
-      (add-to-list 'org-file-apps '("\\.jpeg\\'" . "firefox %s") t))))
+    (add-to-list 'org-file-apps '("\\.jpeg\\'" . "firefox %s") t))
 
-;; Enable speed keys
-(setq org-use-speed-commands t)
-
-;; keybindings
-(eval-after-load "org"
-  (lambda ()
+    ;; Keybindings
     (org-defkey org-mode-map (kbd "C-c i") 'org-insert-heading)
     (org-defkey org-mode-map (kbd "C-c a") 'org-agenda)))
 
@@ -489,7 +496,7 @@
 ;;
 (eval-after-load "org-journal"
   (lambda ()
-    (setq org-journal-dir "~/bitbucket/mine/journal/"
+    (setq org-journal-dir "~/git/mine/journal/"
 	  org-journal-date-prefix "#+TITLE: "
 	  org-journal-time-prefix "* "
 	  org-journal-file-format "%Y%m%d.org"
@@ -564,7 +571,8 @@
     ("31a01668c84d03862a970c471edbd377b2430868eccf5e8a9aec6831f1a0908d" "1297a022df4228b81bc0436230f211bad168a117282c20ddcba2db8c6a200743" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "f208be98a1816ec7b061ec70b80bfa3d5dde886bfb44d60832ca8d209bde5f5a" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
  '(org-agenda-files
    (quote
-    ("~/org/personal.org" "~/org/phd/dblab.org" "~/org/phd/parmem.org" "~/org/phd/parinc.org" "~/org/phd/biginc.org"))))
+    ("~/Dropbox/org/personal/personal.org" "~/Dropbox/org/phd/parmem.org")))
+ '(reftex-ref-style-default-list (quote ("Varioref" "Hyperref" "Cleveref"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
