@@ -132,8 +132,9 @@
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 
-;; switch-window
-(global-set-key (kbd "C-x o") 'switch-window)
+;; enable functions
+(mapc (lambda (function) (put 'function 'disabled nil))
+      '('upcase-region 'downcase-region))
 
 ;; buffer-move
 (global-set-key (kbd "<C-S-up>") 'buf-move-up)
@@ -141,23 +142,17 @@
 (global-set-key (kbd "<C-S-left>") 'buf-move-left)
 (global-set-key (kbd "<C-S-right>") 'buf-move-right)
 
-;; smex
-(setq smex-save-file "~/.emacs.d/.smex-items")
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-;; magit
-(global-set-key (kbd "C-x C-z") 'magit-status)
-(setq magit-last-seen-setup-instructions "1.4.0")
+;; dsvn
+(autoload 'svn-status "dsvn" "Run `svn status'." t)
+(autoload 'svn-update "dsvn" "Run `svn update'." t)
+(require 'vc-svn)
 
 ;; goto-last-change
 (global-set-key (kbd "C-x /") 'goto-last-change)
 
-;; multiple-cursors
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;; magit
+(global-set-key (kbd "C-x C-z") 'magit-status)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; MLton error regex
 (require 'compile)
@@ -166,12 +161,22 @@
  '("^\\(Warning\\|Error\\): \\(.+\\) \\([0-9]+\\)\\.\\([0-9]+\\)\\.$"
    2 3 4))
 
+;; multiple-cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 ;; show-paren mode
 (show-paren-mode 1)
 
-;; enable functions
-(mapc (lambda (function) (put 'function 'disabled nil))
-      '('upcase-region 'downcase-region))
+;; smex
+(setq smex-save-file "~/.emacs.d/.smex-items")
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+;; switch-window
+(global-set-key (kbd "C-x o") 'switch-window)
 
 ;;
 ;; Common for all programming modes
