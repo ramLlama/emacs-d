@@ -402,7 +402,9 @@
 			      '("lemma" LaTeX-env-label)
 			      '("lem" LaTeX-env-label)
 			      '("theorem" LaTeX-env-label)
-			      '("thm" LaTeX-env-label))))
+			      '("thm" LaTeX-env-label)
+			      '("rulearray" LaTeX-env-label))
+                 (add-to-list 'font-latex-math-environments '"rulearray")))
 
 (setq reftex-plug-into-AUCTeX t)
 (setq TeX-PDF-mode t)
