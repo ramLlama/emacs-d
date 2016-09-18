@@ -36,5 +36,4 @@
 	ProofGeneral-cvs
 	rust-mode
 	dsvn
-	nxhtml
 	multiple-cursors))
