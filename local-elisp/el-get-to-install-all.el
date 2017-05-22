@@ -36,4 +36,5 @@
 	ProofGeneral-cvs
 	rust-mode
 	dsvn
-	multiple-cursors))
+	multiple-cursors
+	pdftools))
