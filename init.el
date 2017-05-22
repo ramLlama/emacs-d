@@ -562,6 +562,11 @@
   (define-key coq-mode-map "\M-n"
     #'proof-assert-next-command-interactive))
 
+;;
+;; PDFTools
+;;
+(load "pdftools")
+
 ;; Emacs-generated custom-set-variables
 ;;
 (custom-set-variables
