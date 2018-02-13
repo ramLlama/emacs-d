@@ -37,4 +37,8 @@
 	rust-mode
 	dsvn
 	multiple-cursors
-	pdftools))
+	pdftools
+	irony-mode
+	irony-eldoc
+	company-irony
+	PlatformIO-Mode))
