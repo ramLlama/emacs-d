@@ -36,5 +36,9 @@
 	ProofGeneral-cvs
 	rust-mode
 	dsvn
-	nxhtml
-	multiple-cursors))
+	multiple-cursors
+	pdftools
+	irony-mode
+	irony-eldoc
+	company-irony
+	PlatformIO-Mode))

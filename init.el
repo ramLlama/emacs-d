@@ -303,6 +303,18 @@
 
 (add-hook 'c-mode-hook 'maybe-mlton-c-style)
 
+(add-hook 'c-mode-hook (lambda ()
+                           (irony-mode)
+                           (irony-eldoc)
+                           (platformio-conditionally-enable)))
+
+;; Enable irony for all c++ files, and platformio-mode only
+;; when needed (platformio.ini present in project root).
+(add-hook 'c++-mode-hook (lambda ()
+                           (irony-mode)
+                           (irony-eldoc)
+                           (platformio-conditionally-enable)))
+
 ;;
 ;; Eshell
 ;;
@@ -408,7 +420,9 @@
 			      '("lemma" LaTeX-env-label)
 			      '("lem" LaTeX-env-label)
 			      '("theorem" LaTeX-env-label)
-			      '("thm" LaTeX-env-label))))
+			      '("thm" LaTeX-env-label)
+			      '("rulearray" LaTeX-env-label))
+                 (add-to-list 'font-latex-math-environments '"rulearray")))
 
 (setq reftex-plug-into-AUCTeX t)
 (setq TeX-PDF-mode t)
@@ -527,6 +541,25 @@
   (lambda ()
     (define-key company-active-map "\C-o" 'company-show-location)
     (define-key company-active-map "\C-w" nil)))
+(add-to-list 'company-backends 'company-irony)
+
+;;
+;; irony
+;;
+(add-hook 'irony-mode-hook
+          (lambda ()
+            (define-key irony-mode-map [remap completion-at-point]
+              'irony-completion-at-point-async)
+
+            (define-key irony-mode-map [remap complete-symbol]
+              'irony-completion-at-point-async)
+
+            (irony-cdb-autosetup-compile-options)))
+
+;;
+;; flycheck
+;;
+(add-hook 'flycheck-mode-hook 'flycheck-irony-setup)
 
 ;;
 ;; doc-view mode
@@ -569,6 +602,11 @@
   ;; crime.
   (define-key coq-mode-map "\M-n"
     #'proof-assert-next-command-interactive))
+
+;;
+;; PDFTools
+;;
+(load "pdftools")
 
 ;; Emacs-generated custom-set-variables
 ;;
