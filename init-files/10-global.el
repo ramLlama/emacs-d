@@ -15,7 +15,7 @@
 (setq tab-width 4)
 
 ;; use whitespace indent
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; Set default directory to home (useful for servers that I start at
 ;; random cwd's)
