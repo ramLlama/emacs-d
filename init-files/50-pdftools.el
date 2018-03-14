@@ -1,0 +1,4 @@
+;;
+;; PDFTools
+;;
+(load "pdftools")

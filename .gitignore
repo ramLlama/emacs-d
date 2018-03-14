@@ -27,6 +27,12 @@ eshell/
 # Places File
 places
 
+# smex history
+smex-items
+
+# elpa packages
+elpa
+
 #################
 # Special Files #
 #################
