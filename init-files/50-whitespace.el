@@ -1,0 +1,5 @@
+(setq whitespace-style '(trailing lines empty tab-mark))
+(setq whitespace-line-column 78)
+(setq whitespace-empty '((t (:background "black" :foreground "red"))))
+(setq whitespace-line '((t (:background "magenta" :foreground "white"))))
+(global-whitespace-mode 1)
