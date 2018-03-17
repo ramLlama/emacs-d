@@ -33,6 +33,9 @@ smex-items
 # elpa packages
 elpa
 
+# anaconda server
+anaconda-mode
+
 #################
 # Special Files #
 #################
