@@ -17,14 +17,3 @@
     (c-set-style "MLton")))
 
 (add-hook 'c-mode-hook 'maybe-mlton-c-style)
-
-(add-hook 'c-mode-hook (lambda ()
-                           (irony-mode)
-                           (irony-eldoc)
-                           (platformio-conditionally-enable)))
-
-;; Enable irony for all c++ files, and platformio-mode only
-;; when needed (platformio.ini present in project root).
-(add-hook 'c++-mode-hook (lambda ()
-                           (irony-mode)
-                           (irony-eldoc)))

@@ -13,3 +13,13 @@
 
 ;; add to flycheck
 (add-hook 'flycheck-mode-hook 'flycheck-irony-setup)
+
+(add-hook 'c-mode-hook (lambda ()
+                           (irony-mode)
+                           (irony-eldoc)))
+
+;; Enable irony for all c++ files, and platformio-mode only
+;; when needed (platformio.ini present in project root).
+(add-hook 'c++-mode-hook (lambda ()
+                           (irony-mode)
+                           (irony-eldoc)))
