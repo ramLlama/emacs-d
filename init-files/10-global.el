@@ -28,7 +28,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,auto-save-dir t)))
 
-
 ;; Put backup files (ie foo~) in one place too. (The backup-directory-alist
 ;; list contains regexp=>directory mappings; filenames matching a regexp are
 ;; backed up in the corresponding directory. Emacs will mkdir it if necessary.)
@@ -48,9 +47,6 @@
 
 ;; allow narrow to region
 (put 'narrow-to-region 'disabled nil)
-
-;; set yasnippet a global minor mode
-(yas-global-mode)
 
 ;; Clear Buffer List every so often
 ;; midnight mode
@@ -75,20 +71,11 @@
        '("*Messages*" "*scratch*")
        clean-buffer-list-kill-never-buffer-names-init))
 
-;; Saner unique buffer names
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward
-      uniquify-separator ": ")
-
-;; Alt/Meta to C-x C-m
-(global-set-key "\C-x\C-m" 'smex)
-(global-set-key "\C-c\C-m" 'smex)
-
 ;; Faster word deletion.
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 
-;; enable functions
-(mapc (lambda (function) (put 'function 'disabled nil))
-      '('upcase-region 'downcase-region))
+;; Alt/Meta to C-x C-m
+(global-set-key "\C-x\C-m" 'smex)
+(global-set-key "\C-c\C-m" 'smex)
