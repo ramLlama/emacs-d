@@ -6,15 +6,17 @@
 ;; with using fish
 (setq shell-file-name "bash")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Add .emacs.d/local-elisp to load-path ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;
+;; Setup load paths ;;
+;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'load-path "~/.emacs.d/local-elisp")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/local-elisp/themes")
 
 ;;;;;;;;;;;;
 ;; el-get ;;
 ;;;;;;;;;;;;
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
