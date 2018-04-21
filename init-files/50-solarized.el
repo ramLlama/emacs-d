@@ -1,8 +1,4 @@
-;; Load Solarized themes
-(load-theme 'solarized t)
+;; Load custom solarized theme
+(load-theme 'solarized-custom t)
 (setq frame-background-mode 'dark)
-(enable-theme 'solarized)
-
-;; ;; Load Solarized themes
-;; (load-theme 'solarized-dark t)
-;; (enable-theme 'solarized-dark)
+(enable-theme 'solarized-custom)
