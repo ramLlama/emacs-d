@@ -1,0 +1,4 @@
+(:name flycheck-popup-tip
+       :type github
+       :pkgname "flycheck/flycheck-popup-tip"
+       :depends (popup flycheck))

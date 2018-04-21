@@ -1,0 +1,3 @@
+(:name rg
+       :type github
+       :pkgname "dajva/rg.el")

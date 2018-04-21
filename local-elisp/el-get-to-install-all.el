@@ -46,4 +46,11 @@
         flycheck-pos-tip
         anaconda-mode
         company-jedi
-        avy))
+        avy
+        clang-format
+        flycheck-popup-tip
+        thrift-mode
+        rg
+        swiper
+        projectile
+        counsel-projectile))
