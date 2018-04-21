@@ -5,7 +5,7 @@
 (face-spec-set 'whitespace-empty
                '((t (:background "black" :foreground "red"))))
 (face-spec-set 'whitespace-line
-               '((t (:background "magenta" :foreground "white"))))
+               '((t (:background "black"))))
 (face-spec-set 'whitespace-tab
                '((t (:background "black"
                                  :foreground "magenta"
@@ -16,4 +16,3 @@
                                    :foreground "red"
                                    :underline t
                                    :weight bold))))
-(global-whitespace-mode)
