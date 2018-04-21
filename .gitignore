@@ -36,6 +36,16 @@ elpa
 # anaconda server
 anaconda-mode
 
+# irony
+irony/
+
+# projectile
+projectile-bookmarks.eld
+projectile.cache
+
+# ivy?
+recentf
+
 #################
 # Special Files #
 #################
