@@ -53,4 +53,6 @@
         rg
         swiper
         projectile
-        counsel-projectile))
+        counsel-projectile
+        rtags
+        hydra))
