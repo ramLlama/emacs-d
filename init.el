@@ -10,13 +10,13 @@
 ;; Setup load paths ;;
 ;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'load-path "~/.emacs.d/local-elisp")
+(add-to-list 'load-path "~/.emacs.d/local-elisp.private")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/local-elisp/themes")
 
 ;;;;;;;;;;;;
 ;; el-get ;;
 ;;;;;;;;;;;;
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -51,3 +51,17 @@
 		 ))
     (mapc load-it (directory-files dir nil "\\.el$"))))
 (load-directory "~/.emacs.d/init.d/")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("b7e273660390dfd7410df2b1740653cf13bb7072de1a4169ccfb073e3dc96786" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
