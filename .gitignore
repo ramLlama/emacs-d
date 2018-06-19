@@ -43,8 +43,11 @@ irony/
 projectile-bookmarks.eld
 projectile.cache
 
-# ivy?
+# virtual buffers for ivy
 recentf
+
+# emacs bookmarks
+bookmarks
 
 #################
 # Special Files #
