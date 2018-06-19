@@ -5,7 +5,14 @@
 	  (lambda ()
 	    (global-company-mode)
 	    (add-to-list 'company-dabbrev-code-modes 'cperl-mode)
-	    (add-to-list 'company-backends 'company-irony)))
+            (mapc (lambda (x) (setq company-backends
+                                    (delete x company-backends)))
+                    '(company-eclim
+                      company-semantic
+                      company-clang
+                      company-xcode
+                      company-cmake
+                      company-oddmuse))))
 (add-hook 'company-mode-hook
   (lambda ()
     (define-key company-active-map "\C-o" 'company-show-location)
