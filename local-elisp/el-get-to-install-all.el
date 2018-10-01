@@ -57,4 +57,5 @@
         rtags
         hydra
         blacken
-        nose))
+        nose
+        emacs-racer))
