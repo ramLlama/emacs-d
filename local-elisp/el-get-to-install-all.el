@@ -45,7 +45,7 @@
         flycheck
         flycheck-pos-tip
         anaconda-mode
-        company-jedi
+        company-anaconda
         avy
         clang-format
         flycheck-popup-tip
