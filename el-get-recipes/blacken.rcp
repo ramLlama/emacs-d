@@ -1,0 +1,4 @@
+(:name blacken
+       :description "Plugin for 'black' Python reformatter"
+       :type github
+       :pkgname "proofit404/blacken")

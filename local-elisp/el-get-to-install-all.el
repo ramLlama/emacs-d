@@ -55,4 +55,6 @@
         projectile
         counsel-projectile
         rtags
-        hydra))
+        hydra
+        blacken
+        nose))
