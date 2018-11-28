@@ -50,6 +50,7 @@
         clang-format
         flycheck-popup-tip
         thrift-mode
+        wgrep
         rg
         swiper
         projectile
@@ -58,4 +59,6 @@
         hydra
         blacken
         nose
-        emacs-racer))
+        flycheck-rust
+        eglot
+        dockerfile-mode))

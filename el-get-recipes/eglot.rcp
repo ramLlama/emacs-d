@@ -1,0 +1,3 @@
+(:name eglot
+       :type elpa
+       :pkgname "eglot")
