@@ -1,0 +1,4 @@
+(:name flycheck-clang-analyzer
+       :type github
+       :pkgname "alexmurray/flycheck-clang-analyzer"
+       :depends (flycheck))

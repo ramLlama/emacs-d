@@ -1,5 +1,0 @@
-(:name esml-compat
-       :description "esml-compat contains a compatibility layer for MLton Emacs modules"
-       :type http
-       :url "https://raw.githubusercontent.com/ramLlama/mlton-emacs/master/esml-compat.el"
-       :compile nil)

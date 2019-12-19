@@ -1,5 +1,0 @@
-(:name esml-util
-       :description "Utilities for MLton Emacs modules"
-       :type http
-       :url "https://raw.githubusercontent.com/ramLlama/mlton-emacs/master/esml-util.el"
-       :depends esml-compat)

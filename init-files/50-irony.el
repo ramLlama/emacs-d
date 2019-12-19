@@ -1,9 +1,9 @@
 ;;
 ;; irony
 ;;
-(with-eval-after-load 'irony-cdb
-  (setq irony-cdb-compilation-databases
-        (delete 'irony-cdb-json  irony-cdb-compilation-databases)))
+;; (with-eval-after-load 'irony-cdb
+;;   (setq irony-cdb-compilation-databases
+;;         (delete 'irony-cdb-json  irony-cdb-compilation-databases)))
 (with-eval-after-load 'irony
   (define-key irony-mode-map [remap completion-at-point]
     'irony-completion-at-point-async)

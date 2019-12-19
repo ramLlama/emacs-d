@@ -29,7 +29,6 @@
         adoc-mode
         org-journal
         sml-mode
-        esml-mlb-mode
         fill-column-indicator
         company-mode
         tuareg-mode
@@ -61,4 +60,7 @@
         nose
         flycheck-rust
         eglot
-        dockerfile-mode))
+        dockerfile-mode
+        thrift-mode
+        rtags-xref
+        mlton-emacs))
