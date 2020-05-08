@@ -59,8 +59,8 @@
         blacken
         nose
         flycheck-rust
-        eglot
         dockerfile-mode
         thrift-mode
         rtags-xref
-        mlton-emacs))
+        mlton-emacs
+        markdown-mode))
