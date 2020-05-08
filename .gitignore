@@ -49,6 +49,9 @@ recentf
 # emacs bookmarks
 bookmarks
 
+# magit transient
+transient/
+
 #################
 # Special Files #
 #################
