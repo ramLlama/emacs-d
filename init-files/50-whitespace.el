@@ -1,7 +1,8 @@
 (require 'whitespace)
 
 (setq whitespace-style '(face trailing lines empty tabs tab-mark))
-(setq whitespace-line-column 78)
+(setq whitespace-line-column nil)
+
 (face-spec-set 'whitespace-empty
                '((t (:background "black" :foreground "red"))))
 (face-spec-set 'whitespace-line
