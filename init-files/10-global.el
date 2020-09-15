@@ -72,9 +72,10 @@
        clean-buffer-list-kill-never-buffer-names-init))
 
 ;; Faster word deletion.
-(global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-x\C-k" 'kill-region)
-(global-set-key "\C-c\C-k" 'kill-region)
+(global-set-key (kbd "C-w") 'backward-kill-word)
+(global-set-key (kbd "C-x C-k") 'kill-region)
+(global-set-key (kbd "C-c C-k") 'kill-region)
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
 ;; show column numbers
 (column-number-mode 1)
