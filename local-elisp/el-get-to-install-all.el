@@ -50,4 +50,7 @@
         thrift-mode
         rtags-xref
         mlton-emacs
-        markdown-mode))
+        markdown-mode
+        selectrum
+        prescient
+        ctrlf))

@@ -1,0 +1,4 @@
+(:name prescient
+       :website "https://github.com/raxod502/prescient.el"
+       :type github
+       :pkgname "raxod502/prescient.el")

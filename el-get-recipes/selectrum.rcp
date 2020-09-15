@@ -1,0 +1,4 @@
+(:name selectrum
+       :website "https://github.com/raxod502/selectrum"
+       :type github
+       :pkgname "raxod502/selectrum")
