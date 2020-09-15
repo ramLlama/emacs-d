@@ -5,9 +5,6 @@
 (setq el-get-to-install
       '(el-get           ; el-get is self-hosting
         switch-window    ; takes over C-x o
-        vkill            ; Process view and killing
-        buffer-move      ; move buffers through frames
-        smex             ; smart M-x
         magit            ; git integration
         goto-last-change ; what do you think?!
         google-c-style
@@ -19,14 +16,10 @@
         haskell-mode
         auctex
         auctex-latexmk
-        ag
-        lorem-ipsum
         scss-mode
-        emacs-dirtree
         web-mode
         cperl-mode
         adoc-mode
-        org-journal
         sml-mode
         fill-column-indicator
         company-mode
@@ -39,7 +32,6 @@
         irony-mode
         irony-eldoc
         company-irony
-        PlatformIO-Mode
         flycheck
         flycheck-pos-tip
         anaconda-mode
@@ -50,11 +42,7 @@
         thrift-mode
         wgrep
         rg
-        swiper
-        projectile
-        counsel-projectile
         rtags
-        hydra
         blacken
         nose
         flycheck-rust
