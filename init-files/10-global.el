@@ -78,3 +78,6 @@
 
 ;; show column numbers
 (column-number-mode 1)
+
+;; Default fill-column is 100
+(setq-default fill-column 100)
