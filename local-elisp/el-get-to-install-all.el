@@ -53,4 +53,5 @@
         markdown-mode
         selectrum
         prescient
-        ctrlf))
+        ctrlf
+        rust-mode))
