@@ -52,6 +52,9 @@ bookmarks
 # magit transient
 transient/
 
+# prescient transient
+var/
+
 #################
 # Special Files #
 #################
