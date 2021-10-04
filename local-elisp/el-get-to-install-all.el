@@ -54,4 +54,6 @@
         selectrum
         prescient
         ctrlf
-        rust-mode))
+        rust-mode
+        groovy-emacs-mode
+        typescript-mode))
