@@ -7,29 +7,37 @@
 ;; custom functions
 ;;
 
-(defun yank-pop+ (&optional arg)
- "Call `yank-pop' with ARG when appropriate, or offer completion."
- (interactive "*P")
- (if arg (yank-pop arg)
-   (let* ((old-last-command last-command)
-          (selectrum-should-sort-p nil)
-          (enable-recursive-minibuffers t)
-          (text (completing-read
-                 "Yank: "
-                 (cl-remove-duplicates
-                  kill-ring :test #'string= :from-end t)
-                 nil t nil nil))
-          ;; Find `text' in `kill-ring'.
-          (pos (cl-position text kill-ring :test #'string=))
-          ;; Translate relative to `kill-ring-yank-pointer'.
-          (n (+ pos (length kill-ring-yank-pointer))))
-     (unless (string= text (current-kill n t))
-       (error "Could not setup for `current-kill'"))
-     ;; Restore `last-command' over Selectrum commands.
-     (setq last-command old-last-command)
-     ;; Delegate to `yank-pop' if appropriate or just insert.
-     (if (eq last-command 'yank)
-         (yank-pop n) (insert-for-yank text)))))
+;; Ref: https://www.gnu.org/software/emacs/manual/html_node/eintr/yank.html
+(defun yank-choose-pop (&optional arg)
+  "Paste a previously killed string.
+With just \\[universal-argument] as ARG, put point at beginning,
+and mark at end.  Otherwise, put point at the end, and mark at
+the beginning without activating it.
+
+This is like `yank-pop'.  The differences are:
+
+- This let you manually choose a candidate to paste.
+
+- This doesn't delete the text just pasted if the previous
+  command is `yank'."
+  (interactive "P")
+  (let* ((selectrum-should-sort nil)
+         (text nil))
+    (setq text
+          (completing-read "Yank: "
+                           (cl-remove-duplicates
+                            kill-ring :test #'equal :from-end t)
+                           nil 'require-match))
+    (unless (eq last-command 'yank)
+      (push-mark))
+    (setq last-command 'yank)
+    (setq yank-window-start (window-start))
+    (when (and delete-selection-mode (use-region-p))
+      (delete-region (region-beginning) (region-end)))
+    (insert-for-yank text)
+    (if (consp arg)
+        (goto-char (prog1 (mark t)
+                     (set-marker (mark-marker) (point) (current-buffer)))))))
 
 (defun selectrum-switch-buffer+ ()
   (interactive)
@@ -74,7 +82,7 @@
                               files))))
                 `((candidates . ,candidates)
                   (input . ,input))))))
-         (cand (selectrum-read "Switch to: " candidates)))
+         (cand (selectrum--read "Switch to: " candidates)))
     (cond ((member cand recentf-list)
            (find-file cand))
           (t
@@ -84,5 +92,5 @@
 ;; custom remappings
 ;;
 
-(global-set-key (kbd "M-y") 'yank-pop+)
+(global-set-key (kbd "M-y") 'yank-choose-pop)
 (global-set-key (kbd "C-x b") 'selectrum-switch-buffer+)
