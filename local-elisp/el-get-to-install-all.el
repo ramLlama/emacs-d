@@ -52,7 +52,7 @@
         rust-mode
         groovy-emacs-mode
         typescript-mode
-        pyvenv
         python-black
         eglot
-        solarized-emacs))
+        solarized-emacs
+        emacs-direnv))

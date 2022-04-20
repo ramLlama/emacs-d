@@ -1,0 +1,4 @@
+(:name emacs-direnv
+       :description "Support for direnv."
+       :type github
+       :pkgname "wbolster/emacs-direnv")
