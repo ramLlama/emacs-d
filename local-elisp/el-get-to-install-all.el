@@ -31,20 +31,16 @@
         irony-mode
         irony-eldoc
         company-irony
-        flycheck
-        flycheck-pos-tip
         anaconda-mode
         company-anaconda
         avy
         clang-format
-        flycheck-popup-tip
         thrift-mode
         wgrep
         rg
         rtags
         blacken
         nose
-        flycheck-rust
         dockerfile-mode
         thrift-mode
         rtags-xref
