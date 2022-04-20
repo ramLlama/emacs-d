@@ -1,4 +1,0 @@
-(:name auctex-latexmk
-       :type github
-       :pkgname "ramLlama/auctex-latexmk"
-       :depends auctex)
