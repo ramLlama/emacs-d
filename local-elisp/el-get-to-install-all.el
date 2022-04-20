@@ -11,7 +11,6 @@
         systemtap-mode
         lua-mode
         org-mode
-        emacs-color-theme-solarized
         protobuf-mode
         haskell-mode
         auctex
@@ -59,4 +58,5 @@
         typescript-mode
         pyvenv
         python-black
-        eglot))
+        eglot
+        solarized-emacs))
