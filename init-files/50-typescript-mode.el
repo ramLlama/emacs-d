@@ -11,7 +11,8 @@
                                               (lambda ()
                                                 (indent-region (point-min) (point-max)))
                                               nil
-                                              t))))
+                                              t)))
+  (add-hook 'typescript-mode-hook 'eglot-ensure))
 
 ;; Jenkinsfiles are also groovy files.
 (add-to-list 'auto-mode-alist '("\\Jenkinsfile\\'" . groovy-mode))
