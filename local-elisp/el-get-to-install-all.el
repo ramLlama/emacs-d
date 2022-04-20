@@ -56,4 +56,7 @@
         ctrlf
         rust-mode
         groovy-emacs-mode
-        typescript-mode))
+        typescript-mode
+        pyvenv
+        python-black
+        eglot))
