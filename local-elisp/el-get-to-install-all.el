@@ -55,4 +55,5 @@
         python-black
         eglot
         solarized-emacs
-        emacs-direnv))
+        emacs-direnv
+        yasnippet))
