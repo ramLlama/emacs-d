@@ -31,8 +31,6 @@
         irony-mode
         irony-eldoc
         company-irony
-        anaconda-mode
-        company-anaconda
         avy
         clang-format
         thrift-mode
