@@ -9,8 +9,9 @@
 (require 'solarized-theme)
 
 (defun solarized-definitions-custom ()
-  ;; magit
-  `((magit-hash (,@fg-violet))
+  `(
+    ;; magit
+    (magit-hash (,@fg-violet))
     (magit-section-highlight (,@bg-base02))
     (magit-diff-hunk-heading (:inherit magit-diff-file-heading))
     (magit-diff-context (,@fg-base01))
@@ -48,7 +49,15 @@
 
     ;; ProofGeneral
     (proof-locked-face (,@fg-base01))
-    (proof-eager-annotation-face (,@fmt-bold ,@fg-orange))))
+    (proof-eager-annotation-face (,@fmt-bold ,@fg-orange))
+
+    ;; Smerge
+    (smerge-upper (,@bg-base03))
+    (smerge-lower (,@bg-base03))
+    (smerge-refined-removed (,@bg-base02 ,@fg-red))
+    (smerge-refined-added (,@bg-base02 ,@fg-green))
+    )
+  )
 
 (create-solarized-theme
  solarized-custom
