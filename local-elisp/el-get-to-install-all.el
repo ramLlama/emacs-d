@@ -8,7 +8,6 @@
         magit            ; git integration
         goto-last-change ; what do you think?!
         google-c-style
-        systemtap-mode
         lua-mode
         org-mode
         protobuf-mode
@@ -23,7 +22,6 @@
         fill-column-indicator
         company-mode
         tuareg-mode
-        ProofGeneral-cvs
         rust-mode
         dsvn
         multiple-cursors
@@ -38,11 +36,9 @@
         rg
         rtags
         blacken
-        nose
         dockerfile-mode
         thrift-mode
         rtags-xref
-        mlton-emacs
         markdown-mode
         selectrum
         prescient
