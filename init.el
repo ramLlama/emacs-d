@@ -52,8 +52,8 @@
 (ignore-errors (load "el-get-to-install-machine-specific"))
 
 (setq el-get-verbose t)
-(el-get 'sync el-get-to-install)
-
+(el-get nil el-get-to-install)
+(el-get 'sync)
 
 ;;
 ;; Load from init.d
