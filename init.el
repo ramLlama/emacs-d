@@ -6,6 +6,8 @@
 ;; with using fish
 (setq shell-file-name "bash")
 
+(setq byte-compile-warnings '(cl-functions))
+
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; Setup load paths ;;
 ;;;;;;;;;;;;;;;;;;;;;;
