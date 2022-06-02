@@ -8,23 +8,16 @@
         magit            ; git integration
         goto-last-change ; what do you think?!
         google-c-style
-        lua-mode
         org-mode
         protobuf-mode
-        haskell-mode
         auctex
         auctex-latexmk
-        scss-mode
         web-mode
         cperl-mode
         adoc-mode
         sml-mode
-        fill-column-indicator
         company-mode
-        tuareg-mode
         rust-mode
-        dsvn
-        multiple-cursors
         pdftools
         irony-mode
         irony-eldoc
@@ -36,8 +29,7 @@
         rg
         rtags
         blacken
-        dockerfile-mode
-        thrift-mode
+        flycheck-rust
         rtags-xref
         markdown-mode
         selectrum
