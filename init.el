@@ -38,7 +38,8 @@
       (url-retrieve-synchronously
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
-    (eval-print-last-sexp)))
+    (eval-print-last-sexp)
+    (el-get-elpa-build-local-recipes)))
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-recipes/")
 
@@ -48,6 +49,7 @@
 ;; Then load the machine-specific one if it exists.
 (ignore-errors (load "el-get-to-install-machine-specific"))
 
+(setq el-get-verbose t)
 (el-get 'sync el-get-to-install)
 
 
