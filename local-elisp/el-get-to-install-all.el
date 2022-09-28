@@ -34,6 +34,7 @@
         markdown-mode
         selectrum
         prescient
+	selectrum-prescient
         ctrlf
         rust-mode
         groovy-emacs-mode
