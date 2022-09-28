@@ -43,4 +43,5 @@
         solarized-emacs
         emacs-direnv
         yasnippet
-        flymake-eslint))
+        flymake-eslint
+        js2-mode))
