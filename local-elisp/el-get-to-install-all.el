@@ -39,7 +39,6 @@
         rust-mode
         groovy-emacs-mode
         typescript-mode
-        python-black
         eglot
         solarized-emacs
         emacs-direnv
