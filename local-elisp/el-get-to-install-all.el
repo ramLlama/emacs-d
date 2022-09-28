@@ -42,4 +42,5 @@
         eglot
         solarized-emacs
         emacs-direnv
-        yasnippet))
+        yasnippet
+        flymake-eslint))

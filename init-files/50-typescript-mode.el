@@ -12,7 +12,8 @@
                                                 (indent-region (point-min) (point-max)))
                                               nil
                                               t)))
-  (add-hook 'typescript-mode-hook 'eglot-ensure))
+  (add-hook 'typescript-mode-hook 'eglot-ensure)
+  (add-hook 'typescript-mode-hook 'flymake-eslint-enable))
 
 ;; Jenkinsfiles are also groovy files.
-(add-to-list 'auto-mode-alist '("\\Jenkinsfile\\'" . groovy-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
