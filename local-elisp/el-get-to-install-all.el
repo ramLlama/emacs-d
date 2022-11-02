@@ -34,7 +34,7 @@
         markdown-mode
         selectrum
         prescient
-	selectrum-prescient
+        selectrum-prescient
         ctrlf
         rust-mode
         groovy-emacs-mode
@@ -44,4 +44,5 @@
         emacs-direnv
         yasnippet
         flymake-eslint
-        js2-mode))
+        js2-mode
+        prettier))

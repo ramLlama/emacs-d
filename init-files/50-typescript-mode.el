@@ -13,7 +13,8 @@
                                               nil
                                               t)))
   (add-hook 'typescript-mode-hook 'eglot-ensure)
-  (add-hook 'typescript-mode-hook 'flymake-eslint-enable))
+  (add-hook 'typescript-mode-hook 'flymake-eslint-enable)
+  (add-hook 'typescript-mode-hook 'prettier-mode))
 
 ;; Jenkinsfiles are also groovy files.
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
