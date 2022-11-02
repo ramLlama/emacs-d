@@ -45,4 +45,5 @@
         yasnippet
         flymake-eslint
         js2-mode
-        prettier))
+        prettier
+        smart-compile))
