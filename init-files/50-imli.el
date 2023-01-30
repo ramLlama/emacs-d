@@ -50,6 +50,3 @@ the compilation window until the top of the error is visible."
      (add-to-list 'compilation-error-regexp-alist imli-compilation-regexp)
      (add-hook 'next-error-hook 'imli-scroll-down-after-next-error)))
 
-;; MLton pacakges
-(require 'esml-mlb-mode)
-(require 'esml-du-mlton)
