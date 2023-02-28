@@ -55,6 +55,9 @@ transient/
 # prescient transient
 var/
 
+# native-comp
+eln-cache/
+
 #################
 # Special Files #
 #################
