@@ -3,6 +3,8 @@
 ;;
 
 (with-eval-after-load 'typescript-mode
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs '(typescript-mode . ("typescript-language-server" "--stdio"))))
   (add-hook 'typescript-mode-hook (lambda ()
                                     (setq
                                      typescript-indent-level 2
