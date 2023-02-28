@@ -47,4 +47,5 @@
         js2-mode
         prettier
         smart-compile
-        flymake-shellcheck))
+        flymake-shellcheck
+        yaml-mode))
