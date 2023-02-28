@@ -46,4 +46,5 @@
         flymake-eslint
         js2-mode
         prettier
-        smart-compile))
+        smart-compile
+        flymake-shellcheck))
