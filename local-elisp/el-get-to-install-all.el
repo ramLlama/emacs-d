@@ -8,36 +8,22 @@
         magit            ; git integration
         goto-last-change ; what do you think?!
         google-c-style
-        org-mode
         protobuf-mode
-        auctex
-        auctex-latexmk
         web-mode
         cperl-mode
         adoc-mode
         sml-mode
         company-mode
         rust-mode
-        pdftools
-        irony-mode
-        irony-eldoc
-        company-irony
         avy
         clang-format
         thrift-mode
-        wgrep
         rg
-        rtags
         blacken
-        flycheck-rust
-        rtags-xref
         markdown-mode
-        selectrum
+        vertico
         prescient
-        selectrum-prescient
         ctrlf
-        rust-mode
-        groovy-emacs-mode
         typescript-mode
         eglot
         solarized-emacs
@@ -45,7 +31,7 @@
         yasnippet
         flymake-eslint
         js2-mode
-        prettier
+        prettier-js
         smart-compile
         flymake-shellcheck
         yaml-mode))
