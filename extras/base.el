@@ -31,6 +31,8 @@
   :demand t
   :bind (("C-c /" . goto-last-change)))
 
+(global-set-key (kbd "C-c o") 'move-to-column)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Power-ups: Embark and Consult
