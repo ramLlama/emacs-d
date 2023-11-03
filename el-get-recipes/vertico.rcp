@@ -1,4 +1,0 @@
-(:name vertico
-       :website "https://github.com/minad/vertico"
-       :type github
-       :pkgname "minad/vertico")

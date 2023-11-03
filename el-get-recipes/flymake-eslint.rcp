@@ -1,3 +1,0 @@
-(:name flymake-eslint
-       :type github
-       :pkgname "orzechowskid/flymake-eslint")

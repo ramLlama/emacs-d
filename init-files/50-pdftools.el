@@ -1,4 +1,0 @@
-;;
-;; PDFTools
-;;
-(load "pdftools")

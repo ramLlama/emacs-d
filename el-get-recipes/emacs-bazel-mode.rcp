@@ -1,3 +1,0 @@
-(:name emacs-bazel-mode
-       :type github
-       :pkgname "bazelbuild/emacs-bazel-mode")

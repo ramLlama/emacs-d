@@ -1,3 +1,0 @@
-(:name flymake-shellcheck
-       :type github
-       :pkgname "federicotdn/flymake-shellcheck")
