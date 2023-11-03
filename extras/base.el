@@ -12,6 +12,7 @@
 ;;;  - Minibuffer and completion
 ;;;  - emacs server settings
 ;;;  - Misc. editing enhancements
+;;;  - globally useful configurations
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -177,3 +178,14 @@
 
 ;; modern fill column
 (setq-default fill-column 100)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   globally useful configurations
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package direnv
+  :ensure t
+  :config
+  (direnv-mode))
