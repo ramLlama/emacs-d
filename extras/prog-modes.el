@@ -27,7 +27,7 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package blacken-mode
+(use-package blacken
   :ensure t
   :after python-ts-mode
   :config
