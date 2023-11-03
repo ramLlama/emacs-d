@@ -41,6 +41,14 @@
       (add-to-list 'major-mode-remap-alist (cons orig-mode ts-mode))
       (add-hook ts-mode-hook `(lambda () (run-hooks ',orig-mode-hook))))))
 
+;; color support for compilation-mode
+(use-package compile
+  :after ansi-color
+  :hook (compilation-filter . (lambda ()
+                                (when (eq major-mode 'compilation-mode)
+                                  (ansi-color-apply-on-region compilation-filter-start
+                                                              (point-max))))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Version Control
