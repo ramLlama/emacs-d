@@ -44,7 +44,12 @@
 ;; Save history of minibuffer
 (savehist-mode)
 
-;; Move through windows with Ctrl-<arrow keys>
+;; ace-window for moving through windows
+(use-package ace-window
+  :ensure t
+  :config
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :bind (("C-x o" . ace-window)))
 (windmove-default-keybindings 'control) ; You can use other modifiers here
 
 ;; Fix archaic defaults
