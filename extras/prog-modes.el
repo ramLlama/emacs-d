@@ -14,8 +14,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package sml-mode
-  :mode ("\\.sml\\'" "/mlton[^/]*/.*\\.sig\\'" "/mlton[^/]*/.*\\.fun\\'")
   :ensure t
+  :mode ("\\.sml\\'" "/mlton[^/]*/.*\\.sig\\'" "/mlton[^/]*/.*\\.fun\\'")
   :after compile
   :config
   (add-to-list 'compilation-error-regexp-alist
@@ -29,6 +29,5 @@
 
 (use-package blacken
   :ensure t
-  :after python-ts-mode
-  :config
-  (add-hook 'python-ts-mode-hook 'blacken-mode))
+  :after python
+  :hook (python-mode . blacken-mode))
