@@ -26,6 +26,11 @@
   :bind (("C-c l" . avy-goto-line)
          ("C-c c" . avy-goto-char-timer)))
 
+(use-package goto-last-change
+  :ensure t
+  :demand t
+  :bind (("C-c /" . goto-last-change)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Power-ups: Embark and Consult
