@@ -179,6 +179,15 @@
 ;; modern fill column
 (setq-default fill-column 100)
 
+;; C-w dwim
+(defun ram-custom--cw-dwim ()
+  "kill-region when region is action, backwards-kill-word otherwise"
+  (interactive)
+  (if (use-region-p)
+      (kill-region 0 0 t)
+    (backward-kill-word 1)))
+(global-set-key (kbd "C-w") 'ram-custom--cw-dwim)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   globally useful configurations
