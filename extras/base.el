@@ -23,7 +23,7 @@
   :ensure t
   :demand t
   :bind (("C-c l" . avy-goto-line)
-         ("C-c c"   . avy-goto-char-timer)))
+         ("C-c c" . avy-goto-char-timer)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
