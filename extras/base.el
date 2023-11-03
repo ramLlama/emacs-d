@@ -10,6 +10,7 @@
 ;;;  - Motion aids
 ;;;  - Power-ups: Embark and Consult
 ;;;  - Minibuffer and completion
+;;;  - emacs server settings
 ;;;  - Misc. editing enhancements
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -145,6 +146,22 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
+;;;   Emacs server settings
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Clear Buffer List every so often
+(use-package midnight
+  :ensure t
+  :config
+  (midnight-delay-set 'midnight-delay 0)            ;; midnight is midnight
+  (setq midnight-period (* 4 60 60))                ;; but run it every 4 hours
+  (setq clean-buffer-list-delay-special (* 15 60))  ;; buffer last touched delta
+  (setq clean-buffer-list-kill-regexps '("^.*$"))   ;; keep these buffers
+  (setq clean-buffer-list-kill-never-buffer-names
+        '("*Messages*" "*scratch*")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
 ;;;   Misc. editing enhancements
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -154,3 +171,9 @@
   :ensure t
   :config
   (setq wgrep-auto-save-buffer t))
+
+;; Delete trailing whitespace before saving
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; modern fill column
+(setq-default fill-column 100)

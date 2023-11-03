@@ -65,6 +65,18 @@ If the new path's directories does not exist, create them."
     (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
     backupFilePath))
 (setq make-backup-file-name-function 'bedrock--backup-file-name)
+(setq backup-by-copying-when-linked t)
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
+;; Put autosave files (ie #foo#) in one place, *not*
+;; scattered all over the file system!
+(defconst auto-save-dir "~/.emacs.d/auto-saves/")
+(make-directory auto-save-dir t)
+(setq auto-save-file-name-transforms
+      `((".*" ,auto-save-dir t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
