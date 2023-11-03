@@ -1,69 +1,11 @@
-#########################################
-# Various clutter created by extensions #
-#########################################
-# auto-complete
-ac-comphist.dat
-
-# Auto-Save stuff
-auto-save-dir/
-auto-save-list/
-
-# Backup Stuff
-backup-dir/
-%backup%~
-
-# eww
-url/
-
-# el-get directory
-el-get/
-
-# tramp history
-tramp
-
-# Eshell stuff
-eshell/
-
-# Places File
-places
-
-# smex history
-smex-items
-
-# elpa packages
-elpa
-
-# anaconda server
-anaconda-mode
-
-# irony
-irony/
-
-# projectile
-projectile-bookmarks.eld
-projectile.cache
-
-# virtual buffers for ivy
-recentf
-
-# emacs bookmarks
-bookmarks
-
-# magit transient
-transient/
-
-# prescient transient
-var/
-
-# native-comp
-eln-cache/
-
-#################
-# Special Files #
-#################
-# machine-specific el-get-to-install
-local-elisp/el-get-to-install-machine-specific.el
-
-# All hidden files except .gitignore
-.*
-!.gitignore
+######################
+# From emacs-bedrock #
+######################
+/.cache/
+/eln-cache/
+/elpa/
+/history
+/transient/
+/auto-save-list/
+/eshell/
+/projects
