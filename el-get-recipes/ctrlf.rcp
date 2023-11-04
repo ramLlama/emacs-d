@@ -1,4 +1,0 @@
-(:name ctrlf
-       :website "https://github.com/raxod502/ctrlf"
-       :type github
-       :pkgname "raxod502/ctrlf")

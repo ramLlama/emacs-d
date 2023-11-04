@@ -1,3 +1,0 @@
-(:name systemtap-mode
-       :type github
-       :pkgname "ramLlama/systemtap-mode")

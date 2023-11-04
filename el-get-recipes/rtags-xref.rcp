@@ -1,4 +1,0 @@
-(:name rtags-xref
-       :description "Package adding xref support to rtags"
-       :type http
-       :url "https://gist.githubusercontent.com/jwalt/d821c70082b4974c26c8fc15f190d930/raw/355d76cbfbd70d2b45969d0f46bcf5f2f69acb2a/rtags-xref.el")

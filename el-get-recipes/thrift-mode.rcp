@@ -1,3 +1,0 @@
-(:name thrift-mode
-       :type github
-       :pkgname "davidmiller/thrift-mode")

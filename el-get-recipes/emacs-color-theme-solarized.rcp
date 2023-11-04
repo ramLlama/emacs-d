@@ -1,5 +1,0 @@
-(:name emacs-color-theme-solarized
-       :type github
-       :pkgname "ramLlama/emacs-color-theme-solarized"
-       :after (progn
-		(add-to-list 'custom-theme-load-path (el-get-package-directory "emacs-color-theme-solarized"))))

@@ -1,4 +1,0 @@
-(:name mlton-emacs
-       :description "Emacs tools for MLton."
-       :type github
-       :pkgname "ramLlama/mlton-emacs")

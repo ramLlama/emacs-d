@@ -1,3 +1,0 @@
-(:name smart-compile
-       :type http
-       :url "https://raw.githubusercontent.com/zenitani/elisp/master/smart-compile.el")
