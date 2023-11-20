@@ -61,15 +61,9 @@
 
 ;; Don't litter file system with *~ backup files; put them all inside
 ;; ~/.emacs.d/backup or wherever
-(defun bedrock--backup-file-name (fpath)
-  "Return a new file path of a given file path.
-If the new path's directories does not exist, create them."
-  (let* ((backupRootDir "~/.emacs.d/emacs-backup/")
-         (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path
-         (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") )))
-    (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))
-    backupFilePath))
-(setq make-backup-file-name-function 'bedrock--backup-file-name)
+(defconst backup-dir "~/.emacs.d/backup/")
+(make-directory backup-dir t)
+(setq backup-directory-alist `((".*" . ,backup-dir)))
 (setq backup-by-copying-when-linked t)
 (setq delete-old-versions t
       kept-new-versions 6
