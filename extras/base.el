@@ -159,9 +159,6 @@
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
-(use-package eshell
-  :bind (("C-r" . consult-history)))
-
 ;; Orderless: powerful completion style
 (use-package orderless
   :ensure t
@@ -221,3 +218,9 @@
   :ensure t
   :config
   (direnv-mode))
+
+(use-package emacs
+  :ensure t
+  :config
+  (setopt isearch-lazy-count t)
+  (setopt isearch-lazy-highlight t))
