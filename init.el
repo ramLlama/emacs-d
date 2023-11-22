@@ -37,7 +37,8 @@
 (setopt display-time-default-load-average nil) ; this information is useless for most
 
 ;; Automatically reread from disk if the underlying file changes
-(setopt auto-revert-interval 10)
+(customize-set-variable 'auto-revert-avoid-polling t)
+(setopt auto-revert-interval 5)
 (setopt auto-revert-check-vc-info t)
 (global-auto-revert-mode)
 
