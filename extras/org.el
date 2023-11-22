@@ -41,13 +41,13 @@
 ;;; Phase 2 variables
 
 ;; Agenda variables
-(setq org-directory "~/Documents/org/") ; Non-absolute paths for agenda and
+(setopt org-directory "~/Documents/org/") ; Non-absolute paths for agenda and
                                         ; capture templates will look here.
 
-(setq org-agenda-files '("inbox.org" "work.org"))
+(setopt org-agenda-files '("inbox.org" "work.org"))
 
 ;; Default tags
-(setq org-tag-alist '(
+(setopt org-tag-alist '(
                       ;; locale
                       (:startgroup)
                       ("home" . ?h)
@@ -67,20 +67,20 @@
                       ("reading")))
 
 ;; Org-refile: where should org-refile look?
-(setq org-refile-targets 'FIXME)
+(setopt org-refile-targets 'FIXME)
 
 ;;; Phase 3 variables
 
 ;; Org-roam variables
-(setq org-roam-directory "~/Documents/org-roam/")
-(setq org-roam-index-file "~/Documents/org-roam/index.org")
+(setopt org-roam-directory "~/Documents/org-roam/")
+(setopt org-roam-index-file "~/Documents/org-roam/index.org")
 
 ;;; Optional variables
 
 ;; Advanced: Custom link types
 ;; This example is for linking a person's 7-character ID to their page on the
 ;; free genealogy website Family Search.
-(setq org-link-abbrev-alist
+(setopt org-link-abbrev-alist
       '(("family_search" . "https://www.familysearch.org/tree/person/details/%s")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -104,7 +104,7 @@
   (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 
   ;; Make exporting quotes better
-  (setq org-export-with-smart-quotes t)
+  (setopt org-export-with-smart-quotes t)
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -120,14 +120,14 @@
   :config
   ;; Instead of just two states (TODO, DONE) we set up a few different states
   ;; that a task can be in.
-  (setq org-todo-keywords
+  (setopt org-todo-keywords
         '((sequence "TODO(t)" "WAITING(w@/!)" "STARTED(s!)" "|" "DONE(d!)" "OBSOLETE(o@)")))
 
   ;; Refile configuration
-  (setq org-outline-path-complete-in-steps nil)
-  (setq org-refile-use-outline-path 'file)
+  (setopt org-outline-path-complete-in-steps nil)
+  (setopt org-refile-use-outline-path 'file)
 
-  (setq org-capture-templates
+  (setopt org-capture-templates
         '(("c" "Default Capture" entry (file "inbox.org")
            "* TODO %?\n%U\n%i")
           ;; Capture and keep an org-link to the thing we're currently working with
@@ -140,7 +140,7 @@
           ("wr" "Work report" entry (file+headline "work.org" "Reports")
            "** TODO %?\n%U\n%i\n%a")))
 
-    (setq org-agenda-custom-commands
+    (setopt org-agenda-custom-commands
           '(("n" "Agenda and All Todos"
              ((agenda)
               (todo)))
@@ -170,7 +170,7 @@
 ;  :ensure t
 ;  :after org-roam
 ;  :config
-;  (setq org-roam-ui-sync-theme t
+;  (setopt org-roam-ui-sync-theme t
 ;        org-roam-ui-follow t
 ;        org-roam-ui-update-on-save t
 ;        org-roam-ui-open-on-start t))

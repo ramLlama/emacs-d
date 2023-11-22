@@ -19,11 +19,11 @@
   :ensure t
 
   :init
-  (setq evil-respect-visual-line-mode t)
-  (setq evil-undo-system 'undo-redo)
+  (setopt evil-respect-visual-line-mode t)
+  (setopt evil-undo-system 'undo-redo)
 
   ;; Enable this if you want C-u to scroll up, more like pure Vim
-  ;(setq evil-want-C-u-scroll t)
+  ;(setopt evil-want-C-u-scroll t)
 
   :config
   (evil-mode)

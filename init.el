@@ -31,14 +31,14 @@
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 
 ;; If you want to turn off the welcome screen, uncomment this
-(setq inhibit-splash-screen t)
+(setopt inhibit-splash-screen t)
 
-(setq initial-major-mode 'fundamental-mode)  ; default mode for the *scratch* buffer
-(setq display-time-default-load-average nil) ; this information is useless for most
+(setopt initial-major-mode 'fundamental-mode)  ; default mode for the *scratch* buffer
+(setopt display-time-default-load-average nil) ; this information is useless for most
 
 ;; Automatically reread from disk if the underlying file changes
-(setq auto-revert-interval 10)
-(setq auto-revert-check-vc-info t)
+(setopt auto-revert-interval 10)
+(setopt auto-revert-check-vc-info t)
 (global-auto-revert-mode)
 
 ;; Save history of minibuffer
@@ -48,12 +48,12 @@
 (use-package ace-window
   :ensure t
   :config
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (setopt aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind (("C-x o" . ace-window)))
 (windmove-default-keybindings 'control) ; You can use other modifiers here
 
 ;; Fix archaic defaults
-(setq sentence-end-double-space nil)
+(setopt sentence-end-double-space nil)
 
 ;; Make right-click do something sensible
 (when (display-graphic-p)
@@ -63,9 +63,9 @@
 ;; ~/.emacs.d/backup or wherever
 (defconst backup-dir "~/.emacs.d/backup/")
 (make-directory backup-dir t)
-(setq backup-directory-alist `((".*" . ,backup-dir)))
-(setq backup-by-copying-when-linked t)
-(setq delete-old-versions t
+(setopt backup-directory-alist `((".*" . ,backup-dir)))
+(setopt backup-by-copying-when-linked t)
+(setopt delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2
       version-control t)
@@ -74,7 +74,7 @@
 ;; scattered all over the file system!
 (defconst auto-save-dir "~/.emacs.d/auto-saves/")
 (make-directory auto-save-dir t)
-(setq auto-save-file-name-transforms
+(setopt auto-save-file-name-transforms
       `((".*" ,auto-save-dir t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -101,26 +101,26 @@
 
 ;; For help, see: https://www.masteringemacs.org/article/understanding-minibuffer-completion
 
-(setq enable-recursive-minibuffers t)                ; Use the minibuffer whilst in the minibuffer
-(setq completion-cycle-threshold 1)                  ; TAB cycles candidates
-(setq completions-detailed t)                        ; Show annotations
-(setq tab-always-indent 'complete)                   ; When I hit TAB, try to complete, otherwise, indent
-(setq completion-styles '(basic initials substring)) ; Different styles to match input to candidates
+(setopt enable-recursive-minibuffers t)                ; Use the minibuffer whilst in the minibuffer
+(setopt completion-cycle-threshold 1)                  ; TAB cycles candidates
+(setopt completions-detailed t)                        ; Show annotations
+(setopt tab-always-indent 'complete)                   ; When I hit TAB, try to complete, otherwise, indent
+(setopt completion-styles '(basic initials substring)) ; Different styles to match input to candidates
 
-(setq completion-auto-help 'always)                  ; Open completion always; `lazy' another option
-(setq completions-max-height 20)                     ; This is arbitrary
-(setq completions-detailed t)
-(setq completions-format 'one-column)
-(setq completions-group t)
-(setq completion-auto-select 'second-tab)            ; Much more eager
-;(setq completion-auto-select t)                     ; See `C-h v completion-auto-select' for more possible values
+(setopt completion-auto-help 'always)                  ; Open completion always; `lazy' another option
+(setopt completions-max-height 20)                     ; This is arbitrary
+(setopt completions-detailed t)
+(setopt completions-format 'one-column)
+(setopt completions-group t)
+(setopt completion-auto-select 'second-tab)            ; Much more eager
+;(setopt completion-auto-select t)                     ; See `C-h v completion-auto-select' for more possible values
 
 (keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
 
 ;; For a fancier built-in completion option, try ido-mode or fido-mode. See also
 ;; the file extras/base.el
 ;(fido-vertical-mode)
-;(setq icomplete-delay-completions-threshold 4000)
+;(setopt icomplete-delay-completions-threshold 4000)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -129,23 +129,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Mode line information
-(setq line-number-mode t)                        ; Show current line in modeline
-(setq column-number-mode t)                      ; Show column as well
+(setopt line-number-mode t)                        ; Show current line in modeline
+(setopt column-number-mode t)                      ; Show column as well
 
-(setq x-underline-at-descent-line nil)           ; Prettier underlines
-(setq switch-to-buffer-obey-display-actions t)   ; Make switching buffers more consistent
+(setopt x-underline-at-descent-line nil)           ; Prettier underlines
+(setopt switch-to-buffer-obey-display-actions t)   ; Make switching buffers more consistent
 
-(setq-default show-trailing-whitespace nil)      ; By default, don't underline trailing spaces
-(setq-default indicate-buffer-boundaries 'left)  ; Show buffer top and bottom in the margin
+(setopt show-trailing-whitespace nil)      ; By default, don't underline trailing spaces
+(setopt indicate-buffer-boundaries 'left)  ; Show buffer top and bottom in the margin
 
 ;; Enable horizontal scrolling
-(setq mouse-wheel-tilt-scroll t)
-(setq mouse-wheel-flip-direction t)
+(setopt mouse-wheel-tilt-scroll t)
+(setopt mouse-wheel-flip-direction t)
 
 ;; We won't set these, but they're good to know about
 ;;
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setopt indent-tabs-mode nil)
+(setopt tab-width 4)
 
 ;; Misc. UI tweaks
 (blink-cursor-mode -1)                                ; Steady cursor
@@ -153,7 +153,7 @@
 
 ;; Display line numbers in programming mode
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(setq-default display-line-numbers-width 3)           ; Set a minimum width
+(setopt display-line-numbers-width 3)           ; Set a minimum width
 
 ;; Nice line wrapping when working with text
 (add-hook 'text-mode-hook 'visual-line-mode)
@@ -169,13 +169,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Show the tab-bar as soon as tab-bar functions are invoked
-(setq tab-bar-show 0)
+(setopt tab-bar-show 0)
 
 ;; Add the time to the tab-bar, if visible
 (add-to-list 'tab-bar-format 'tab-bar-format-align-right 'append)
 (add-to-list 'tab-bar-format 'tab-bar-format-global 'append)
-(setq display-time-format "%a %F %T")
-(setq display-time-interval 1)
+(setopt display-time-format "%a %F %T")
+(setopt display-time-interval 1)
 (display-time-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

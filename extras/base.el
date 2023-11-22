@@ -50,7 +50,7 @@
          ("C-s" . consult-line))     ; orig. isearch
   :config
   ;; Narrowing lets you restrict results to certain groups of candidates
-  (setq consult-narrow-key "<"))
+  (setopt consult-narrow-key "<"))
 
 (use-package embark
   :ensure t
@@ -150,7 +150,7 @@
 (use-package orderless
   :ensure t
   :config
-  (setq completion-styles '(orderless)))
+  (setopt completion-styles '(orderless)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -162,10 +162,10 @@
   :ensure t
   :config
   (midnight-delay-set 'midnight-delay 0)            ;; midnight is midnight
-  (setq midnight-period (* 4 60 60))                ;; but run it every 4 hours
-  (setq clean-buffer-list-delay-special (* 15 60))  ;; buffer last touched delta
-  (setq clean-buffer-list-kill-regexps '("^.*$"))   ;; keep these buffers
-  (setq clean-buffer-list-kill-never-buffer-names
+  (setopt midnight-period (* 4 60 60))                ;; but run it every 4 hours
+  (setopt clean-buffer-list-delay-special (* 15 60))  ;; buffer last touched delta
+  (setopt clean-buffer-list-kill-regexps '("^.*$"))   ;; keep these buffers
+  (setopt clean-buffer-list-kill-never-buffer-names
         '("*Messages*" "*scratch*")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -178,13 +178,13 @@
 (use-package wgrep
   :ensure t
   :config
-  (setq wgrep-auto-save-buffer t))
+  (setopt wgrep-auto-save-buffer t))
 
 ;; Delete trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; modern fill column
-(setq-default fill-column 100)
+(setopt fill-column 100)
 
 ;; C-w dwim
 (defun ram-custom--cw-dwim ()

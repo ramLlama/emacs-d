@@ -30,7 +30,7 @@
 
 ;;; These variables must be set for citar to work properly!
 
-(setq citar-bibliography '("~/refs.bib")) ; paths to your bibtex files
+(setopt citar-bibliography '("~/refs.bib")) ; paths to your bibtex files
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -64,7 +64,7 @@
   :no-require
   :config
   (citar-org-roam-mode)
-  (setq citar-org-roam-note-title-template "${author} - ${title}\n#+filetags: ${tags}"))
+  (setopt citar-org-roam-note-title-template "${author} - ${title}\n#+filetags: ${tags}"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

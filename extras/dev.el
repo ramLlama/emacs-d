@@ -97,7 +97,7 @@
 
   :config
   (fset #'jsonrpc--log-event #'ignore)  ; massive perf boost---don't log every event
-  (setq eglot-report-progress nil)
+  (setopt eglot-report-progress nil)
   (add-hook 'eglot-managed-mode-hook (lambda () (setq-local eldoc-documentation-strategy 'eldoc-documentation-compose)))
   ;; Sometimes you need to tell Eglot where to find the language server
   ; (add-to-list 'eglot-server-programs
