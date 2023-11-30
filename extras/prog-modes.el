@@ -17,7 +17,6 @@
 (use-package sml-mode
   :ensure t
   :mode ("\\.sml\\'" "/mlton[^/]*/.*\\.sig\\'" "/mlton[^/]*/.*\\.fun\\'")
-  :after compile
   :config
   (add-to-list 'compilation-error-regexp-alist
    '("^\\(Warning\\|Error\\): \\(.+\\) \\([0-9]+\\)\\.\\([0-9]+\\)-[0-9]+\\.[0-9]+\\.$" 2 3 4)))
@@ -30,7 +29,7 @@
 
 (use-package blacken
   :ensure t
-  :after python
+  :defer t
   :hook (python-mode . blacken-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
