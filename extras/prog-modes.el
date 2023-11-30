@@ -41,3 +41,8 @@
 (use-package typescript-mode
   :ensure t
   :mode ("\\.ts\\'"))
+
+(use-package prettier
+  :ensure t
+  :defer t
+  :hook (typescript-mode . prettier-mode))
