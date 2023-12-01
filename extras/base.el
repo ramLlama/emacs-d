@@ -208,6 +208,32 @@
     (backward-kill-word 1)))
 (global-set-key (kbd "C-w") 'ram-custom--cw-dwim)
 
+;; custom split-window-sensibly
+;; Adapted from https://lists.gnu.org/archive/html/help-gnu-emacs/2015-08/msg00339.html
+(defun ram-custom--split-window-sensibly (&optional window)
+  (setq window (or window (selected-window)))
+  (or (and (window-splittable-p window t)
+           ;; Split window horizontally.
+           (split-window window nil 'right))
+      (and (window-splittable-p window)
+           ;; Split window vertically.
+           (split-window window nil 'below))
+      (and (eq window (frame-root-window (window-frame window)))
+           (not (window-minibuffer-p window))
+           ;; If WINDOW is the only window on its frame and is not the
+           ;; minibuffer window, try to split it horizontally disregarding the
+           ;; value of `split-width-threshold'.
+           (let ((split-width-threshold 0))
+             (when (window-splittable-p window t)
+               (split-window window nil 'right))))))
+
+(use-package window
+  :config
+  (setq-default split-height-threshold  4
+                split-width-threshold   160)
+  (setopt split-window-preferred-function 'ram-custom--split-window-sensibly))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   globally useful configurations
