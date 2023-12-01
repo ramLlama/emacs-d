@@ -174,7 +174,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Show the tab-bar as soon as tab-bar functions are invoked
-(setopt tab-bar-show 0)
+(setopt tab-bar-show 1)
 
 ;; Add the time to the tab-bar, if visible
 (add-to-list 'tab-bar-format 'tab-bar-format-align-right 'append)
