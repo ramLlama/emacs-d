@@ -6,7 +6,6 @@
 
 ;; Startup speed, annoyance suppression
 (setopt gc-cons-threshold 10000000)
-(setopt byte-compile-warnings '(not obsolete))
 (setopt warning-suppress-log-types '((comp) (bytecomp)))
 (setopt native-comp-async-report-warnings-errors 'silent)
 
