@@ -14,7 +14,8 @@
 
 ;; Default frame configuration: full screen, good-looking title bar on macOS
 (setopt frame-resize-pixelwise t)
-(tool-bar-mode -1)
+(if (display-graphic-p)
+    (tool-bar-mode -1))
 (menu-bar-mode -1)  ;; no tool or menu bar
 (setopt default-frame-alist '((fullscreen . maximized)
 
