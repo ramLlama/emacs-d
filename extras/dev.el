@@ -60,6 +60,33 @@
   :ensure t
   :bind (("C-x g" . magit-status)))
 
+(defun show-github-url ()
+  "Shows the GitHub URL for this file on the default branch on origin remote."
+  (interactive)
+  (let ((git-toplevel (magit-toplevel)))
+    (if git-toplevel
+        (let* ((origin-url (car (magit-git-lines "config" "--get" "remote.origin.url")))
+               (origin-default-branch
+                (string-remove-prefix "origin/"
+                                      (car (magit-git-lines "symbolic-ref"
+                                                            "refs/remotes/origin/HEAD"
+                                                            "--short"))))
+             (www-url-prefix (save-match-data
+                               (or (and (string-match "^git@\\([^:]+\\):\\(.+?\\)\\.git$" origin-url)
+                                    (concat "https://"
+                                            (match-string 1 origin-url)
+                                            "/"
+                                            (match-string 2 origin-url)))
+                                   (and (string-match "^https://\\([^/]+\\)/\\(.+?\\)\\(\\.git\\)?$" origin-url)
+                                    (concat "https://"
+                                            (match-string 1 origin-url)
+                                            "/"
+                                            (match-string 2 origin-url))))))
+             (www-url-suffix (string-remove-prefix git-toplevel (buffer-file-name)))
+             (www-url (concat www-url-prefix "/blob/" origin-default-branch "/" www-url-suffix)))
+          (message www-url))
+    (message "Not a gitrepo"))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Common file types
