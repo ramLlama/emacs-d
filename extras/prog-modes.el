@@ -7,6 +7,8 @@
 ;;;  - SML
 ;;;  - Python
 ;;;  - typescript
+;;;  - json
+;;;  - java
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -29,7 +31,6 @@
 
 (use-package blacken
   :ensure t
-  :defer t
   :hook (python-mode . blacken-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -44,7 +45,6 @@
 
 (use-package prettier
   :ensure t
-  :defer t
   :hook (typescript-mode . prettier-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -55,3 +55,16 @@
 
 (use-package jq-mode
   :ensure t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Java
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package eglot-java
+  :ensure t
+  :config
+  (setopt eglot-java-eclipse-jdt-cache-directory (ram-custom--local-dir "eglot-java/jdt-cache"))
+  (setopt eglot-java-server-install-dir (ram-custom--local-dir "eglot-java/jdtls-install"))
+  :hook (java-mode . eglot-java-mode))

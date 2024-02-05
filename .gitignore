@@ -17,3 +17,4 @@
 tree-sitter/
 auto-saves/
 backup/
+.local/

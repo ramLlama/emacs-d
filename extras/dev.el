@@ -33,7 +33,7 @@
 
   ;; Tell Emacs to prefer the treesitter mode. Also set each treesitter mode to run the original hooks.
   ;; You'll want to run the command `M-x treesit-install-language-grammar' before editing.
-  (dolist (mode-prefix '(yaml bash js2 typescript json css python))
+  (dolist (mode-prefix '(yaml bash js2 typescript json css python java))
     (let ((orig-mode (intern (concat (symbol-name mode-prefix) "-mode")))
           (ts-mode (intern (concat (symbol-name mode-prefix) "-ts-mode")))
           (orig-mode-hook (intern (concat (symbol-name mode-prefix) "-mode-hook")))
