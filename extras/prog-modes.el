@@ -9,6 +9,7 @@
 ;;;  - typescript
 ;;;  - json
 ;;;  - java
+;;;  - Terraform
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -68,3 +69,14 @@
   (setopt eglot-java-eclipse-jdt-cache-directory (ram-custom--local-dir "eglot-java/jdt-cache"))
   (setopt eglot-java-server-install-dir (ram-custom--local-dir "eglot-java/jdtls-install"))
   :hook (java-mode . eglot-java-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Terraform
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package terraform-mode
+  :ensure t
+  :mode ("\\.tf\\'"))
