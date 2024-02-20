@@ -91,6 +91,11 @@
 (use-package embark-consult
   :ensure t)
 
+;; cross-terminal/ssh/tmux/host clipboard
+(use-package clipetty
+  :ensure t
+  :hook (after-init . global-clipetty-mode))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Minibuffer and completion
