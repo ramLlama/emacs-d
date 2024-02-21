@@ -47,6 +47,10 @@
 (with-eval-after-load 'package
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 
+;; Allow package to upgrade built-in packages
+(with-eval-after-load 'package
+  (setopt package-install-upgrade-built-in t))
+
 ;; If you want to turn off the welcome screen, uncomment this
 (setopt inhibit-splash-screen t)
 
