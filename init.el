@@ -32,6 +32,13 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Add Quelpa support to use-package
+(use-package quelpa
+  :ensure t)
+
+(use-package quelpa-use-package
+  :ensure t)
+
 ;; Package initialization
 ;;
 ;; We'll stick to the built-in GNU and non-GNU ELPAs (Emacs Lisp Package
