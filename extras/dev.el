@@ -21,6 +21,7 @@
 ;;;  - Common file types
 ;;;  - Eglot, the built-in LSP client for Emacs
 ;;;  - Dape, the Debug Adapter Protocol client for Emacs
+;;;  - Github Copilot
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -159,3 +160,18 @@
             (defun dape--save-on-start ()
               (save-some-buffers)))
   )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   GitHub Copilot
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package copilot
+  :quelpa (copilot :fetcher github
+                   :repo "copilot-emacs/copilot.el"
+                   :branch "main"
+                   :files ("dist" "*.el"))
+  :ensure t
+  :hook (((prog-mode) . copilot-mode))
+  :bind (("C-x TAB" . copilot-accept-completion)))
