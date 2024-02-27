@@ -65,9 +65,10 @@
 (setopt display-time-default-load-average nil) ; this information is useless for most
 
 ;; Automatically reread from disk if the underlying file changes
-(customize-set-variable 'auto-revert-avoid-polling t)
+(setopt 'auto-revert-avoid-polling t)
 (setopt auto-revert-interval 5)
 (setopt auto-revert-check-vc-info t)
+(setopt auto-revert-remote-files t)
 (global-auto-revert-mode)
 
 ;; Save history of minibuffer
