@@ -61,7 +61,6 @@
 ;; If you want to turn off the welcome screen, uncomment this
 (setopt inhibit-splash-screen t)
 
-(setopt initial-major-mode 'fundamental-mode)  ; default mode for the *scratch* buffer
 (setopt display-time-default-load-average nil) ; this information is useless for most
 
 ;; Automatically reread from disk if the underlying file changes
