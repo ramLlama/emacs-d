@@ -74,7 +74,7 @@
                                                             "refs/remotes/origin/HEAD"
                                                             "--short"))))
              (www-url-prefix (save-match-data
-                               (or (and (string-match "^git@\\([^:]+\\):\\(.+?\\)\\.git$" origin-url)
+                               (or (and (string-match "^git@\\([^:]+\\):\\(.+?\\)\\(\\.git\\)?$" origin-url)
                                     (concat "https://"
                                             (match-string 1 origin-url)
                                             "/"
