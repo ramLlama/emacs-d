@@ -94,7 +94,6 @@
 ;; cross-terminal/ssh/tmux/host clipboard
 (use-package clipetty
   :ensure t
-  :config (setopt clipetty-tmux-ssh-tty "tmux display-message -p '#{pane_tty}'")
   :hook (after-init . global-clipetty-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
