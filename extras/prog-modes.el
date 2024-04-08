@@ -68,7 +68,9 @@
   :config
   (setopt eglot-java-eclipse-jdt-cache-directory (ram-custom--local-dir "eglot-java/jdt-cache"))
   (setopt eglot-java-server-install-dir (ram-custom--local-dir "eglot-java/jdtls-install"))
-  :hook (java-mode . eglot-java-mode))
+  (defun eglot-java--project-try (dir)
+    nil)
+  :hook ((java-mode . eglot-java-mode)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
