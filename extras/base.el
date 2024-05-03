@@ -234,7 +234,7 @@
 
 (use-package window
   :config
-  (setq-default split-height-threshold  4
+  (setq-default split-height-threshold  120
                 split-width-threshold   160)
   (setopt split-window-preferred-function 'ram-custom--split-window-sensibly))
 
