@@ -255,3 +255,7 @@
   :config
   (setopt isearch-lazy-count t)
   (setopt isearch-lazy-highlight t))
+
+(use-package flyspell
+  :hook ((prog-mode . flyspell-prog-mode)
+         (text-mode . flyspell-mode)))
