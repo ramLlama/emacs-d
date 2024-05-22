@@ -248,7 +248,7 @@
 
 (use-package vundo
   :ensure t
-  :config (setop vundo-glyph-alist vundo-unicode-symbols))
+  :config (setopt vundo-glyph-alist vundo-unicode-symbols))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
