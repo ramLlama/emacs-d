@@ -78,7 +78,8 @@
   :ensure t
   :config
   (setopt aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  :bind (("C-x o" . ace-window)))
+  (setopt ace-window-display-mode t)
+  :bind (("M-o" . ace-window)))
 (windmove-default-keybindings 'control) ; You can use other modifiers here
 
 ;; Fix archaic defaults
