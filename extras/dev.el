@@ -177,3 +177,6 @@
   :ensure t
   :hook (((prog-mode) . copilot-mode))
   :bind (("C-x TAB" . copilot-accept-completion)))
+
+(use-package copilot-chat
+  :ensure t)
