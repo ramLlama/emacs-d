@@ -104,3 +104,7 @@
 (use-package clang-format
   :ensure t
   :hook ((c-mode c++-mode) . clang-format-on-save-mode))
+
+(use-package cmake-ts-mode
+  :ensure t
+  :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'"))
