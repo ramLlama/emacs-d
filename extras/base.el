@@ -251,6 +251,9 @@
   :ensure t
   :config (setopt vundo-glyph-alist vundo-unicode-symbols))
 
+(use-package multiple-cursors
+  :ensure t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   globally useful configurations
