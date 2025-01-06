@@ -271,6 +271,7 @@
   (setopt isearch-lazy-count t)
   (setopt isearch-lazy-highlight t))
 
-(use-package flyspell
-  :hook ((prog-mode . flyspell-prog-mode)
-         (text-mode . flyspell-mode)))
+(use-package jinx
+  :hook ((prog-mode . jinx-mode)
+         (conf-mode-mode . jinx-mode)
+         (text-mode . jinx-mode)))
