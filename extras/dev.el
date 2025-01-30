@@ -19,9 +19,10 @@
 ;;;  - Built-in config for developers
 ;;;  - Version Control
 ;;;  - Common file types
-;;;  - Eglot, the built-in LSP client for Emacs
+;;;  - LSP and DAP Tools
 ;;;  - Dape, the Debug Adapter Protocol client for Emacs
-;;;  - Github Copilot
+;;;  - Combobulate
+;;;  - AI Tools
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -116,7 +117,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Eglot, the built-in LSP client for Emacs
+;;;   LSP and DAP Tools
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -142,12 +143,6 @@
   ;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
   )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Dape, the Debug Adapter Protocol client for Emacs
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (use-package dape
   :ensure t
   :config
@@ -170,7 +165,26 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   GitHub Copilot
+;;;   Combobulate
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(use-package combobulate
+  :quelpa (combobulate :fetcher github
+                       :repo "mickeynp/combobulate"
+                       :branch "master"
+                       :files ("*.el"))
+  :custom
+  ;; You can customize Combobulate's key prefix here.
+  ;; Note that you may have to restart Emacs for this to take effect!
+  (combobulate-key-prefix "C-c s")
+  :hook ((prog-mode . combobulate-mode)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   AI Tools
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -186,19 +200,13 @@
 (use-package copilot-chat
   :ensure t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Combobulate
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package aider
+  :quelpa (aider :fetcher github
+                   :repo "tninja/aider.el"
+                   :branch "main"
+                   :files ("aider.el"))
+  :config
+  ;; Use local ollama deepseek-r1-distill-qwen-1.5b
+  (setq aider-args '("--model" "ollama_chat/deepseek-r1:1.5b"))
 
-
-(use-package combobulate
-   :custom
-   ;; You can customize Combobulate's key prefix here.
-   ;; Note that you may have to restart Emacs for this to take effect!
-   (combobulate-key-prefix "C-c s")
-   :hook ((prog-mode . combobulate-mode))
-   ;; Amend this to the directory where you keep Combobulate's source
-   ;; code.
-   :load-path ("~/other-repos/combobulate"))
+  (global-set-key (kbd "C-x a") 'aider-transient-menu))
