@@ -52,6 +52,16 @@
                                   (ansi-color-apply-on-region compilation-filter-start
                                                               (point-max))))))
 
+;; flymake config
+(use-package flymake
+  :custom
+  (flymake-show-diagnostics-at-end-of-line t)
+  (flymake-indicator-type 'margins)
+  (flymake-margin-indicators-string
+   `((error "!" compilation-error)
+     (warning "*" compilation-warning)
+     (note "»" compilation-info))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Version Control
@@ -171,10 +181,8 @@
 
 
 (use-package combobulate
-  :quelpa (combobulate :fetcher github
-                       :repo "mickeynp/combobulate"
-                       :branch "master"
-                       :files ("*.el"))
+  :ensure t
+  :vc (:url "https://github.com/mickeynp/combobulate")
   :custom
   ;; You can customize Combobulate's key prefix here.
   ;; Note that you may have to restart Emacs for this to take effect!
@@ -189,24 +197,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package copilot
-  :quelpa (copilot :fetcher github
-                   :repo "copilot-emacs/copilot.el"
-                   :branch "main"
-                   :files ("dist" "*.el"))
+  :vc (:url "https://github.com/copilot-emacs/copilot.el")
   :ensure t
   :hook (((prog-mode) . copilot-mode))
   :bind (("C-x TAB" . copilot-accept-completion)))
 
 (use-package copilot-chat
   :ensure t)
-
-(use-package aider
-  :quelpa (aider :fetcher github
-                   :repo "tninja/aider.el"
-                   :branch "main"
-                   :files ("aider.el"))
-  :config
-  ;; Use local ollama deepseek-r1-distill-qwen-1.5b
-  (setq aider-args '("--model" "ollama_chat/deepseek-r1:1.5b"))
-
-  (global-set-key (kbd "C-x a") 'aider-transient-menu))

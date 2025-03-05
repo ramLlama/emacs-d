@@ -32,13 +32,6 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Add Quelpa support to use-package
-(use-package quelpa
-  :ensure t)
-
-(use-package quelpa-use-package
-  :ensure t)
-
 ;; Package initialization
 ;;
 ;; We'll stick to the built-in GNU and non-GNU ELPAs (Emacs Lisp Package
@@ -213,6 +206,8 @@
 
 (use-package modus-themes
   :ensure t
+  :custom
+  (modus-themes-italic-constructs t)
   :config
   (load-theme 'modus-vivendi-tinted t))
 
@@ -256,16 +251,3 @@
 ;;;   Built-in customization framework
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
