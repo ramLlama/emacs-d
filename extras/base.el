@@ -260,16 +260,10 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package direnv
-  :ensure t
-  :config
-  (direnv-mode))
-
 (use-package emacs
   :ensure t
-  :config
-  (setopt isearch-lazy-count t)
-  (setopt isearch-lazy-highlight t))
+  :config (setopt isearch-lazy-count t
+                  isearch-lazy-highlight t))
 
 (use-package jinx
   :hook ((prog-mode . jinx-mode)

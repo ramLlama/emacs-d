@@ -31,6 +31,12 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package python
+  :ensure t
+  :config (setopt python-indent-offset 4
+                  python-indent-guess-indent-offset nil
+                  python-indent-guess-indent-offset-verbose nil))
+
 (use-package blacken
   :ensure t
   :hook (python-mode . blacken-mode))

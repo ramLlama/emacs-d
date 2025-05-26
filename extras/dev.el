@@ -20,8 +20,7 @@
 ;;;  - Version Control
 ;;;  - Common file types
 ;;;  - LSP and DAP Tools
-;;;  - Dape, the Debug Adapter Protocol client for Emacs
-;;;  - Combobulate
+;;;  - Misc. Tools
 ;;;  - AI Tools
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -175,9 +174,15 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
-;;;   Combobulate
+;;;   Misc. Tools
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(use-package direnv
+  :ensure t
+  :config
+  (direnv-mode))
 
 
 (use-package combobulate
