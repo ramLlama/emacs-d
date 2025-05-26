@@ -41,7 +41,8 @@
           (orig-mode-hook (intern (concat (symbol-name mode-prefix) "-mode-hook")))
           (ts-mode-hook (intern (concat (symbol-name mode-prefix) "-ts-mode-hook"))))
       (add-to-list 'major-mode-remap-alist (cons orig-mode ts-mode))
-      (add-hook ts-mode-hook `(lambda () (run-hooks ',orig-mode-hook))))))
+      (add-hook ts-mode-hook `(lambda () (run-hooks ',orig-mode-hook)))))
+  :hook (prog-mode . (lambda () (kill-local-variable 'tab-width))))
 
 ;; color support for compilation-mode
 (use-package compile

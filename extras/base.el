@@ -263,7 +263,8 @@
 (use-package emacs
   :ensure t
   :config (setopt isearch-lazy-count t
-                  isearch-lazy-highlight t))
+                  isearch-lazy-highlight t
+                  tab-width 4))
 
 (use-package jinx
   :hook ((prog-mode . jinx-mode)
