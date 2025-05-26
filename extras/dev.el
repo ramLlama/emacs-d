@@ -205,8 +205,11 @@
 (use-package copilot
   :vc (:url "https://github.com/copilot-emacs/copilot.el")
   :ensure t
+  :custom (copilot-idle-delay 3)
   :hook (((prog-mode) . copilot-mode))
-  :bind (("C-x TAB" . copilot-accept-completion)))
+  :bind (("C-x TAB" . copilot-accept-completion-by-line)))
 
-(use-package copilot-chat
-  :ensure t)
+(use-package gptel
+  :ensure t
+  :config (setopt gptel-model 'claude-sonnet-4
+                  gptel-backend (gptel-make-gh-copilot "Copilot")))
