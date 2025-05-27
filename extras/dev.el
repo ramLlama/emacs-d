@@ -55,7 +55,6 @@
 ;; flymake config
 (use-package flymake
   :custom
-  (flymake-show-diagnostics-at-end-of-line t)
   (flymake-indicator-type 'margins)
   (flymake-margin-indicators-string
    `((error "!" compilation-error)
