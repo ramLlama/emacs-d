@@ -144,7 +144,7 @@
   :config
   (fset #'jsonrpc--log-event #'ignore)  ; massive perf boost---don't log every event
   (setopt eglot-report-progress nil)
-  (add-hook 'eglot-managed-mode-hook (lambda () (setq-local eldoc-documentation-strategy 'eldoc-documentation-compose)))
+  (add-hook 'eglot-managed-mode-hook (lambda () (setq-local eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)))
   (setopt eglot-sync-connect 3)  ; block 3 seconds to connect, then move to bg
   (setopt eglot-connect-timeout 60)  ; wait 60 seconds for connection
   ;; Sometimes you need to tell Eglot where to find the language server
