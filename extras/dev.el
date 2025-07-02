@@ -184,10 +184,6 @@
 (use-package combobulate
   :ensure t
   :vc (:url "https://github.com/mickeynp/combobulate")
-  :custom
-  ;; You can customize Combobulate's key prefix here.
-  ;; Note that you may have to restart Emacs for this to take effect!
-  (combobulate-key-prefix "C-c s")
   :hook ((prog-mode . combobulate-mode)))
 
 
@@ -200,4 +196,5 @@
 (use-package gptel
   :ensure t
   :config (setopt gptel-model 'claude-sonnet-4
-                  gptel-backend (gptel-make-gh-copilot "Copilot")))
+                  gptel-backend (gptel-make-gh-copilot "Copilot"))
+  :bind ("C-x l" . gptel-menu))
