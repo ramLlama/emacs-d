@@ -45,9 +45,9 @@
                      "pylsp"
                      ("ruff"  "server"))))))
 
-(use-package blacken
+(use-package ruff-format
   :ensure t
-  :hook (python-mode . blacken-mode))
+  :hook (python-mode . ruff-format-on-save-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
