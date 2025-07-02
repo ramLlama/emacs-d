@@ -135,22 +135,18 @@
 
   ;; Configure hooks to automatically turn-on eglot for prog-mode.
   :hook
-  (((prog-mode) . eglot-ensure))
+  ((prog-mode . eglot-ensure)
+    (eglot-managed-mode . (lambda () (setq-local eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))))
 
   :custom
   (eglot-send-changes-idle-time 0.1)
   (eglot-extend-to-xref t)              ; activate Eglot in referenced non-project files
 
   :config
-  (fset #'jsonrpc--log-event #'ignore)  ; massive perf boost---don't log every event
-  (setopt eglot-report-progress nil)
-  (add-hook 'eglot-managed-mode-hook (lambda () (setq-local eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)))
-  (setopt eglot-sync-connect 3)  ; block 3 seconds to connect, then move to bg
-  (setopt eglot-connect-timeout 60)  ; wait 60 seconds for connection
-  ;; Sometimes you need to tell Eglot where to find the language server
-  ; (add-to-list 'eglot-server-programs
-  ;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
-  )
+  (setopt eglot-events-buffer-config '(:size 2000000 :format full)
+          eglot-report-progress t
+          eglot-sync-connect 3  ; block 3 seconds to connect, then move to bg
+          eglot-connect-timeout 60))  ; wait 60 seconds for connection
 
 (use-package dape
   :ensure t

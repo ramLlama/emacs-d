@@ -33,9 +33,17 @@
 
 (use-package python
   :ensure t
-  :config (setopt python-indent-offset 4
-                  python-indent-guess-indent-offset nil
-                  python-indent-guess-indent-offset-verbose nil))
+  :after eglot
+  :config
+  (setopt python-indent-offset 4
+          python-indent-guess-indent-offset nil
+          python-indent-guess-indent-offset-verbose nil)
+  (add-to-list 'eglot-server-programs
+               `((python-mode python-ts-mode) .
+                 ,(eglot-alternatives
+                   '(("basedpyright-langserver" "--stdio")
+                     "pylsp"
+                     ("ruff"  "server"))))))
 
 (use-package blacken
   :ensure t
