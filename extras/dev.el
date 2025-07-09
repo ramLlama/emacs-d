@@ -193,6 +193,13 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package copilot
+  :vc (:url "https://github.com/copilot-emacs/copilot.el")
+  :ensure t
+  :custom (copilot-idle-delay 2)
+  :hook (((prog-mode) . copilot-mode))
+  :bind (("C-x TAB" . copilot-accept-completion-by-line)))
+
 (use-package gptel
   :ensure t
   :config (setopt gptel-model 'claude-sonnet-4
