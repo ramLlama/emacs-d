@@ -196,9 +196,11 @@
 (use-package copilot
   :vc (:url "https://github.com/copilot-emacs/copilot.el")
   :ensure t
-  :custom (copilot-idle-delay 2)
+  :custom (copilot-idle-delay nil)
   :hook (((prog-mode) . copilot-mode))
-  :bind (("C-x TAB" . copilot-accept-completion-by-line)))
+  :bind (("C-x TAB" . copilot-complete)
+         :map copilot-completion-map
+         ("TAB" . copilot-accept-completion-by-line)))
 
 (use-package gptel
   :ensure t
