@@ -196,7 +196,9 @@
 (use-package copilot
   :vc (:url "https://github.com/copilot-emacs/copilot.el")
   :ensure t
-  :custom (copilot-idle-delay nil)
+  :custom
+  (copilot-idle-delay nil)
+  (copilot-enable-predicates nil)
   :hook (((prog-mode) . copilot-mode))
   :bind (("C-x TAB" . copilot-complete)
          :map copilot-completion-map
