@@ -186,6 +186,10 @@
   :vc (:url "https://github.com/mickeynp/combobulate")
   :hook ((prog-mode . combobulate-mode)))
 
+(use-package vterm
+  :ensure t
+  :custom (vterm-max-scrollback 100000))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -209,3 +213,10 @@
   :config (setopt gptel-model 'claude-sonnet-4
                   gptel-backend (gptel-make-gh-copilot "Copilot"))
   :bind ("C-x l" . gptel-menu))
+
+(use-package claude-code
+  :ensure t
+  :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
+  :custom (claude-code-terminal-backend 'vterm)
+  :config (claude-code-mode)
+  :bind-keymap ("C-x c" . claude-code-command-map))
