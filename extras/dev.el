@@ -221,6 +221,12 @@
     :stream t
     :models '(hf.co/unsloth/Llama-3.1-8B-Instruct-GGUF:IQ4_XS
               hf.co/bartowski/DeepSeek-Coder-V2-Lite-Instruct-GGUF:Q4_K_M))
+  (let ((el-files (directory-files
+                   (expand-file-name "gptel-extras" user-emacs-directory)
+                   t
+                   "\\.el$")))
+    (dolist (file el-files)
+      (load file)))
   :bind ("C-x l" . gptel-menu))
 
 (use-package claude-code
