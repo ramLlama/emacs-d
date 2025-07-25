@@ -19,4 +19,6 @@ tree-sitter/
 auto-saves/
 backup/
 .local/
+%backup%~
+tramp
 local-init.el
