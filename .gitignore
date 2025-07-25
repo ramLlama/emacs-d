@@ -19,3 +19,4 @@ tree-sitter/
 auto-saves/
 backup/
 .local/
+local-init.el

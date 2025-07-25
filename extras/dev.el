@@ -198,6 +198,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package copilot
+  :if (and (boundp 'ram-custom--enable-copilot) ram-custom--enable-copilot)
   :vc (:url "https://github.com/copilot-emacs/copilot.el")
   :ensure t
   :custom
@@ -208,13 +209,22 @@
          :map copilot-completion-map
          ("TAB" . copilot-accept-completion-by-line)))
 
+
+
 (use-package gptel
+  :if (and (boundp 'ram-custom--enable-gptel) 'ram-custom--enable-gptel)
   :ensure t
-  :config (setopt gptel-model 'claude-sonnet-4
-                  gptel-backend (gptel-make-gh-copilot "Copilot"))
+  :config
+  (gptel-make-gh-copilot "Copilot")
+  (gptel-make-ollama "Ollama"
+    :host "localhost:11434"
+    :stream t
+    :models '(hf.co/unsloth/Llama-3.1-8B-Instruct-GGUF:IQ4_XS
+              hf.co/bartowski/DeepSeek-Coder-V2-Lite-Instruct-GGUF:Q4_K_M))
   :bind ("C-x l" . gptel-menu))
 
 (use-package claude-code
+  :if (and (boundp 'ram-custom--enable-claude-code) ram-custom--enable-claude-code)
   :ensure t
   :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
   :custom (claude-code-terminal-backend 'vterm)

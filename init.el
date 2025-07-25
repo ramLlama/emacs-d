@@ -217,6 +217,9 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Load local customizations
+(load (expand-file-name "local-init.el" user-emacs-directory))
+
 ;; Uncomment the (load-file …) lines or copy code from the extras/ elisp files
 ;; as desired
 
