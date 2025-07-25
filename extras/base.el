@@ -253,6 +253,21 @@
 (use-package multiple-cursors
   :ensure t)
 
+;; allow -diff as command-line for vimdiff replacement
+(defun ram-custom--command-line-diff (switch)
+  (let ((file1 (pop command-line-args-left))
+        (file2 (pop command-line-args-left)))
+    (ediff file1 file2)))
+
+(use-package ediff
+  :ensure t
+  :config
+  (add-to-list 'command-switch-alist '("-diff" . ram-custom--command-line-diff))
+  (setopt ediff-diff-options "-w")
+  (setopt ediff-split-window-function 'split-window-horizontally)
+  (setopt ediff-window-setup-function 'ediff-setup-windows-plain))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   globally useful configurations
