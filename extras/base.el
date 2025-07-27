@@ -281,6 +281,7 @@
                   tab-width 4))
 
 (use-package jinx
+  :ensure t
   :hook ((prog-mode . jinx-mode)
          (conf-mode-mode . jinx-mode)
          (text-mode . jinx-mode)))
