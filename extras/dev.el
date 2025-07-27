@@ -216,8 +216,8 @@
   :ensure t
   :config
   (gptel-make-gh-copilot "Copilot")
-  (gptel-make-ollama "Ollama"
-    :host "localhost:11434"
+  (gptel-make-ollama "Ollama [home-server]"
+    :host "192.168.1.1:11434"
     :stream t
     :models '(hf.co/unsloth/Llama-3.1-8B-Instruct-GGUF:IQ4_XS
               hf.co/bartowski/DeepSeek-Coder-V2-Lite-Instruct-GGUF:Q4_K_M))
