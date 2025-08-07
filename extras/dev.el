@@ -188,7 +188,9 @@
 
 (use-package vterm
   :ensure t
-  :custom (vterm-max-scrollback 100000))
+  :custom (vterm-max-scrollback 100000)
+  :bind (:map vterm-mode-map
+        ("C-g" . vterm-send-escape)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -208,8 +210,6 @@
   :bind (("C-x TAB" . copilot-complete)
          :map copilot-completion-map
          ("TAB" . copilot-accept-completion-by-line)))
-
-
 
 (use-package gptel
   :if (and (boundp 'ram-custom--enable-gptel) 'ram-custom--enable-gptel)
