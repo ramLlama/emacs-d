@@ -211,11 +211,38 @@
          :map copilot-completion-map
          ("TAB" . copilot-accept-completion-by-line)))
 
+(defvar ramllama/api-key-cache nil
+  "Cache for API keys as an alist of (key-name . key-value).")
+
+(defun ramllama/clear-api-key-cache ()
+  "Clear the API key cache."
+  (interactive)
+  (setq ramllama/api-key-cache nil)
+  (message "API key cache cleared"))
+
+(defun ramllama/query-api-key (key-name)
+  "Query the user for an API key with caching."
+  (interactive "sEnter key name: ")
+  (let ((cached-key (alist-get key-name ramllama/api-key-cache nil nil #'string=)))
+    (if cached-key
+        cached-key
+      (let ((key (read-string (format "Enter %s API key: " key-name))))
+        (setq ramllama/api-key-cache (cons (cons key-name key) ramllama/api-key-cache))
+        key))))
+
 (use-package gptel
   :if (and (boundp 'ram-custom--enable-gptel) 'ram-custom--enable-gptel)
   :ensure t
   :config
   (gptel-make-gh-copilot "Copilot")
+  (gptel-make-openai "OpenRouter"               ;Any name you want
+  :host "openrouter.ai"
+  :endpoint "/api/v1/chat/completions"
+  :stream t
+  :key (lambda () (ramllama/query-api-key "OpenRouter/coding-free"))
+  :models '(microsoft/mai-ds-r1:free
+            deepseek/deepseek-chat-v3-0324:free
+            z-ai/glm-4.5-air:free))
   (gptel-make-ollama "Ollama [home-server]"
     :host "192.168.1.1:11434"
     :stream t
