@@ -188,15 +188,18 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Show the tab-bar as soon as tab-bar functions are invoked
-(setopt tab-bar-show 1)
+;; disable
+(tab-bar-mode -1)
 
-;; Add the time to the tab-bar, if visible
-(add-to-list 'tab-bar-format 'tab-bar-format-align-right 'append)
-(add-to-list 'tab-bar-format 'tab-bar-format-global 'append)
-(setopt display-time-format "%a %F %T")
-(setopt display-time-interval 1)
-(display-time-mode -1)
+;; ;; Show the tab-bar as soon as tab-bar functions are invoked
+;; (setopt tab-bar-show 1)
+
+;; ;; Add the time to the tab-bar, if visible
+;; (add-to-list 'tab-bar-format 'tab-bar-format-align-right 'append)
+;; (add-to-list 'tab-bar-format 'tab-bar-format-global 'append)
+;; (setopt display-time-format "%a %F %T")
+;; (setopt display-time-interval 1)
+;; (display-time-mode -1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
