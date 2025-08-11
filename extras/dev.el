@@ -200,7 +200,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package copilot
-  :if (and (boundp 'ram-custom--enable-copilot) ram-custom--enable-copilot)
+  :if (and (boundp 'ramllama/enable-copilot) ramllama/enable-copilot)
   :vc (:url "https://github.com/copilot-emacs/copilot.el")
   :ensure t
   :custom
@@ -231,7 +231,7 @@
         key))))
 
 (use-package gptel
-  :if (and (boundp 'ram-custom--enable-gptel) 'ram-custom--enable-gptel)
+  :if (and (boundp 'ramllama/enable-gptel) 'ramllama/enable-gptel)
   :ensure t
   :config
   (gptel-make-gh-copilot "Copilot")
@@ -257,7 +257,7 @@
   :bind ("C-x l" . gptel-menu))
 
 (use-package claude-code-ide
-  :if (and (boundp 'ram-custom--enable-claude-code) ram-custom--enable-claude-code)
+  :if (and (boundp 'ramllama/enable-claude-code) ramllama/enable-claude-code)
   :vc (:url "https://github.com/manzaltu/claude-code-ide.el")
   :custom
   (claude-code-ide-use-side-window nil)

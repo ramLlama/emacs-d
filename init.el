@@ -21,7 +21,7 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun ram-custom--local-dir (name)
+(defun ramllama/local-dir (name)
   "Returns or creates a local directory in a known location in the emacs directory."
   (locate-user-emacs-file (concat ".local/" name)))
 

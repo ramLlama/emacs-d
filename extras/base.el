@@ -52,7 +52,7 @@
 
 ;; custom split-window-sensibly
 ;; Adapted from https://lists.gnu.org/archive/html/help-gnu-emacs/2015-08/msg00339.html
-(defun ram-custom--split-window-sensibly (&optional window)
+(defun ramllama/split-window-sensibly (&optional window)
   (setq window (or window (selected-window)))
   (or (and (window-splittable-p window t)
            ;; Split window horizontally.
@@ -73,7 +73,7 @@
   :config
   (setq-default split-height-threshold  120
                 split-width-threshold   160)
-  (setopt split-window-preferred-function 'ram-custom--split-window-sensibly))
+  (setopt split-window-preferred-function 'ramllama/split-window-sensibly))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -238,13 +238,13 @@
 (setopt fill-column 100)
 
 ;; C-w dwim
-(defun ram-custom--cw-dwim ()
+(defun ramllama/cw-dwim ()
   "kill-region when region is action, backwards-kill-word otherwise"
   (interactive)
   (if (use-region-p)
       (kill-region 0 0 t)
     (backward-kill-word 1)))
-(global-set-key (kbd "C-w") 'ram-custom--cw-dwim)
+(global-set-key (kbd "C-w") 'ramllama/cw-dwim)
 
 (use-package vundo
   :ensure t
@@ -254,7 +254,7 @@
   :ensure t)
 
 ;; allow -diff as command-line for vimdiff replacement
-(defun ram-custom--command-line-diff (switch)
+(defun ramllama/command-line-diff (switch)
   (let ((file1 (pop command-line-args-left))
         (file2 (pop command-line-args-left)))
     (ediff file1 file2)))
@@ -262,7 +262,7 @@
 (use-package ediff
   :ensure t
   :config
-  (add-to-list 'command-switch-alist '("-diff" . ram-custom--command-line-diff))
+  (add-to-list 'command-switch-alist '("-diff" . ramllama/command-line-diff))
   (setopt ediff-diff-options "-w")
   (setopt ediff-split-window-function 'split-window-horizontally)
   (setopt ediff-window-setup-function 'ediff-setup-windows-plain))
