@@ -256,11 +256,10 @@
       (load file)))
   :bind ("C-x l" . gptel-menu))
 
-(use-package claude-code-ide
-  :if (and (boundp 'ramllama/enable-claude-code) ramllama/enable-claude-code)
-  :vc (:url "https://github.com/manzaltu/claude-code-ide.el")
-  :custom
-  (claude-code-ide-use-side-window nil)
-  :bind ("C-x c" . claude-code-ide-menu) ; Set your favorite keybinding
-  :config
-  (claude-code-ide-emacs-tools-setup)) ; Optionally enable Emacs MCP tools
+(use-package claude-code
+  :if (and (boundp 'ram-custom--enable-claude-code) ram-custom--enable-claude-code)
+  :ensure t
+  :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
+  :custom (claude-code-terminal-backend 'vterm)
+  :config (claude-code-mode)
+  :bind-keymap ("C-x c" . claude-code-command-map))
