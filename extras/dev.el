@@ -256,10 +256,22 @@
       (load file)))
   :bind ("C-x l" . gptel-menu))
 
+(use-package monet
+  :if (and (boundp 'ramllama/enable-claude-code) ramllama/enable-claude-code)
+  :vc (:url "https://github.com/stevemolitor/monet" :rev :newest)
+  :ensure t
+  :custom
+  (monet-prefix-key nil)
+  (monet-diff-tool #'monet-ediff-tool)
+  (monet-diff-cleanup-tool #'monet-ediff-cleanup-tool))
+
 (use-package claude-code
-  :if (and (boundp 'ram-custom--enable-claude-code) ram-custom--enable-claude-code)
+  :if (and (boundp 'ramllama/enable-claude-code) ramllama/enable-claude-code)
   :ensure t
   :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
   :custom (claude-code-terminal-backend 'vterm)
-  :config (claude-code-mode)
+  :config
+  (add-hook 'claude-code-process-environment-functions #'monet-start-server-function)
+  (monet-mode 1)
+  (claude-code-mode)
   :bind-keymap ("C-x c" . claude-code-command-map))
