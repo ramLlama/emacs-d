@@ -275,10 +275,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package emacs
-  :ensure t
+  :config (setopt tab-width 4))
+
+(use-package isearch
   :config (setopt isearch-lazy-count t
                   isearch-lazy-highlight t
-                  tab-width 4))
+                  isearch-allow-scroll 'unlimited
+                  search-whitespace-regexp ".*?"))
 
 (use-package jinx
   :ensure t
