@@ -153,33 +153,23 @@
   :config
   (marginalia-mode))
 
-;; Popup completion-at-point
-(use-package corfu
-  :ensure t
-  :init
-  (global-corfu-mode)
+
+;; completion config
+(use-package emacs
+  :config (global-completion-preview-mode)
   :bind
-  (:map corfu-map
-        ("SPC" . corfu-insert-separator)
-        ("C-n" . corfu-next)
-        ("C-p" . corfu-previous)))
+  (:map completion-preview-active-mode-map
+        ("M-n" . completion-preview-next-candidate)
+        ("M-p" . completion-preview-prev-candidate)))
 
-;; Part of corfu
-(use-package corfu-popupinfo
-  :after corfu
-  :hook (corfu-mode . corfu-popupinfo-mode)
-  :custom
-  (corfu-popupinfo-delay '(0.25 . 0.1))
-  (corfu-popupinfo-hide nil)
-  :config
-  (corfu-popupinfo-mode))
+(use-package emacs
+  :custom (completion-show-help nil)
+  :bind
+  (:map completion-in-region-mode-map
+        ("M-p" . minibuffer-previous-completion)
+        ("M-n" . minibuffer-next-completion)
+        ("RET" . minibuffer-choose-completion)))
 
-;; Make corfu popup come up in terminal overlay
-(use-package corfu-terminal
-  :if (not (display-graphic-p))
-  :ensure t
-  :config
-  (corfu-terminal-mode))
 
 ;; Fancy completion-at-point functions; there's too much in the cape package to
 ;; configure here; dive in when you're comfortable!
@@ -189,13 +179,13 @@
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file))
 
-;; Pretty icons for corfu
-(use-package kind-icon
-  :if (display-graphic-p)
-  :ensure t
-  :after corfu
-  :config
-  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+;; ;; Pretty icons for corfu
+;; (use-package kind-icon
+;;   :if (display-graphic-p)
+;;   :ensure t
+;;   :after corfu
+;;   :config
+;;   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 ;; Orderless: powerful completion style
 (use-package orderless
