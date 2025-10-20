@@ -29,12 +29,11 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Treesitter config
 (use-package emacs
   :config
-  ;; Treesitter config
-
-  ;; Tell Emacs to prefer the treesitter mode. Also set each treesitter mode to run the original hooks.
-  ;; You'll want to run the command `M-x treesit-install-language-grammar' before editing.
+  ; Tell Emacs to prefer the treesitter mode. Also set each treesitter mode to run the original
+  ; hooks. You'll want to run the command `M-x treesit-install-language-grammar' before editing.
   (dolist (mode-prefix '(yaml bash js2 typescript json css python java c c++))
     (let ((orig-mode (intern (concat (symbol-name mode-prefix) "-mode")))
           (ts-mode (intern (concat (symbol-name mode-prefix) "-ts-mode")))
@@ -44,15 +43,15 @@
       (add-hook ts-mode-hook `(lambda () (run-hooks ',orig-mode-hook)))))
   :hook (prog-mode . (lambda () (kill-local-variable 'tab-width))))
 
-;; color support for compilation-mode
+
 (use-package compile
-  :after ansi-color
-  :hook (compilation-filter . (lambda ()
+  :hook
+  ; color support for compilation-mode
+  (compilation-filter . (lambda ()
                                 (when (eq major-mode 'compilation-mode)
                                   (ansi-color-apply-on-region compilation-filter-start
                                                               (point-max))))))
 
-;; flymake config
 (use-package flymake
   :custom
   (flymake-indicator-type 'margins)
@@ -76,7 +75,7 @@
   :ensure t
   :bind (("C-x g" . magit-status)))
 
-(defun show-github-url ()
+(defun ramllama/show-github-url ()
   "Shows the GitHub URL for this file on the default branch on origin remote."
   (interactive)
   (let ((git-toplevel (magit-toplevel)))
