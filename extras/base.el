@@ -32,6 +32,9 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package emacs
+  :custom (xterm-mouse-mode 1))
+
 (use-package avy
   :ensure t
   :demand t
@@ -278,3 +281,7 @@
   :hook ((prog-mode . jinx-mode)
          (conf-mode-mode . jinx-mode)
          (text-mode . jinx-mode)))
+
+(use-package emacs
+  :hook
+  (text-mode-hook . visual-wrap-prefix-mode))

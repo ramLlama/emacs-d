@@ -61,6 +61,10 @@
      (warning "*" compilation-warning)
      (note "»" compilation-info))))
 
+(use-package project
+  :custom (project-mode-line t))  ; show project name in modeline
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Version Control
@@ -179,7 +183,6 @@
   :ensure t
   :config
   (direnv-mode))
-
 
 (use-package combobulate
   :ensure t
