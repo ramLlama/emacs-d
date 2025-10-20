@@ -95,13 +95,14 @@
 
          ;; Searching
          ("M-s r" . consult-ripgrep)
-         ("M-s s" . consult-line)       ; consult-line instead of isearch, bind
+         ("M-s s" . consult-line)       ; consult-line instead of isearch
          ("M-s o" . consult-outline)
          )
 
-  :config
+  :custom
   ;; Narrowing lets you restrict results to certain groups of candidates
-  (setopt consult-narrow-key "<"))
+  (consult-narrow-key "<")
+  (completion-in-region-function #'consult-completion-in-region))
 
 (use-package embark
   :ensure t
