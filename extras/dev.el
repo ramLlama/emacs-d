@@ -83,24 +83,35 @@
     (if git-toplevel
         (let* ((origin-url (car (magit-git-lines "config" "--get" "remote.origin.url")))
                (origin-default-branch
-                (string-remove-prefix "origin/"
-                                      (car (magit-git-lines "symbolic-ref"
-                                                            "refs/remotes/origin/HEAD"
-                                                            "--short"))))
+                (or (when-let ((head (car (magit-git-lines "symbolic-ref"
+                                                           "refs/remotes/origin/HEAD"
+                                                           "--short"))))
+                      (string-remove-prefix "origin/" head))
+                    (when (zerop (magit-git-exit-code "rev-parse" "--verify" "origin/main"))
+                      "main")
+                    "master"))
              (www-url-prefix (save-match-data
-                               (or (and (string-match "^git@\\([^:]+\\):\\(.+?\\)\\(\\.git\\)?$" origin-url)
-                                    (concat "https://"
-                                            (match-string 1 origin-url)
-                                            "/"
-                                            (match-string 2 origin-url)))
-                                   (and (string-match "^https://\\([^/]+\\)/\\(.+?\\)\\(\\.git\\)?$" origin-url)
-                                    (concat "https://"
-                                            (match-string 1 origin-url)
-                                            "/"
-                                            (match-string 2 origin-url))))))
+                               (cond
+                                ((string-match "^[^@]+@\\([^:]+\\):\\(.+?\\)\\(\\.git\\)?$" origin-url)
+                                 (concat "https://"
+                                         (match-string 1 origin-url)
+                                         "/"
+                                         (match-string 2 origin-url)))
+                                ((string-match "^https://\\([^/]+\\)/\\(.+?\\)\\(\\.git\\)?$" origin-url)
+                                 (concat "https://"
+                                         (match-string 1 origin-url)
+                                         "/"
+                                         (match-string 2 origin-url))))))
              (www-url-suffix (string-remove-prefix git-toplevel (buffer-file-name)))
-             (www-url (concat www-url-prefix "/blob/" origin-default-branch "/" www-url-suffix)))
-          (message www-url))
+             (line-range (when (use-region-p)
+                          (let ((start-line (line-number-at-pos (region-beginning)))
+                                (end-line (line-number-at-pos (region-end))))
+                            (if (= start-line end-line)
+                                (format "#L%d" start-line)
+                              (format "#L%d-L%d" start-line end-line)))))
+             (www-url (concat www-url-prefix "/blob/" origin-default-branch "/" www-url-suffix line-range)))
+          (kill-new www-url)
+          (message "Copied to kill ring: %s" www-url))
     (message "Not a gitrepo"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
