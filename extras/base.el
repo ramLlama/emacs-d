@@ -286,3 +286,6 @@
 (use-package emacs
   :hook
   (text-mode-hook . visual-wrap-prefix-mode))
+
+(use-package emacs
+  :config (global-hl-line-mode))
