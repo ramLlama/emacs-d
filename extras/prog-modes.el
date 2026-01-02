@@ -55,8 +55,14 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package typescript-mode
+(use-package typescript-ts-mode
   :ensure t
+  :config
+  (add-to-list 'eglot-server-programs
+               `((typescript-mode typescript-ts-mode) .
+                 ,(eglot-alternatives
+                   '(("vtsls" "--stdio")
+                     ("typescript-language-server"  "--stdio")))))
   :mode ("\\.ts\\'"))
 
 (use-package prettier
