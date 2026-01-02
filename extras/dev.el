@@ -223,21 +223,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(use-package direnv
-  :ensure t
-  :config
-  (direnv-mode))
-
 (use-package combobulate
   :ensure t
   :vc (:url "https://github.com/mickeynp/combobulate")
   :hook ((prog-mode . combobulate-mode)))
-
-(use-package vterm
-  :ensure t
-  :custom (vterm-max-scrollback 100000)
-  :bind (:map vterm-mode-map
-        ("C-g" . vterm-send-escape)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

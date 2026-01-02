@@ -202,6 +202,7 @@
 ;;;   Emacs server settings
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Clear Buffer List every so often
 (use-package midnight
   :ensure t
@@ -284,8 +285,26 @@
          (text-mode . jinx-mode)))
 
 (use-package emacs
-  :hook
-  (text-mode-hook . visual-wrap-prefix-mode))
+  :hook (text-mode-hook . visual-wrap-prefix-mode))
 
 (use-package emacs
   :config (global-hl-line-mode))
+
+(use-package direnv
+  :ensure t
+  :config
+  (direnv-mode))
+
+(use-package vterm
+  :ensure t
+  :custom (vterm-max-scrollback 100000)
+  :bind (:map vterm-mode-map
+              ("C-g" . vterm-send-escape)))
+
+(use-package with-editor
+  :ensure t
+  :config (shell-command-with-editor-mode)
+  :hook ((shell-mode . with-editor-export-editor)
+         (eshell-mode . with-editor-export-editor)
+         (term-exec . with-editor-export-editor)
+         (vterm-mode . with-editor-export-editor)))
