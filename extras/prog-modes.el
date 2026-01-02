@@ -59,11 +59,12 @@
   :ensure t
   :config
   (add-to-list 'eglot-server-programs
-               `((typescript-mode typescript-ts-mode) .
+               `((typescript-mode typescript-ts-mode tsx-mode tsx-ts-mode) .
                  ,(eglot-alternatives
                    '(("vtsls" "--stdio")
                      ("typescript-language-server"  "--stdio")))))
-  :mode ("\\.ts\\'"))
+  :mode (("\\.ts\\'" . typescript-ts-mode)
+         ("\\.tsx\\'" . tsx-ts-mode)))
 
 (use-package prettier
   :ensure t
