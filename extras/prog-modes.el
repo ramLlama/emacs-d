@@ -41,7 +41,8 @@
   (add-to-list 'eglot-server-programs
                `((python-mode python-ts-mode) .
                  ,(eglot-alternatives
-                   '(("ty" "server")
+                   '(("rass" "python")
+                     ("ty" "server")
                      ("basedpyright-langserver" "--stdio")
                      "pylsp"
                      ("ruff"  "server"))))))
