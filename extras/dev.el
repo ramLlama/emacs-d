@@ -235,18 +235,6 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package copilot
-  :if (and (boundp 'ramllama/enable-copilot) ramllama/enable-copilot)
-  :vc (:url "https://github.com/copilot-emacs/copilot.el")
-  :ensure t
-  :custom
-  (copilot-idle-delay nil)
-  (copilot-enable-predicates nil)
-  :hook (((prog-mode) . copilot-mode))
-  :bind (("C-x TAB" . copilot-complete)
-         :map copilot-completion-map
-         ("TAB" . copilot-accept-completion-by-line)))
-
 (defvar ramllama/api-key-cache nil
   "Cache for API keys as an alist of (key-name . key-value).")
 
@@ -291,6 +279,10 @@
     (dolist (file el-files)
       (load file)))
   :bind ("C-x l" . gptel-menu))
+
+;; dependency for claude-code
+(use-package inheritenv
+  :ensure t)
 
 (use-package monet
   :if (and (boundp 'ramllama/enable-claude-code) ramllama/enable-claude-code)
