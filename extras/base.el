@@ -299,7 +299,7 @@
   :ensure t
   :custom (vterm-max-scrollback 100000)
   :bind (:map vterm-mode-map
-              ("C-g" . vterm-send-escape)))
+              ("C-c ESC" . #'vterm-send-escape)))
 
 (use-package with-editor
   :ensure t
