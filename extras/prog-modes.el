@@ -61,7 +61,10 @@
   :ensure t
   :config
   (add-to-list 'eglot-server-programs
-               `((typescript-mode typescript-ts-mode tsx-mode tsx-ts-mode) .
+               `((typescript-mode
+                  typescript-ts-mode
+                  (tsx-mode :language-id "typescriptreact")
+                  (tsx-ts-mode :language-id "typescriptreact")) .
                  ,(eglot-alternatives
                    '(("vtsls" "--stdio")
                      ("typescript-language-server"  "--stdio")))))
