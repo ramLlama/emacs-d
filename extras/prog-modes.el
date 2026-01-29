@@ -66,7 +66,8 @@
                   (tsx-mode :language-id "typescriptreact")
                   (tsx-ts-mode :language-id "typescriptreact")) .
                  ,(eglot-alternatives
-                   '(("vtsls" "--stdio")
+                   '(("rass" "typescript")
+                     ("vtsls" "--stdio")
                      ("typescript-language-server"  "--stdio")))))
   :mode (("\\.ts\\'" . typescript-ts-mode)
          ("\\.tsx\\'" . tsx-ts-mode)))
