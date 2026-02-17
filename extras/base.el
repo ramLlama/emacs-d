@@ -295,6 +295,10 @@
   :config
   (direnv-mode))
 
+;; try to make sure subprocesses get the direnv changes
+(use-package inheritenv
+  :ensure t)
+
 (use-package vterm
   :ensure t
   :custom (vterm-max-scrollback 100000)

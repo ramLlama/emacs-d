@@ -280,10 +280,6 @@
       (load file)))
   :bind ("C-x l" . gptel-menu))
 
-;; dependency for claude-code
-(use-package inheritenv
-  :ensure t)
-
 (use-package monet
   :if (and (boundp 'ramllama/enable-claude-code) ramllama/enable-claude-code)
   :vc (:url "https://github.com/stevemolitor/monet" :rev :newest)
