@@ -299,3 +299,10 @@
   (monet-mode 1)
   (claude-code-mode)
   :bind-keymap ("C-x c" . claude-code-command-map))
+
+(use-package agent-shell
+    :if (and (boundp 'ramllama/enable-agent-shell) ramllama/enable-agent-shell)
+    :ensure t
+    :custom
+    ;; `claude-code-acp` got moved, so need to remap
+    (agent-shell-anthropic-claude-command '("claude-agent-acp")))
