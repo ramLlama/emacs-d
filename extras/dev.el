@@ -62,7 +62,7 @@
      (note "»" compilation-info))))
 
 (use-package project
-  :custom (project-mode-line t))  ; show project name in modeline
+  :custom (project-mode-line nil))  ; do not show project in mode-line, this can be very slow
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
