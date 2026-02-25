@@ -304,5 +304,6 @@
     :if (and (boundp 'ramllama/enable-agent-shell) ramllama/enable-agent-shell)
     :ensure t
     :custom
-    ;; `claude-code-acp` got moved, so need to remap
-    (agent-shell-anthropic-claude-command '("claude-agent-acp")))
+    (agent-shell-anthropic-claude-command '("claude-agent-acp"))  ;; `claude-code-acp` got moved, so need to remap
+    (agent-shell-session-strategy 'prompt)  ;; support session resumption
+    (agent-shell-prefer-viewport-interaction t))  ;; viewport is better for plan-edit-do sessions
