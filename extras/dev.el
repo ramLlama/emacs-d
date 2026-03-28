@@ -74,7 +74,7 @@
 ;; Magit: best Git client to ever exist
 (use-package magit
   :ensure t
-  :bind (("C-x g" . magit-status)))
+  :bind (("C-c g" . magit-status)))
 
 (defun ramllama/show-github-url ()
   "Shows the GitHub URL for this file on the default branch on origin remote."
@@ -280,26 +280,6 @@
       (load file)))
   :bind ("C-x l" . gptel-menu))
 
-(use-package monet
-  :if (and (boundp 'ramllama/enable-claude-code) ramllama/enable-claude-code)
-  :vc (:url "https://github.com/stevemolitor/monet" :rev :newest)
-  :ensure t
-  :custom
-  (monet-prefix-key nil)
-  (monet-diff-tool #'monet-ediff-tool)
-  (monet-diff-cleanup-tool #'monet-ediff-cleanup-tool))
-
-(use-package claude-code
-  :if (and (boundp 'ramllama/enable-claude-code) ramllama/enable-claude-code)
-  :ensure t
-  :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
-  :custom (claude-code-terminal-backend 'vterm)
-  :config
-  (add-hook 'claude-code-process-environment-functions #'monet-start-server-function)
-  (monet-mode 1)
-  (claude-code-mode)
-  :bind-keymap ("C-x c" . claude-code-command-map))
-
 (use-package agent-shell
     :if (and (boundp 'ramllama/enable-agent-shell) ramllama/enable-agent-shell)
     :ensure t
@@ -307,3 +287,20 @@
     (agent-shell-anthropic-claude-command '("claude-agent-acp"))  ;; `claude-code-acp` got moved, so need to remap
     (agent-shell-session-strategy 'prompt)  ;; support session resumption
     (agent-shell-prefer-viewport-interaction t))  ;; viewport is better for plan-edit-do sessions
+
+(use-package monet
+  :if (and (boundp 'ramllama/enable-monet) ramllama/enable-monet)
+  :vc (:url "https://github.com/ramLlama/monet" :rev :newest)
+  :custom (monet-prefix-key nil)
+  :config
+  (monet-mode 1)
+  (monet-enable-tool-set :core :ediff))
+
+(use-package baton
+  :if (and (boundp 'ramllama/enable-baton) ramllama/enable-baton)
+  :ensure t
+  :vc (:url "https://github.com/ramLlama/baton" :rev :newest)
+  :bind ("C-c b" . #'baton)
+  :config
+  (setq baton-default-agent 'claude-code)
+  (baton-mode 1))
