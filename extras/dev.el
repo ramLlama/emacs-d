@@ -294,7 +294,8 @@
   :custom (monet-prefix-key nil)
   :config
   (monet-mode 1)
-  (monet-enable-tool-set :core :ediff))
+  (monet-register-emacs-tools)
+  (monet-enable-tool-set :core :ediff :emacs-tools))
 
 (use-package baton
   :if (and (boundp 'ramllama/enable-baton) ramllama/enable-baton)
