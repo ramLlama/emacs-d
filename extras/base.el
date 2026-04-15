@@ -290,10 +290,9 @@
 (use-package emacs
   :config (global-hl-line-mode))
 
-(use-package direnv
+(use-package envrc
   :ensure t
-  :config
-  (direnv-mode))
+  :hook (after-init . envrc-global-mode))
 
 ;; try to make sure subprocesses get the direnv changes
 (use-package inheritenv
