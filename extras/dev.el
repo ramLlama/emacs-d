@@ -255,7 +255,7 @@
         key))))
 
 (use-package gptel
-  :if (and (boundp 'ramllama/enable-gptel) 'ramllama/enable-gptel)
+  :if (and (boundp 'ramllama/enable-gptel) ramllama/enable-gptel)
   :ensure t
   :config
   (gptel-make-gh-copilot "Copilot")
@@ -289,7 +289,10 @@
     (agent-shell-prefer-viewport-interaction t))  ;; viewport is better for plan-edit-do sessions
 
 (use-package monet
-  :if (and (boundp 'ramllama/enable-monet) ramllama/enable-monet)
+  ;; this is my package, so check if I want to use my local branch
+  :if (and (boundp 'ramllama/enable-monet)
+           ramllama/enable-monet
+           (not (eq ramllama/enable-monet 'local)))
   :vc (:url "https://github.com/ramLlama/monet" :rev :newest)
   :custom (monet-prefix-key nil)
   :config
@@ -298,7 +301,10 @@
   (monet-enable-tool-set :core :ediff :emacs-tools))
 
 (use-package baton
-  :if (and (boundp 'ramllama/enable-baton) ramllama/enable-baton)
+  ;; this is my package, so check if I want to use my local branch
+  :if (and (boundp 'ramllama/enable-baton)
+           ramllama/enable-baton
+           (not (eq ramllama/enable-baton 'local)))
   :ensure t
   :vc (:url "https://github.com/ramLlama/baton" :rev :newest)
   :bind ("C-c b" . #'baton)

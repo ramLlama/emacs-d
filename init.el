@@ -249,6 +249,9 @@
 ;; prog mode configs
 (load-file (expand-file-name "extras/prog-modes.el" user-emacs-directory))
 
+;; Load local extras
+(load (expand-file-name "extras/local.el" user-emacs-directory) t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Built-in customization framework

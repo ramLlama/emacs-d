@@ -11,6 +11,11 @@
 /projects
 /quelpa
 
+################
+# Local Config #
+################
+local-init.el
+extras/local.el
 
 ##########
 # Extras #
@@ -21,4 +26,3 @@ backup/
 .local/
 %backup%~
 tramp
-local-init.el
