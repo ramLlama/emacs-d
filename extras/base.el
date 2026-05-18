@@ -294,15 +294,30 @@
   :ensure t
   :hook (after-init . envrc-global-mode))
 
-;; try to make sure subprocesses get the direnv changes
+;; ensure subprocesses get the direnv changes
 (use-package inheritenv
-  :ensure t)
-
-(use-package vterm
   :ensure t
-  :custom (vterm-max-scrollback 100000)
-  :bind (:map vterm-mode-map
-              ("C-c ESC" . #'vterm-send-escape)))
+  :config
+  ;; For general subprocess creation (lsp, flymake, etc.) that creates temp buffers.
+  (advice-add 'compilation-start :around #'inheritenv-apply '((depth . -10))))
+
+(use-package ghostel
+  :ensure t
+  :bind (:map ghostel-mode-map
+              ("C-c ESC" . (lambda () (interactive) (ghostel-send-key "escape" nil))))
+  :config
+  (ghostel-compile-global-mode 1)
+  ;; Use /bin/sh for compile so fish config isn't reloaded (fish -c sources
+  ;; config.fish, which overwrites PATH and loses rustup pins, venvs, etc.).
+  ;; Also kill the compile buffer's buffer-local process-environment (set by envrc
+  ;; during ghostel-mode init) so the inheritenv default — the source buffer's env
+  ;; — takes effect.
+  (defun ramllama/ghostel-compile-use-sh (orig-fn &rest args)
+    (let ((shell-file-name "/bin/sh")
+          (shell-command-switch "-c"))
+      (apply orig-fn args)))
+  (with-eval-after-load 'ghostel-compile
+    (advice-add 'ghostel-compile--spawn :around #'ramllama/ghostel-compile-use-sh)))
 
 (use-package with-editor
   :ensure t
