@@ -309,5 +309,6 @@
   :vc (:url "https://github.com/ramLlama/baton" :rev :newest)
   :bind ("C-c b" . #'baton)
   :config
+  (baton-terminal-backend 'ghostel)
   (setq baton-default-agent 'claude-code)
   (baton-mode 1))
