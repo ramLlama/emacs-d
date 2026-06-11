@@ -312,3 +312,35 @@
   (baton-terminal-backend 'ghostel)
   (setq baton-default-agent 'claude-code)
   (baton-mode 1))
+
+(defun ramllama/baton-direnv-allow-worktree (worktree-path repo _branch)
+  "Propagate direnv trust from REPO to a fresh baton WORKTREE-PATH.
+Runs `direnv allow' on the worktree's .envrc only when REPO's .envrc is
+already allowed and the two files are byte-identical — so this never
+grants trust that was not already given to the same content."
+  (cl-flet ((file-string (file)
+              (with-temp-buffer (insert-file-contents file) (buffer-string)))
+            (direnv-allowed-p (dir)
+              (with-temp-buffer
+                (let ((default-directory (file-name-as-directory dir)))
+                  (and (eq 0 (call-process "direnv" nil t nil "status"))
+                       (progn
+                         (goto-char (point-min))
+                         ;; direnv prints "Found RC allowed true" (older) or
+                         ;; "Found RC allowed 0" (newer; 0 = allowed).
+                         (re-search-forward "Found RC allowed \\(?:0\\|true\\)"
+                                            nil t)))))))
+    (let ((repo-envrc (expand-file-name ".envrc" repo))
+          (worktree-envrc (expand-file-name ".envrc" worktree-path)))
+      (when (and (executable-find "direnv")
+                 (file-readable-p repo-envrc)
+                 (file-readable-p worktree-envrc)
+                 (equal (file-string repo-envrc) (file-string worktree-envrc))
+                 (direnv-allowed-p repo))
+        (let ((default-directory (file-name-as-directory worktree-path)))
+          (call-process "direnv" nil nil nil "allow"))
+        (message "baton: direnv trust propagated to %s" worktree-path)))))
+
+(with-eval-after-load 'baton-sodagun
+  (add-hook 'baton-sodagun-worktree-created-hook
+            #'ramllama/baton-direnv-allow-worktree))
