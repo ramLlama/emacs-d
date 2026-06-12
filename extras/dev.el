@@ -308,10 +308,11 @@
   :ensure t
   :vc (:url "https://github.com/ramLlama/baton" :rev :newest)
   :bind ("C-c b" . #'baton)
-  :config
+  :bind ("C-c b" . #'baton)
+  :custom
   (baton-terminal-backend 'ghostel)
-  (setq baton-default-agent 'claude-code)
-  (baton-mode 1))
+  (baton-default-agent    'claude-code)
+  :config (baton-mode 1))
 
 (defun ramllama/baton-direnv-allow-worktree (worktree-path repo _branch)
   "Propagate direnv trust from REPO to a fresh baton WORKTREE-PATH.
