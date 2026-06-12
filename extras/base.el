@@ -322,3 +322,11 @@
 (use-package with-editor
   :ensure t
   :config (shell-command-with-editor-mode))
+
+;; graphics in the terminal!
+(use-package kitty-graphics
+  :vc (:url "https://github.com/cashmeredev/kitty-graphics.el" :rev :newest)
+  :if (not (display-graphic-p))
+  :config
+  (setq kitty-gfx-enable-video t)   ; optional: inline mpv playback
+  (kitty-graphics-mode 1))
