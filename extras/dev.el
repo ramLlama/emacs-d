@@ -260,13 +260,15 @@
   :config
   (gptel-make-gh-copilot "Copilot")
   (gptel-make-openai "OpenRouter"               ;Any name you want
-  :host "openrouter.ai"
-  :endpoint "/api/v1/chat/completions"
-  :stream t
-  :key (lambda () (ramllama/query-api-key "OpenRouter/coding-free"))
-  :models '(microsoft/mai-ds-r1:free
-            deepseek/deepseek-chat-v3-0324:free
-            z-ai/glm-4.5-air:free))
+    :host "openrouter.ai"
+    :endpoint "/api/v1/chat/completions"
+    :stream t
+    :key (lambda () (ramllama/query-api-key "OpenRouter/coding"))
+    :models '(z-ai/glm-5.2
+              moonshotai/kimi-k2.7-code
+              deepseek/deepseek-v4-pro
+              deepseek/deepseek-v4-flash
+              anthropic/claude-opus-4.8))
   (gptel-make-ollama "Ollama [home-server]"
     :host "192.168.1.1:11434"
     :stream t
@@ -278,7 +280,14 @@
                    "\\.el$")))
     (dolist (file el-files)
       (load file)))
+  (when (fboundp 'ramllama/setup-gptel)
+    (ramllama/setup-gptel))
   :bind ("C-x l" . gptel-menu))
+
+(use-package gptel-agent
+  :if (and (boundp 'ramllama/enable-gptel) ramllama/enable-gptel)
+  :ensure t
+  :config (gptel-agent-update))         ;Read files from agents directories
 
 (use-package agent-shell
     :if (and (boundp 'ramllama/enable-agent-shell) ramllama/enable-agent-shell)
