@@ -304,8 +304,13 @@
 (use-package ghostel
   :ensure t
   :bind (:map ghostel-mode-map
-              ("C-c ESC" . (lambda () (interactive) (ghostel-send-key "escape" nil))))
+              ("C-c ESC" . (lambda () (interactive) (ghostel-send-key "escape" nil)))
+              ;; M-o is reserved for window switching (see keymap-exceptions
+              ;; below); send a literal M-o to the terminal via C-c M-o.
+              ("C-c M-o" . (lambda () (interactive) (ghostel-send-key "o" "meta"))))
   :config
+  ;; Don't capture M-o — let it pass through to Emacs for window switching.
+  (setopt ghostel-keymap-exceptions (cons "M-o" ghostel-keymap-exceptions))
   (ghostel-compile-global-mode 1)
   ;; Use /bin/sh for compile so fish config isn't reloaded (fish -c sources
   ;; config.fish, which overwrites PATH and loses rustup pins, venvs, etc.).
