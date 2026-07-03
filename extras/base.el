@@ -304,7 +304,7 @@
 (use-package ghostel
   :ensure t
   :bind (:map ghostel-mode-map
-              ("C-c ESC" . (lambda () (interactive) (ghostel-send-key "escape" nil)))
+              ("C-c <escape>" . (lambda () (interactive) (ghostel-send-key "escape" nil)))
               ;; M-o is reserved for window switching (see keymap-exceptions
               ;; below); send a literal M-o to the terminal via C-c M-o.
               ("C-c M-o" . (lambda () (interactive) (ghostel-send-key "o" "meta"))))
