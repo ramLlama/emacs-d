@@ -328,10 +328,22 @@
   :ensure t
   :config (shell-command-with-editor-mode))
 
-;; graphics in the terminal!
+;; Ghostty speaks the Kitty graphics protocol, but over SSH it drops its
+;; KITTY_*/GHOSTTY_* env markers and tmux masks TERM_PROGRAM to "tmux", so the
+;; stock `kitty-gfx--kitty-detect' misses it and falls back to Sixel -- which
+;; Ghostty cannot render. The tty-type survives as "xterm-ghostty".
+(defun ramllama/kitty-gfx-ghostty-p (&rest _)
+  "Non-nil when the selected frame's terminal is Ghostty.
+Advises `kitty-gfx--kitty-detect' with `:after-until', so it only supplements
+detection when the stock check comes back negative."
+  (string-match-p "ghostty"
+                  (or (frame-parameter (selected-frame) 'tty-type) "")))
+
 (use-package kitty-graphics
   :vc (:url "https://github.com/cashmeredev/kitty-graphics.el" :rev :newest)
   :if (not (display-graphic-p))
   :config
   (setq kitty-gfx-enable-video t)   ; optional: inline mpv playback
+  (advice-add 'kitty-gfx--kitty-detect :after-until
+              #'ramllama/kitty-gfx-ghostty-p)
   (kitty-graphics-mode 1))
