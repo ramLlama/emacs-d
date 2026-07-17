@@ -301,6 +301,16 @@
   ;; For general subprocess creation (lsp, flymake, etc.) that creates temp buffers.
   (advice-add 'compilation-start :around #'inheritenv-apply '((depth . -10))))
 
+;; Use /bin/sh for compile so fish config isn't reloaded (fish -c sources
+;; config.fish, which overwrites PATH and loses rustup pins, venvs, etc.).
+;; Also kill the compile buffer's buffer-local process-environment (set by envrc
+;; during ghostel-mode init) so the inheritenv default — the source buffer's env
+;; — takes effect.
+(defun ramllama/ghostel-compile-use-sh (orig-fn &rest args)
+  (let ((shell-file-name "/bin/sh")
+        (shell-command-switch "-c"))
+    (apply orig-fn args)))
+
 (use-package ghostel
   :ensure t
   :bind (:map ghostel-mode-map
@@ -312,15 +322,6 @@
   ;; Don't capture M-o — let it pass through to Emacs for window switching.
   (setopt ghostel-keymap-exceptions (cons "M-o" ghostel-keymap-exceptions))
   (ghostel-compile-global-mode 1)
-  ;; Use /bin/sh for compile so fish config isn't reloaded (fish -c sources
-  ;; config.fish, which overwrites PATH and loses rustup pins, venvs, etc.).
-  ;; Also kill the compile buffer's buffer-local process-environment (set by envrc
-  ;; during ghostel-mode init) so the inheritenv default — the source buffer's env
-  ;; — takes effect.
-  (defun ramllama/ghostel-compile-use-sh (orig-fn &rest args)
-    (let ((shell-file-name "/bin/sh")
-          (shell-command-switch "-c"))
-      (apply orig-fn args)))
   (with-eval-after-load 'ghostel-compile
     (advice-add 'ghostel-compile--spawn :around #'ramllama/ghostel-compile-use-sh)))
 
